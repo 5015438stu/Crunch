@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float buttontime = 0.3f;
     public float cancelrate = 100;
     public float jumpamount = 1;
-    bool crouching = false;
+    //bool crouching = false;
 
     Vector2 move;
 
@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = 280;
             animator.SetBool("IsCrouching", false);
-            crouching = false;
+            //crouching = false;
         }
 
         //Add crouchblock
@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         {
             speed = 0;
             animator.SetBool("IsCrouching", true);
-            crouching = true;
+            //crouching = true;
         }
 
         if (jumping) //settings for jumptime
