@@ -788,14 +788,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 705879367}
   hitbox: {fileID: 1430135946}
-  attacklength: 0.03
   enemylayers:
     serializedVersion: 2
     m_Bits: 128
-  attackrange: 1.33
   attackDamage: 40
   knockback: 10
-  cooldowntime: 2
   lastclickedtime: 0
   maxcombodelay: 1
   attackwait: 0
@@ -1412,6 +1409,37 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.35, y: 3.3921, z: -9}
   m_LocalScale: {x: 1.5, y: 1.4903378, z: 0.925}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1400754521
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400754522}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1400754522
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400754521}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.0536592, y: -1.189761, z: -3.1791656}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2537,3 +2565,4 @@ SceneRoots:
   - {fileID: 2079933658}
   - {fileID: 1828539313}
   - {fileID: 1409299121}
+  - {fileID: 1400754522}
