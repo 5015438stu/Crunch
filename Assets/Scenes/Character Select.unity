@@ -209,8 +209,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 64983589}
-        m_TargetAssemblyTypeName: CharacterSelect, Assembly-CSharp
-        m_MethodName: 
+        m_TargetAssemblyTypeName: potraitbiggee, Assembly-CSharp
+        m_MethodName: ImageChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -270,7 +270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a12b34f7969e8db4ca000eef7086695b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterId: Biggee
+  oldimage: {fileID: 438080647}
+  newimage: {fileID: 21300000, guid: 418afd2afdd7a45458eb2554ea0ac8c5, type: 3}
 --- !u!114 &64983590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,7 +341,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Defense place holder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -474,7 +475,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Strength place holder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -562,6 +563,7 @@ GameObject:
   - component: {fileID: 438080646}
   - component: {fileID: 438080648}
   - component: {fileID: 438080647}
+  - component: {fileID: 438080649}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -626,6 +628,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438080645}
   m_CullTransparentMesh: 1
+--- !u!114 &438080649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438080645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3443858233f69944bb7797cd3864a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oldimage: {fileID: 0}
+  newimage: {fileID: 0}
 --- !u!1 &455618814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,7 +1689,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Skill place holder
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2100,6 +2116,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1869529802}
+  - {fileID: 438080646}
+  - {fileID: 1467430905}
   - {fileID: 887454417}
   - {fileID: 1391626683}
   - {fileID: 1060111096}
@@ -2110,8 +2128,6 @@ RectTransform:
   - {fileID: 738377836}
   - {fileID: 820062686}
   - {fileID: 978830962}
-  - {fileID: 438080646}
-  - {fileID: 1467430905}
   - {fileID: 484338132}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2298,7 +2314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2325,8 +2341,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 82.1
+  m_fontSizeBase: 82.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2386,6 +2402,7 @@ GameObject:
   - component: {fileID: 1467430905}
   - component: {fileID: 1467430907}
   - component: {fileID: 1467430906}
+  - component: {fileID: 1467430908}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -2450,6 +2467,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467430904}
   m_CullTransparentMesh: 1
+--- !u!114 &1467430908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467430904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1 &1504205138
 GameObject:
   m_ObjectHideFlags: 0
@@ -2650,6 +2680,7 @@ GameObject:
   - component: {fileID: 1739926463}
   - component: {fileID: 1739926465}
   - component: {fileID: 1739926464}
+  - component: {fileID: 1739926466}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -2714,6 +2745,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739926462}
   m_CullTransparentMesh: 1
+--- !u!114 &1739926466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739926462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a12b34f7969e8db4ca000eef7086695b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oldimage: {fileID: 438080647}
+  newimage: {fileID: 21300000, guid: 418afd2afdd7a45458eb2554ea0ac8c5, type: 3}
 --- !u!1 &1754980565
 GameObject:
   m_ObjectHideFlags: 0
