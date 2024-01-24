@@ -19,9 +19,21 @@ public class CharacterSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (jean.selectchara == 1)
+        {
+            selectedcharacter = 1;
+        }
+        //if (Ash.selectchara == 2)
+        //{
+            //selectedcharacter = 2;
+        //}
         if (cinder.selectchara == 3)
         {
             selectedcharacter = 3;
+        }
+        if (biggee.selectchara == 4)
+        {
+            selectedcharacter = 4;
         }
     }
     public void LoadScene(string sceneName)
