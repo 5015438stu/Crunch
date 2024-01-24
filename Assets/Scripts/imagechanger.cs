@@ -7,7 +7,8 @@ public class imagechanger : MonoBehaviour
 {
     public Image oldimage;
     public Sprite newimage;
-    public 
+    public CharacterSelect select;
+    public int selectchara = 0;
     // Start is called before the first frame update
     void Start()
     {

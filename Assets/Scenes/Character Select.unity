@@ -123,6 +123,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &35517599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 35517601}
+  - component: {fileID: 35517600}
+  m_Layer: 0
+  m_Name: Selectorstruff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &35517600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35517599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10cdf74557ca361448cb41741d56818a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedcharacter: 0
+  biggee: {fileID: 64983589}
+  cinder: {fileID: 1060111100}
+  jean: {fileID: 0}
+--- !u!4 &35517601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35517599}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.894611, y: 6.119113, z: 11.949415}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &64983584
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,6 +332,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10cdf74557ca361448cb41741d56818a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedcharacter: 0
+  biggee: {fileID: 0}
+  cinder: {fileID: 0}
+  jean: {fileID: 0}
 --- !u!1 &438080645
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +426,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oldimage: {fileID: 0}
   newimage: {fileID: 0}
+  select: {fileID: 0}
+  selectchara: 0
 --- !u!1 &455618814
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,6 +695,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10cdf74557ca361448cb41741d56818a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedcharacter: 0
+  biggee: {fileID: 0}
+  cinder: {fileID: 0}
+  jean: {fileID: 0}
 --- !u!1 &487883581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1148,7 +1206,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 887454421}
-        m_TargetAssemblyTypeName: jean, Assembly-CSharp
+        m_TargetAssemblyTypeName: potraitjean, Assembly-CSharp
         m_MethodName: ImageChange
         m_Mode: 1
         m_Arguments:
@@ -1211,6 +1269,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oldimage: {fileID: 438080647}
   newimage: {fileID: 21300000, guid: 88ac4da1dfbeea642a8781ac0758bf78, type: 3}
+  select: {fileID: 0}
+  selectchara: 0
 --- !u!1 &978830961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,6 +1808,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oldimage: {fileID: 438080647}
   newimage: {fileID: 21300000, guid: 66e6f4b5e8bf9bb49a30687e2e837b55, type: 3}
+  select: {fileID: 0}
+  selectchara: 0
 --- !u!1 &1261116658
 GameObject:
   m_ObjectHideFlags: 0
@@ -3179,3 +3241,4 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1366509137}
   - {fileID: 1504205141}
+  - {fileID: 35517601}
