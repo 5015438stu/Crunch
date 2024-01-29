@@ -9,16 +9,19 @@ public class CharacterSelect : MonoBehaviour
     public potraitbiggee biggee;
     public potraitcinder cinder;
     public potraitjean jean;
+    public eventsystem game;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<eventsystem>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        GetComponent<eventsystem>();
+
         if (jean.selectchara == 1)
         {
             selectedcharacter = 1;

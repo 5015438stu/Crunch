@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - P1
   - P2
+  - selector
   layers:
   - Default
   - TransparentFX
