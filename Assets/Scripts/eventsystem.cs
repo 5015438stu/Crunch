@@ -28,14 +28,15 @@ public class eventsystem : MonoBehaviour
 
         p1chara = CS.selectedcharacter;
 
-        /* if (p1chara == 1)
-         {
+        if (p1chara == 1)
+        {
+            p1spawned = true;
+            spawnjean();
+        }
+        if (p1chara == 3)
+        {
 
-         }
-         if (p1chara == 3)
-         {
-
-         }*/
+        }
         if (p1spawned = false && p1chara == 4)
         {
             p1spawned = true;
@@ -46,5 +47,9 @@ public class eventsystem : MonoBehaviour
     void spawnbiggee()
     {
         Instantiate(Biggee, new Vector3(p1spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), transform.rotation);
+    }
+    void spawnjean()
+    {
+        Instantiate(Jean, new Vector3(p1spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), transform.rotation);
     }
 }

@@ -26,9 +26,15 @@ public class CharacterSelect : MonoBehaviour
         {
             selectedcharacter = 1;
         }
+
+        if (jean.selectchara == 1)
+        {
+            selectedcharacter = 1;
+        }
+
         //if (Ash.selectchara == 2)
         //{
-            //selectedcharacter = 2;
+        //selectedcharacter = 2;
         //}
         if (cinder.selectchara == 3)
         {
