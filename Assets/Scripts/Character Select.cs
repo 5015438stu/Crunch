@@ -20,6 +20,7 @@ public class CharacterSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         GetComponent<eventsystem>();
 
         if (jean.selectchara == 1)

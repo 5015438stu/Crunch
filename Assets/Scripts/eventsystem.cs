@@ -7,6 +7,7 @@ public class eventsystem : MonoBehaviour
     public CharacterSelect CS;
     public int p1chara;
 
+    public GameObject P1Spawner;
     public GameObject p1spawn;
     public GameObject Biggee;
     public GameObject cinder;
@@ -30,26 +31,24 @@ public class eventsystem : MonoBehaviour
 
         if (p1chara == 1)
         {
-            p1spawned = true;
+            p1chara = 69;
             spawnjean();
         }
-        if (p1chara == 3)
+        if (p1chara == 4)
         {
-
-        }
-        if (p1spawned = false && p1chara == 4)
-        {
-            p1spawned = true;
             spawnbiggee();
         }
+      
     }
 
     void spawnbiggee()
     {
+        p1spawned = true;
         Instantiate(Biggee, new Vector3(p1spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), transform.rotation);
     }
     void spawnjean()
     {
+        p1spawned = true;
         Instantiate(Jean, new Vector3(p1spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), transform.rotation);
     }
 }
