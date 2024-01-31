@@ -13,7 +13,7 @@ public class potraitjean : MonoBehaviour
 
     public void ImageChange()
     {
-        selected = 1;
+        selected =+ 1;
         selectchara = 1;
         oldimage.sprite = newimage;
     }

@@ -34,10 +34,6 @@ public class CharacterSelect : MonoBehaviour
             selectedcharacter = 1;
         }
 
-        //if (Ash.selectchara == 2)
-        //{
-        //selectedcharacter = 2;
-        //}
         if (cinder.selectchara == 3)
         {
             selectedcharacter = 3;
@@ -52,17 +48,26 @@ public class CharacterSelect : MonoBehaviour
 
         if (jean.selectchara == 1)
         {
-           selectedcharacter2 = 1;
+            if (p1selected == 2)
+            {
+                selectedcharacter2 = 1;
+            }
         }
 
         if (cinder.selectchara == 3)
         {
-           selectedcharacter2 = 3;
+            if (p1selected == 2)
+            {
+                selectedcharacter2 = 3;
+            }
         }
 
         if (biggee.selectchara == 4)
         {
-           selectedcharacter2 = 4;
+            if (p1selected == 2)
+            {
+                selectedcharacter2 = 4;
+            }
         }
     }
     public void LoadScene(string sceneName)

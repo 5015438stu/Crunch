@@ -14,6 +14,6 @@ public class potraitcinder : MonoBehaviour
     {
         selectchara = 3;
         oldimage.sprite = newimage;
-        selected = 1;
+        selected = +1;
 }
 }
