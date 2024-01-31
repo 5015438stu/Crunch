@@ -9,9 +9,11 @@ public class potraitjean : MonoBehaviour
     public Sprite newimage;
     public CharacterSelect select;
     public int selectchara = 0;
+    public int selected = 0;
 
     public void ImageChange()
     {
+        selected = 1;
         selectchara = 1;
         oldimage.sprite = newimage;
     }

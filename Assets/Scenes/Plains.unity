@@ -700,6 +700,37 @@ Transform:
   - {fileID: 926156201}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1283364405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1283364406}
+  m_Layer: 0
+  m_Name: P2 spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1283364406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283364405}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.07, y: -3.74, z: -2.94071}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1491479909
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,6 +762,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CS: {fileID: 0}
   p1chara: 0
+  p2chara: 0
+  P1Spawner: {fileID: 1283364405}
   p1spawn: {fileID: 1875566255}
   Biggee: {fileID: 7821279242919190250, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
   cinder: {fileID: 0}
@@ -1104,3 +1137,4 @@ SceneRoots:
   - {fileID: 1233793804}
   - {fileID: 1491479911}
   - {fileID: 1875566256}
+  - {fileID: 1283364406}
