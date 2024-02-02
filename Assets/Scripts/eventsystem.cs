@@ -11,7 +11,7 @@ public class eventsystem : MonoBehaviour
     public GameObject p2spawn;
     public GameObject p1spawn;
     public GameObject Biggee;
-    public GameObject cinder;
+    public GameObject Cinder;
     public GameObject ash;
     public GameObject Jean;
 
@@ -37,6 +37,11 @@ public class eventsystem : MonoBehaviour
             spawnjean();
             p1chara = 0;
         }
+        if (p1chara == 3)
+        {
+            spawncinder();
+            p1chara = 0;
+        }
         if (p1chara == 4)
         {
             spawnbiggee();
@@ -59,6 +64,11 @@ public class eventsystem : MonoBehaviour
     {
         p1spawned = true;
         Instantiate(Biggee, new Vector3(p1spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), transform.rotation);
+    }
+    void spawncinder()
+    {
+        p1spawned = true;
+        Instantiate(Cinder, new Vector3(p1spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), transform.rotation);
     }
     void spawnjean()
     {

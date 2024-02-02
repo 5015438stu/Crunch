@@ -6,7 +6,7 @@ using Cinemachine;
 public class InputHandler : MonoBehaviour
 {
     float currenttime = 0f;
-    float startingtime = 999f;
+    public float startingtime = 999f;
     public CinemachineVirtualCamera vc;
 
     [SerializeField] TextMeshProUGUI Countdown;
