@@ -58,6 +58,11 @@ public class eventsystem : MonoBehaviour
             spawnbiggee2();
             p2chara = 0;
         }
+        if (p1chara == 3)
+        {
+            spawncinder2();
+            p2chara = 0;
+        }
     }
 
     void spawnbiggee()
@@ -85,5 +90,10 @@ public class eventsystem : MonoBehaviour
     {
         p1spawned = true;
         Instantiate(Jean, new Vector3(p2spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), transform.rotation);
+    }
+    void spawncinder2()
+    {
+        p1spawned = true;
+        Instantiate(Cinder, new Vector3(p2spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), transform.rotation);
     }
 }

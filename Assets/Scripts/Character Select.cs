@@ -11,6 +11,10 @@ public class CharacterSelect : MonoBehaviour
     public potraitcinder cinder;
     public potraitjean jean;
     public eventsystem game;
+    public potraitbiggee2 biggeep2;
+    public potraitjean2 jeanp2;
+  /*public potraitcinder2 cinder2;
+    public eventsystem2 game;*/
     public int p1selected = 0;
 
     public GameObject allbuttons;
@@ -28,37 +32,30 @@ public class CharacterSelect : MonoBehaviour
         GetComponent<eventsystem>();
 
         p1selected = jean.selected;
-        //p1selected = ash.selected;
         p1selected = cinder.selected;
         p1selected = biggee.selected;
 
         if (jean.selectchara == 1)
         {
-            selectedcharacter = 1;
-
-            if (p1selected == 2)
+            if (p1selected == 1)
             {
-                selectedcharacter2 = 1;
+                selectedcharacter = 1;
             }
         }
 
         if (cinder.selectchara == 3)
         {
-            selectedcharacter = 3;
-
-            if (p1selected == 2)
+            if (p1selected == 1)
             {
-                selectedcharacter2 = 3;
+                selectedcharacter = 3;
             }
         }
 
         if (biggee.selectchara == 4)
         {
-            selectedcharacter = 4;
-
-            if (p1selected == 2)
+            if (p1selected == 1)
             {
-                selectedcharacter2 = 4;
+                selectedcharacter = 4;
             }
         }
 
@@ -69,6 +66,14 @@ public class CharacterSelect : MonoBehaviour
             allbuttons2.SetActive(true);
             allbuttons.SetActive(false);
 
+        }
+        if (jeanp2.selectchara == 1)
+        {
+            selectedcharacter2 = 1;
+        }
+        if (biggeep2.selectchara == 4)
+        {
+            selectedcharacter2 = 4;
         }
 
     }

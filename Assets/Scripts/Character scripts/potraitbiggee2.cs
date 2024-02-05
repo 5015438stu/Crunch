@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class potraitbiggee : MonoBehaviour
+public class potraitbiggee2 : MonoBehaviour
 {
     public Image oldimage;
     public Sprite newimage;
@@ -18,6 +18,6 @@ public class potraitbiggee : MonoBehaviour
         selectchara = 4;
         oldimage.sprite = newimage;
         _title.text = "Biggee";
-        selected = 1; 
+        selected = 1;
     }
 }
