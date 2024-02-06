@@ -9,16 +9,18 @@ public class CharacterSelect : MonoBehaviour
     public int selectedcharacter2 = 0;
     public potraitbiggee biggee;
     public potraitcinder cinder;
+    public potraitash ash;
     public potraitjean jean;
     public eventsystem game;
     public potraitbiggee2 biggeep2;
     public potraitjean2 jeanp2;
-  /*public potraitcinder2 cinder2;
-    public eventsystem2 game;*/
+  //public potraitcinder2 cinder2;
     public int p1selected = 0;
 
     public GameObject allbuttons;
     public GameObject allbuttons2;
+    public GameObject select1;
+    public GameObject select2;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,7 @@ public class CharacterSelect : MonoBehaviour
     {
         GetComponent<eventsystem>();
 
+        p1selected = ash.selected;
         p1selected = jean.selected;
         p1selected = cinder.selected;
         p1selected = biggee.selected;
@@ -40,6 +43,14 @@ public class CharacterSelect : MonoBehaviour
             if (p1selected == 1)
             {
                 selectedcharacter = 1;
+            }
+        }
+
+        if (ash.selectchara == 2)
+        {
+            if (p1selected == 1)
+            {
+                selectedcharacter = 2;
             }
         }
 
@@ -80,5 +91,10 @@ public class CharacterSelect : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+    public void changescene()
+    {
+        select2.SetActive(true);
+        select1.SetActive(false);
     }
 }
