@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Pausemenu : MonoBehaviour
 {
     public static bool gamepaused = false;
+    public int menuswtich = 0;
 
     public GameObject pausemenuUI;
 
@@ -39,7 +40,7 @@ public class Pausemenu : MonoBehaviour
     }
     public void Options()
     {
-      
+        menuswtich = 1;
     }
     public void LoadScene(string sceneName)
     {

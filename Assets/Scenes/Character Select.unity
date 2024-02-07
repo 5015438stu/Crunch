@@ -884,9 +884,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f2513b2714af744a4b97f5f302c02f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oldimage: {fileID: 0}
-  newimage: {fileID: 0}
-  _title: {fileID: 0}
+  oldimage: {fileID: 438080647}
+  newimage: {fileID: 21300000, guid: 6dae248684b71d44c9d35ecf3d870406, type: 3}
+  _title: {fileID: 820062687}
   select: {fileID: 0}
   selectchara: 0
   selected: 0
@@ -5524,9 +5524,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70f2513b2714af744a4b97f5f302c02f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oldimage: {fileID: 0}
-  newimage: {fileID: 0}
-  _title: {fileID: 0}
+  oldimage: {fileID: 1467430906}
+  newimage: {fileID: 21300000, guid: 6dae248684b71d44c9d35ecf3d870406, type: 3}
+  _title: {fileID: 978830963}
   select: {fileID: 0}
   selectchara: 0
   selected: 0
