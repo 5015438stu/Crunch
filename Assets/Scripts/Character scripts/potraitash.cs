@@ -18,5 +18,6 @@ public class potraitash : MonoBehaviour
         selectchara = 2;
         oldimage.sprite = newimage;
         _title.text = "Ash";
+        selected = 1;
     }
 }

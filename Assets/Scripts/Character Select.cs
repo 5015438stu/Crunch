@@ -33,40 +33,52 @@ public class CharacterSelect : MonoBehaviour
     {
         GetComponent<eventsystem>();
 
-        p1selected = ash.selected;
+/*        p1selected = ash.selected;
         p1selected = jean.selected;
         p1selected = cinder.selected;
-        p1selected = biggee.selected;
+        p1selected = biggee.selected;*/
 
         if (jean.selectchara == 1)
         {
-            if (p1selected == 1)
+            if (p1selected == 0)
             {
                 selectedcharacter = 1;
+                allbuttons2.SetActive(true);
+                allbuttons.SetActive(false);
+                p1selected = 1;
             }
         }
 
         if (ash.selectchara == 2)
         {
-            if (p1selected == 1)
+            if (p1selected == 0)
             {
                 selectedcharacter = 2;
+                allbuttons2.SetActive(true);
+                allbuttons.SetActive(false);
+                p1selected = 1;
             }
         }
 
         if (cinder.selectchara == 3)
         {
-            if (p1selected == 1)
+            if (p1selected == 0)
             {
                 selectedcharacter = 3;
+                allbuttons2.SetActive(true);
+                allbuttons.SetActive(false);
+                p1selected = 1;
             }
         }
 
         if (biggee.selectchara == 4)
         {
-            if (p1selected == 1)
+            if (p1selected == 0)
             {
                 selectedcharacter = 4;
+                allbuttons2.SetActive(true);
+                allbuttons.SetActive(false);
+                p1selected = 1;
             }
         }
 

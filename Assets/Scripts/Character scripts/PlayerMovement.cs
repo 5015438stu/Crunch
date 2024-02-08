@@ -7,10 +7,10 @@ public class PlayerMovement : MonoBehaviour
 {
     public Animator animator;
     public float speed = 280;
-    public float jumpforce = 20;
-    public float jumpheight = 5;
-    public float gravityScale = 5;
-    public float fallgravityscale = 15;
+    public float jumpforce = 15;
+    public float jumpheight = 3;
+    public float gravityScale = 4;
+    public float fallgravityscale = 6;
     public float buttontime = 0.3f;
     public float cancelrate = 100;
     public float jumpamount = 1;
