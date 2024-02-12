@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class jean_movement : MonoBehaviour
+public class Jeanmovement : MonoBehaviour
 {
     public Animator animator;
     public float speed = 280;
@@ -14,6 +14,7 @@ public class jean_movement : MonoBehaviour
     public float buttontime = 0.3f;
     public float cancelrate = 100;
     public float jumpamount = 1;
+    //bool crouching = false;
 
     Vector2 move;
 

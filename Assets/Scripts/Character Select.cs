@@ -32,8 +32,7 @@ public class CharacterSelect : MonoBehaviour
     void Update()
     {
         GetComponent<eventsystem>();
-
-/*        p1selected = ash.selected;
+/*      p1selected = ash.selected;
         p1selected = jean.selected;
         p1selected = cinder.selected;
         p1selected = biggee.selected;*/

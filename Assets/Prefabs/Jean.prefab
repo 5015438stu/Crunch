@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 2281048483227990199}
   - component: {fileID: 7391854913730814169}
   - component: {fileID: 3099436714179188169}
-  - component: {fileID: 8037182651989264970}
-  - component: {fileID: 3943326532530946965}
   - component: {fileID: 1527067292400181674}
   - component: {fileID: 7923781156442863418}
   m_Layer: 0
@@ -111,48 +109,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8037182651989264970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197629616664244880}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 859703bf8fd7b9945aaa166dedf60a63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  speed: 280
-  jumpforce: 20
-  jumpheight: 5
-  gravityScale: 5
-  fallgravityscale: 15
-  buttontime: 0.3
-  cancelrate: 100
-  jumpamount: 1
---- !u!114 &3943326532530946965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197629616664244880}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b72cb6aa4482b24a9df7d3118d04a08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7391854913730814169}
-  speed: 280
-  jumpforce: 20
-  jumpheight: 5
-  gravityScale: 5
-  fallgravityscale: 15
-  buttontime: 0.3
-  cancelrate: 100
-  jumpamount: 1
 --- !u!61 &1527067292400181674
 BoxCollider2D:
   m_ObjectHideFlags: 0
