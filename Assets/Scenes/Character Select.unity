@@ -289,14 +289,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedcharacter: 0
   selectedcharacter2: 0
+  p1selected: 0
   biggee: {fileID: 64983589}
   cinder: {fileID: 1060111100}
-  ash: {fileID: 480120362}
+  ash: {fileID: 1391626687}
   jean: {fileID: 887454421}
   game: {fileID: 0}
+  cinderp2: {fileID: 1329739128}
+  ashp2: {fileID: 1071040083}
   biggeep2: {fileID: 620964603}
   jeanp2: {fileID: 1045424118}
-  p1selected: 0
   allbuttons: {fileID: 377974877}
   allbuttons2: {fileID: 1359155556}
   select1: {fileID: 1163166074}
@@ -1049,14 +1051,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedcharacter: 0
   selectedcharacter2: 0
+  p1selected: 0
   biggee: {fileID: 64983589}
   cinder: {fileID: 1060111100}
   ash: {fileID: 0}
   jean: {fileID: 887454421}
   game: {fileID: 0}
+  cinderp2: {fileID: 0}
+  ashp2: {fileID: 0}
   biggeep2: {fileID: 620964603}
   jeanp2: {fileID: 1045424118}
-  p1selected: 0
   allbuttons: {fileID: 377974877}
   allbuttons2: {fileID: 1359155556}
   select1: {fileID: 1163166074}
@@ -1796,14 +1800,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedcharacter: 0
   selectedcharacter2: 0
+  p1selected: 0
   biggee: {fileID: 64983589}
   cinder: {fileID: 1060111100}
   ash: {fileID: 0}
   jean: {fileID: 887454421}
   game: {fileID: 0}
+  cinderp2: {fileID: 0}
+  ashp2: {fileID: 0}
   biggeep2: {fileID: 620964603}
   jeanp2: {fileID: 1045424118}
-  p1selected: 0
   allbuttons: {fileID: 377974877}
   allbuttons2: {fileID: 1359155556}
   select1: {fileID: 1163166074}
@@ -3350,6 +3356,7 @@ GameObject:
   - component: {fileID: 1071040082}
   - component: {fileID: 1071040081}
   - component: {fileID: 1071040080}
+  - component: {fileID: 1071040083}
   m_Layer: 5
   m_Name: Skill
   m_TagString: Untagged
@@ -3421,8 +3428,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1060111100}
-        m_TargetAssemblyTypeName: potraitcinder, Assembly-CSharp
+      - m_Target: {fileID: 1071040083}
+        m_TargetAssemblyTypeName: potraitash2, Assembly-CSharp
         m_MethodName: ImageChange
         m_Mode: 1
         m_Arguments:
@@ -3471,6 +3478,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071040078}
   m_CullTransparentMesh: 1
+--- !u!114 &1071040083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071040078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed7ac08c82403c4f927ae318d5034a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oldimage: {fileID: 1467430906}
+  newimage: {fileID: 21300000, guid: b9442b59562a4f24ebd2e9c9a9470861, type: 3}
+  _title: {fileID: 978830963}
+  select: {fileID: 35517600}
+  selectchara: 0
+  selected: 0
 --- !u!1 &1142130891
 GameObject:
   m_ObjectHideFlags: 0
@@ -4076,7 +4101,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1329739128}
-        m_TargetAssemblyTypeName: potraitcinder, Assembly-CSharp
+        m_TargetAssemblyTypeName: potraitcinder2, Assembly-CSharp
         m_MethodName: ImageChange
         m_Mode: 1
         m_Arguments:
@@ -4154,13 +4179,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1329739122}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04a1d773dbd69e84ca562a5ef0b2b793, type: 3}
+  m_Script: {fileID: 11500000, guid: f857455a8f6961145ac6d517ffbc872f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oldimage: {fileID: 0}
-  newimage: {fileID: 0}
-  select: {fileID: 0}
-  _title: {fileID: 0}
+  oldimage: {fileID: 1467430906}
+  newimage: {fileID: 21300000, guid: 6287aa224f837eb44a18f9610dada2ea, type: 3}
+  select: {fileID: 35517600}
+  _title: {fileID: 978830963}
   selectchara: 0
   selected: 0
 --- !u!1 &1359155556

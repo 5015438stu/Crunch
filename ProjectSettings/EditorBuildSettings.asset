@@ -6,15 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: a9f1f0f56d9244842b17f2a6c17b0676
+  - enabled: 1
     path: Assets/Scenes/Character Select.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Test Level.unity
+    path: Assets/Scenes/Stages/Test Level.unity
     guid: dff3430facdce5749977626be6a85f38
   - enabled: 1
-    path: Assets/Scenes/Plains.unity
+    path: Assets/Scenes/Stages/Plains.unity
     guid: 835f5195dd7d6f548b16f58d7ad3dda9
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
-    guid: a9f1f0f56d9244842b17f2a6c17b0676
+    path: Assets/Scenes/Stages/Park.unity
+    guid: d9302f93dd2b6b14bbc8995cad9c5464
   m_configObjects: {}

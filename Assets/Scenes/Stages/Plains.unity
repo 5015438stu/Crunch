@@ -1298,6 +1298,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6814f032e97fb3947bc6bed3134c834e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuswtich: 0
   pausemenuUI: {fileID: 686167299}
 --- !u!114 &686167302
 MonoBehaviour:
@@ -2102,12 +2103,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283364405}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.07, y: -3.74, z: -2.94071}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1131.5491, y: -651.75085, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1491479911}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1481558057
 GameObject:
@@ -2253,6 +2254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1491479911}
   - component: {fileID: 1491479910}
+  - component: {fileID: 1491479912}
   m_Layer: 0
   m_Name: Game stuff
   m_TagString: Untagged
@@ -2279,8 +2281,9 @@ MonoBehaviour:
   p1spawn: {fileID: 1875566255}
   Biggee: {fileID: 7821279242919190250, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
   Cinder: {fileID: 1296758473472663999, guid: 2f3f3f37cd20f2241853e715fbccc179, type: 3}
-  ash: {fileID: 0}
+  Ash: {fileID: 4383240094313326662, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
   Jean: {fileID: 197629616664244880, guid: 3f1a2a422dc26bb40adb5ef98c5b83f5, type: 3}
+  Biggee2: {fileID: 7821279242919190250, guid: 54dfb012df7cdf847b6cd1b2e20e9a51, type: 3}
 --- !u!4 &1491479911
 Transform:
   m_ObjectHideFlags: 0
@@ -2293,9 +2296,24 @@ Transform:
   m_LocalPosition: {x: 1133.619, y: 648.01086, z: -2.94071}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1283364406}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1491479912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491479909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6814f032e97fb3947bc6bed3134c834e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuswtich: 0
+  pausemenuUI: {fileID: 686167299}
 --- !u!1 &1614245660
 GameObject:
   m_ObjectHideFlags: 0
@@ -3065,6 +3083,5 @@ SceneRoots:
   - {fileID: 1233793804}
   - {fileID: 1491479911}
   - {fileID: 1875566256}
-  - {fileID: 1283364406}
   - {fileID: 1018766233}
   - {fileID: 1790465982}

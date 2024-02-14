@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class potraitcinder : MonoBehaviour
+public class potraitcinder2 : MonoBehaviour
 {
     public Image oldimage;
     public Sprite newimage;

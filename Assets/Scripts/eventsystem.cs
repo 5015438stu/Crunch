@@ -12,8 +12,11 @@ public class eventsystem : MonoBehaviour
     public GameObject p1spawn;
     public GameObject Biggee;
     public GameObject Cinder;
-    public GameObject ash;
+    public GameObject Ash;
     public GameObject Jean;
+
+    public GameObject Biggee2;
+
 
     bool p1spawned = false;
     bool p2spawned = false;
@@ -37,6 +40,11 @@ public class eventsystem : MonoBehaviour
             spawnjean();
             p1chara = 0;
         }
+        if (p2chara == 2)
+        {
+            spawnash();
+            p2chara = 0;
+        }
         if (p1chara == 3)
         {
             spawncinder();
@@ -53,14 +61,19 @@ public class eventsystem : MonoBehaviour
             spawnjean2();
             p2chara = 0;
         }
-        if (p2chara == 4)
+        if (p2chara == 2)
         {
-            spawnbiggee2();
-            p2chara = 0;
+            spawnash2();
+            p2chara = 0;  
         }
         if (p1chara == 3)
         {
             spawncinder2();
+            p2chara = 0;
+        }
+        if (p2chara == 4)
+        {
+            spawnbiggee2();
             p2chara = 0;
         }
     }
@@ -68,32 +81,42 @@ public class eventsystem : MonoBehaviour
     void spawnbiggee()
     {
         p1spawned = true;
-        Instantiate(Biggee, new Vector3(p1spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), transform.rotation);
+        Instantiate(Biggee, new Vector3(p1spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), p1spawn.transform.rotation);
     }
     void spawncinder()
     {
         p1spawned = true;
-        Instantiate(Cinder, new Vector3(p1spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), transform.rotation);
+        Instantiate(Cinder, new Vector3(p1spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), p1spawn.transform.rotation);
     }
     void spawnjean()
     {
         p1spawned = true;
-        Instantiate(Jean, new Vector3(p1spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), transform.rotation);
+        Instantiate(Jean, new Vector3(p1spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), p1spawn.transform.rotation);
+    }
+    void spawnash()
+    {
+        p1spawned = true;
+        Instantiate(Ash, new Vector3(p1spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), p1spawn.transform.rotation);
     }
 
     void spawnbiggee2()
     {
         p1spawned = true;
-        Instantiate(Biggee, new Vector3(p2spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), transform.rotation);
+        Instantiate(Biggee2, new Vector3(p2spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), p2spawn.transform.rotation);
+    }
+    void spawnash2()
+    {
+        p1spawned = true;
+        Instantiate(Ash, new Vector3(p1spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), p2spawn.transform.rotation);
     }
     void spawnjean2()
     {
         p1spawned = true;
-        Instantiate(Jean, new Vector3(p2spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), transform.rotation);
+        Instantiate(Jean, new Vector3(p2spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), p2spawn.transform.rotation);
     }
     void spawncinder2()
     {
         p1spawned = true;
-        Instantiate(Cinder, new Vector3(p2spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), transform.rotation);
+        Instantiate(Cinder, new Vector3(p2spawn.transform.position.x, p1spawn.transform.position.y, p1spawn.transform.position.x), p2spawn.transform.rotation);
     }
 }

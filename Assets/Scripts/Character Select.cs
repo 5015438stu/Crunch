@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.U2D.Animation;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,15 +8,19 @@ public class CharacterSelect : MonoBehaviour
 {
     public int selectedcharacter = 0;
     public int selectedcharacter2 = 0;
+    public int p1selected = 0;
+
     public potraitbiggee biggee;
     public potraitcinder cinder;
     public potraitash ash;
     public potraitjean jean;
+
     public eventsystem game;
+
+    public potraitcinder2 cinderp2;
+    public potraitash2 ashp2;
     public potraitbiggee2 biggeep2;
     public potraitjean2 jeanp2;
-  //public potraitcinder2 cinder2;
-    public int p1selected = 0;
 
     public GameObject allbuttons;
     public GameObject allbuttons2;
@@ -32,10 +37,6 @@ public class CharacterSelect : MonoBehaviour
     void Update()
     {
         GetComponent<eventsystem>();
-/*      p1selected = ash.selected;
-        p1selected = jean.selected;
-        p1selected = cinder.selected;
-        p1selected = biggee.selected;*/
 
         if (jean.selectchara == 1)
         {
@@ -89,15 +90,31 @@ public class CharacterSelect : MonoBehaviour
             allbuttons.SetActive(false);
 
         }
+
         if (jeanp2.selectchara == 1)
         {
             selectedcharacter2 = 1;
         }
+
+        if (ashp2.selectchara == 2)
+        {
+            selectedcharacter2 = 2;
+        }
+
+        if (cinderp2.selectchara == 3)
+        {
+            selectedcharacter2 = 3;
+        }
+
         if (biggeep2.selectchara == 4)
         {
             selectedcharacter2 = 4;
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            LoadScene();
+        }
     }
     public void LoadScene(string sceneName)
     {
@@ -107,5 +124,9 @@ public class CharacterSelect : MonoBehaviour
     {
         select2.SetActive(true);
         select1.SetActive(false);
+    }
+    public void LoadScene()
+    {
+        SceneManager.LoadScene("Main Menu");
     }
 }
