@@ -10,13 +10,12 @@ public class DummyScript : MonoBehaviour
     int currenthealth;
     bool hit = false;
     public float hittime = 0.3f;
-
     float hitstun;
     public float speed;
+    public bool knockdown = false;
 
     public Animator animator;
     public BoxCollider2D hitbox;
-    
     Rigidbody2D rb;
     public PlayerCombat combat;
     public Life healtbar;
@@ -52,6 +51,10 @@ public class DummyScript : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "Ground")
+        {
+            animator.SetTrigger("KD2");
+        }
         if (collision.gameObject.tag == "P1")
         {
             if (combat.attacking == true)
@@ -61,10 +64,15 @@ public class DummyScript : MonoBehaviour
                     currenthealth -= combat.attackDamage;
                     animator.SetBool("Hurt", true);
                     hit = true;
-                    rb.AddForce(new Vector2(combat.knockback, 0), ForceMode2D.Impulse);
+                    rb.AddForce(new Vector2(combat.knockbackx, combat.knockbacky), ForceMode2D.Impulse);
+
 
                 }
-
+                if (combat.comboend == true)
+                {
+                    animator.SetTrigger("KD1");
+                    knockdown = true;
+                }
             }
            
             if (currenthealth <= 0)

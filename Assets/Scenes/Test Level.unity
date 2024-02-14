@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5801828926454572568, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
   m_PrefabInstance: {fileID: 2062034811}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1041839178}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60c10fa7cea8497439109d14e663bd9e, type: 3}
@@ -2035,6 +2035,112 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 954152691}
   m_CullTransparentMesh: 1
+--- !u!1 &1041839178 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7821279242919190250, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
+  m_PrefabInstance: {fileID: 2062034811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1041839185 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 149737751057704143, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
+  m_PrefabInstance: {fileID: 2062034811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1041839186
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041839178}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1066170062
 GameObject:
   m_ObjectHideFlags: 0
@@ -4114,7 +4220,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7821279242919190250, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1041839186}
   m_SourcePrefab: {fileID: 100100000, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
 --- !u!1 &2079933656
 GameObject:
@@ -4153,7 +4262,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 1288483110}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 1041839185}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 3.53
@@ -4341,6 +4450,7 @@ MonoBehaviour:
   buttontime: 0.3
   cancelrate: 100
   jumpamount: 1
+  grounded: 0
 --- !u!50 &2091793149
 Rigidbody2D:
   serializedVersion: 4
@@ -4503,20 +4613,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107074672}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70b0b16d08f4fa041b3b66c9b9748e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxhealth: 1000
   hittime: 0.3
   speed: 0
-  maxhealth: 1000
-  currenthealth: 0
-  animator: {fileID: 0}
-  hitbox: {fileID: 0}
-  rb: {fileID: 0}
-  combat: {fileID: 0}
-  healtbar: {fileID: 0}
+  animator: {fileID: 8378480153240522091}
+  hitbox: {fileID: 8378480153240522090}
+  combat: {fileID: 561045486}
+  healtbar: {fileID: 702122821}
 --- !u!1001 &8378480153240522089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4579,7 +4687,7 @@ PrefabInstance:
       objectReference: {fileID: 702122821}
     - target: {fileID: 8941175730925828474, guid: b52f82048d6b61d40befe60d366261d7, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4589,6 +4697,16 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2107074679}
   m_SourcePrefab: {fileID: 100100000, guid: b52f82048d6b61d40befe60d366261d7, type: 3}
+--- !u!61 &8378480153240522090 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 7278257387491645688, guid: b52f82048d6b61d40befe60d366261d7, type: 3}
+  m_PrefabInstance: {fileID: 8378480153240522089}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8378480153240522091 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4934575364486139149, guid: b52f82048d6b61d40befe60d366261d7, type: 3}
+  m_PrefabInstance: {fileID: 8378480153240522089}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

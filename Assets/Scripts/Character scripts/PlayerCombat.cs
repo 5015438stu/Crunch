@@ -12,13 +12,15 @@ public class PlayerCombat : MonoBehaviour
 
     public LayerMask enemylayers;
     public int attackDamage = 40; //Change later for each attack
-    public float knockback = 0f; //Change later for each attack
+    public float knockbackx = 0f; //Change later for each attack
+    public float knockbacky = 0f; //Change later for each attack
     public float lastclickedtime = 0f;
     public float maxcombodelay = 1f;
     public static int zpresses = 0;
     public float attackwait;
     public bool attacking;
     public float zp = 0f;
+    public bool comboend = false;
 
     Rigidbody2D rb;
     DummyScript dummy;
@@ -67,28 +69,18 @@ public class PlayerCombat : MonoBehaviour
 
             if (zpresses == 1)
             {
-                attacking = true;
-                Debug.Log("Pawnch 1");
-                animator.SetTrigger("LP1");
-                knockback = -2f;
+                comboend = false;
+                lightpunch1();
             }
 
             if (zpresses == 2)
             {
-                attacking = true;
-                Debug.Log("Pawnch 2");
-                animator.SetTrigger("LP2");
-                knockback = -1f;
+                lightpunch2();
             }
 
             if (zpresses == 3)
             {
-                attacking = true;
-                Debug.Log("Pawnch 3");
-                animator.SetTrigger("LP3");
-                zpresses = 0;
-                zp = 0;
-                knockback = 5f;
+                lightpunch3();
             }
         }
         //Kicking
@@ -100,5 +92,34 @@ public class PlayerCombat : MonoBehaviour
 
         //Add blocking and air attacks
     }
+    public void lightpunch1()
+    {
+        attacking = true;
+        Debug.Log("Pawnch 1");
+        animator.SetTrigger("LP1");
+        knockbackx = -2f;
+        knockbacky = 2f;
+    }
+    public void lightpunch2()
+    {
+        attacking = true;
+        Debug.Log("Pawnch 2");
+        animator.SetTrigger("LP2");
+        knockbackx = -1f;
+        knockbacky = 3f;
+    }
+    public void lightpunch3()
+    {
+        attacking = true;
+        Debug.Log("Pawnch 3");
+        animator.SetTrigger("LP3");
+        comboend = true;
+        zpresses = 0;
+        zp = 0;
+        knockbackx = 5f;
+        knockbacky = 12f;
+        lastclickedtime =+ 0.8f;
+    }
+
 }
 

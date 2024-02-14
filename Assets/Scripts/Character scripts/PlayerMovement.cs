@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public float buttontime = 0.3f;
     public float cancelrate = 100;
     public float jumpamount = 1;
+    public bool grounded = false;
     //bool crouching = false;
 
     Vector2 move;
@@ -100,9 +101,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            grounded = true;
             jumpamount = 1;
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsFalling", false);
+        } else
+        {
+            grounded = false;
         }
     }
 }    
