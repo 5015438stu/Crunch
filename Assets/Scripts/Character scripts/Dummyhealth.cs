@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthScript : MonoBehaviour
+public class Dummyhealth : MonoBehaviour
 {
     public float playerhealth = 1000;
     public float currenthealth;
@@ -31,7 +31,7 @@ public class HealthScript : MonoBehaviour
         }
     }
 
-    public void takedamage(float damage)
+    public void takedamage(int damage)
     {
         currenthealth -= damage;
         lerptimer = 0f;
@@ -41,6 +41,10 @@ public class HealthScript : MonoBehaviour
     {
         currenthealth += healamount;
         lerptimer = 0f;
+    }
+    public void SetHealth(int health)
+    {
+        currenthealth = health;
     }
     public void UpdateHealthUI()
     {
@@ -56,7 +60,7 @@ public class HealthScript : MonoBehaviour
             float percentComplete = lerptimer / chipspeed;
             backbar.fillAmount = Mathf.Lerp(fillb, hfrac, percentComplete);
         }
-        if(fillf < hfrac)
+        if (fillf < hfrac)
         {
             backbar.color = Color.green;
             backbar.fillAmount = hfrac;
@@ -64,6 +68,7 @@ public class HealthScript : MonoBehaviour
             float percentcomplete = lerptimer / chipspeed;
             frontbar.fillAmount = Mathf.Lerp(fillf, backbar.fillAmount, percentcomplete);
         }
+
     }
     void Die()
     {

@@ -7,7 +7,7 @@ using UnityEngine;
 public class DummyScript : MonoBehaviour
 {
     public int maxhealth = 1000;
-    int currenthealth;
+    public int currenthealth;
     bool hit = false;
     public float hittime = 0.3f;
     float hitstun;
@@ -19,6 +19,7 @@ public class DummyScript : MonoBehaviour
     Rigidbody2D rb;
     public PlayerCombat combat;
     public Life healtbar;
+    public Dummyhealth health;
 
 
     // Start is called before the first frame update
@@ -26,11 +27,10 @@ public class DummyScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         currenthealth = maxhealth;
-        healtbar.SetMaxHealth(currenthealth);
     }
      void Update()
     {
-        healtbar.SetHealth(currenthealth);
+        health.SetHealth(currenthealth); //replace
         if (rb != null)
         {
             speed = rb.velocity.magnitude;
@@ -62,6 +62,7 @@ public class DummyScript : MonoBehaviour
                 if (hit == false)
                 {
                     currenthealth -= combat.attackDamage;
+                    health.takedamage(combat.attackDamage);
                     animator.SetBool("Hurt", true);
                     hit = true;
                     rb.AddForce(new Vector2(combat.knockbackx, combat.knockbacky), ForceMode2D.Impulse);
