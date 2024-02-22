@@ -18,6 +18,7 @@ public class DummyScript : MonoBehaviour
     public BoxCollider2D hitbox;
     Rigidbody2D rb;
     public PlayerCombat combat;
+    public AshCombat ashcombat;
     public Life healtbar;
     public Dummyhealth health;
 
@@ -63,9 +64,14 @@ public class DummyScript : MonoBehaviour
                 {
                     currenthealth -= combat.attackDamage;
                     health.takedamage(combat.attackDamage);
+                    currenthealth -= ashcombat.attackDamage;
+                    health.takedamage(ashcombat.attackDamage);
+
                     animator.SetBool("Hurt", true);
                     hit = true;
+
                     rb.AddForce(new Vector2(combat.knockbackx, combat.knockbacky), ForceMode2D.Impulse);
+
 
 
                 }

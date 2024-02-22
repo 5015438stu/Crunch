@@ -413,6 +413,56 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuswtich: 0
   pausemenuUI: {fileID: 84964741}
+--- !u!1 &113414536 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7542517354990437622, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
+  m_PrefabInstance: {fileID: 2091793145}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &113414538
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113414536}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.083568424, y: -0.030491829}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9942363, y: 2.0367274}
+  m_EdgeRadius: 0
 --- !u!1 &137693075
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,11 +3246,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4383240094313326662, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
   m_PrefabInstance: {fileID: 2091793145}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1735710701 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 1062692661088302783, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
-  m_PrefabInstance: {fileID: 2091793145}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1735710702 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 3056542803902898358, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
@@ -3219,7 +3264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1735710702}
-  hitbox: {fileID: 1735710701}
+  hitbox: {fileID: 113414538}
   enemylayers:
     serializedVersion: 2
     m_Bits: 128
@@ -3698,6 +3743,10 @@ PrefabInstance:
     - target: {fileID: 1296758473472663999, guid: 2f3f3f37cd20f2241853e715fbccc179, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296758473472663999, guid: 2f3f3f37cd20f2241853e715fbccc179, type: 3}
+      propertyPath: m_TagString
+      value: P1
       objectReference: {fileID: 0}
     - target: {fileID: 7280705775174100122, guid: 2f3f3f37cd20f2241853e715fbccc179, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4375,6 +4424,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4383240094313326662, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
+      propertyPath: m_TagString
+      value: P1
+      objectReference: {fileID: 0}
     - target: {fileID: 7750927815395475179, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.75
@@ -4423,14 +4476,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9085883554133502708, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7134202518266045323, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
+    - {fileID: 9085883554133502708, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4383240094313326662, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1735710707}
+    - targetCorrespondingSourceObject: {fileID: 7542517354990437622, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 113414538}
   m_SourcePrefab: {fileID: 100100000, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
 --- !u!1 &2107074672 stripped
 GameObject:
