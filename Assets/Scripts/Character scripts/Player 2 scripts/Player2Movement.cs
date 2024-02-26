@@ -6,15 +6,15 @@ using UnityEngine.UI;
 public class Player2Movement : MonoBehaviour
 {
     public Animator animator;
-    public float speed = 280;
-    public float jumpforce = 15;
-    public float jumpheight = 3;
-    public float gravityScale = 4;
-    public float fallgravityscale = 6;
-    public float buttontime = 0.3f;
-    public float cancelrate = 100;
-    public float jumpamount = 1;
-    public bool grounded = false;
+    public float speed = 280; //walk
+    public float jumpforce = 15; //jump
+    public float jumpheight = 3; //jump
+    public float gravityScale = 4; //jump
+    public float fallgravityscale = 6; //jump
+    public float buttontime = 0.3f; //jump
+    public float cancelrate = 100; //jump
+    public float jumpamount = 1; //jump
+    public bool grounded = false; //jump
     //bool crouching = false;
 
     Vector2 move;
