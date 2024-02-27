@@ -2640,6 +2640,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1133556331}
   m_CullTransparentMesh: 1
+--- !u!1 &1266049360
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1266049361}
+  m_Layer: 0
+  m_Name: groundcheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1266049361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1266049360}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.93, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2012152330}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1288483108
 GameObject:
   m_ObjectHideFlags: 0
@@ -4100,7 +4131,7 @@ GameObject:
   - component: {fileID: 2012152331}
   m_Layer: 0
   m_Name: test inputer
-  m_TagString: Untagged
+  m_TagString: P1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4118,6 +4149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2012152329}
+  groundcheck: {fileID: 0}
+  ground:
+    serializedVersion: 2
+    m_Bits: 0
   animator: {fileID: 0}
   jumpforce: 15
   gravityScale: 4
@@ -4128,9 +4163,7 @@ MonoBehaviour:
   jumppressed: 0
   jumptime: 0
   jumpcancelled: 0
-  movespeed: 280
   jumpheight: 5
-  groundedplayer: 0
   move: {fileID: 2575826022847119941, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   jump: {fileID: 5333029506162208025, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   crouch: {fileID: 0}
@@ -4279,7 +4312,8 @@ Transform:
   m_LocalPosition: {x: -4.92, y: 1.13, z: -0.62767464}
   m_LocalScale: {x: 1.6, y: 2.1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1266049361}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2012152331
