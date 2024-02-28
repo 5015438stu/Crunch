@@ -5,52 +5,80 @@ using UnityEngine.InputSystem;
 
 public class p2test : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    [Header("Movement")]
+    private bool isfacingright = true;
+    private float movespeed = 8f;
+    private float hors;
+
+    [Header("Jumping")]
+    public float jumptime;
+    public float jumplength = 0.3f;
+    public float jumpforce = 15f;
+    public int maxjumps = 1;
+    int jumpsremaining;
+
+    [Header("GroundCheck")]
     public Transform groundcheck;
     public LayerMask ground;
+    public Vector2 groundchecksize = new Vector2(0.5f, 0.05f);
 
+    [Header("Refs")]
+    public Rigidbody2D rb;
     public Animator animator;
-
-    public float jumpforce = 15f;
-
-    private bool isfacingright = true;
-    private float movespeed = 280;
-
-    public float gravityScale = 4; //jump
-    public float fallgravityscale = 6; //jump
-    public float buttontime = 0.3f; //jump
-    public float cancelrate = 100; //jump
-    public float jumpamount = 1; //jump
-    public bool jumppressed;
-    public float jumptime;
-    public bool jumpcancelled;
-    public float jumpheight = 5f;
-
-    private Vector2 movedirection;
-
     public InputActionReference move;
     public InputActionReference jump;
     public InputActionReference crouch;
 
     private void Update()
     {
-        movedirection = move.action.ReadValue<Vector2>();
+        rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
+        animator.SetFloat("Speed", rb.velocity.x);
+        GroundCheck();
     }
 
-    void FixedUpdate()
+    public void OnMove(InputAction.CallbackContext context)
     {
-        rb.velocity = new Vector2(movedirection.x * movespeed * Time.deltaTime, movedirection.y);
-        rb.AddForce(Vector2.down * cancelrate);
+        hors = context.ReadValue<Vector2>().x;
     }
-    private bool IsGrounded()
+    public void GroundCheck()
     {
-        return Physics2D.OverlapCircle(groundcheck.position, 0.2f, ground);
-
+        if (Physics2D.OverlapBox(groundcheck.position, groundchecksize, 0, ground))
+        {
+            jumpsremaining = maxjumps;
+            animator.SetBool("IsFalling", false);
+            animator.SetBool("IsJumping", false);
+        }
     }
-    public void OnJump()
+    public void OnJump(InputAction.CallbackContext context)
     {
-        Debug.Log("jump");
+        if (jumpsremaining > 0)
+        {
+            if (context.performed)
+            {
+                //full power full hold
+                Debug.Log("Jump Started");
+                rb.velocity = new Vector2(rb.velocity.x, jumpforce);
+                animator.SetBool("IsJumping", true);
+                animator.SetBool("IsFalling", false);
+                jumpsremaining--;
+            }
 
+            if (context.canceled)
+            {
+                //small jump light tap
+                Debug.Log("Jump Ended");
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+                animator.SetBool("IsFalling", true);
+                animator.SetBool("IsJumping", false);
+                jumpsremaining--;
+            }
+        }
+        
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireCube(groundcheck.position, groundchecksize);
     }
     //add jumping and moving.
 }
