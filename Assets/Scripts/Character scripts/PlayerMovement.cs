@@ -1,113 +1,101 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Movement")]
+    private float movespeed = 8f;
+    private float hors;
+
+    [Header("Jumping")]
+    public float jumptime;
+    public float jumplength = 0.3f;
+    public float jumpforce = 15f;
+    public int maxjumps = 1;
+    int jumpsremaining;
+
+    [Header("Crouching")]
+    private bool iscrouching = false;
+
+    [Header("GroundCheck")]
+    public Transform groundcheck;
+    public LayerMask ground;
+    public Vector2 groundchecksize = new Vector2(0.5f, 0.05f);
+
+    [Header("Refs")]
+    public Rigidbody2D rb;
     public Animator animator;
-    public float speed = 280;
-    public float jumpforce = 15;
-    public float jumpheight = 3;
-    public float gravityScale = 4;
-    public float fallgravityscale = 6;
-    public float buttontime = 0.3f;
-    public float cancelrate = 100;
-    public float jumpamount = 1;
-    public bool grounded = false;
-    //bool crouching = false;
-
-    Vector2 move;
-
-    Rigidbody2D rb;
-
-    bool jumping;
-    float jumptime;
-    bool jumpcancelled;
-
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        rb.velocity = new Vector2(move.x * speed * Time.deltaTime, rb.velocity.y);
-        if (jumpcancelled && jumping && rb.velocity.y > 0)
-        {
-            rb.AddForce(Vector2.down * cancelrate);
-        }
-    }
+    public InputActionReference move;
+    public InputActionReference jump;
+    public InputActionReference crouch;
 
     private void Update()
     {
-        move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")); //walking
-
-        animator.SetFloat("Speed", move.x);
-
-        if (Input.GetKeyDown(KeyCode.Space) && jumpamount == 1) //jumping
+        rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
+        animator.SetFloat("Speed", rb.velocity.x);
+        GroundCheck();
+    }
+    public void OnCrouch(InputAction.CallbackContext context)
+    {
+        if (context.performed)
         {
-            animator.SetBool("IsJumping", true);
-            animator.SetBool("IsFalling", false);
-
-            rb.gravityScale = gravityScale;
-            float jumpForce = Mathf.Sqrt(jumpheight * -2 * (Physics2D.gravity.y * rb.gravityScale));
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-            jumpcancelled = false;
-            jumping = true;
-            jumptime = 0;
-            jumpamount = 0;
-        }
-        else
-        {
-            //nothing
-        }
-
-        if (Input.GetKeyUp(KeyCode.S)) //Crouching stuff
-        {
-            speed = 280;
-            animator.SetBool("IsCrouching", false);
-            //crouching = false;
-        }
-
-        //Add crouchblock
-
-        if (Input.GetKeyDown(KeyCode.S)) //Crouching stuff
-        {
-            speed = 0;
+            movespeed = 0f;
             animator.SetBool("IsCrouching", true);
-            //crouching = true;
+            iscrouching = true;
         }
-
-        if (jumping) //settings for jumptime
+        if (context.canceled)
         {
-            jumptime += Time.deltaTime;
-            if (Input.GetKeyUp(KeyCode.Space))
+            movespeed = 8f;
+            animator.SetBool("IsCrouching", false);
+            iscrouching = false;
+        }
+    }
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        hors = context.ReadValue<Vector2>().x;
+    }
+    public void GroundCheck()
+    {
+        if (Physics2D.OverlapBox(groundcheck.position, groundchecksize, 0, ground))
+        {
+            jumpsremaining = maxjumps;
+            animator.SetBool("IsFalling", false);
+            animator.SetBool("IsJumping", false);
+        }
+    }
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (jumpsremaining > 0)
+        {
+            if (context.performed)
             {
-                jumpcancelled = true;
+                //full power full hold
+                animator.SetBool("IsJumping", true);
+                animator.SetBool("IsFalling", false);
+                Debug.Log("Jump Started");
+                rb.velocity = new Vector2(rb.velocity.x, jumpforce);
+                jumpsremaining--;
             }
-            if (jumptime > buttontime)
+
+            if (context.canceled)
             {
-                jumping = false;
+                //small jump light tap
+                Debug.Log("Jump Ended");
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
                 animator.SetBool("IsFalling", true);
                 animator.SetBool("IsJumping", false);
-
+                jumpsremaining--;
             }
         }
-     
+
     }
-    public void OnCollisionEnter2D(Collision2D collision) // more jump stuff
+    private void OnDrawGizmosSelected()
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            grounded = true;
-            jumpamount = 1;
-            animator.SetBool("IsJumping", false);
-            animator.SetBool("IsFalling", false);
-        } else
-        {
-            grounded = false;
-        }
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireCube(groundcheck.position, groundchecksize);
     }
-}    
+    //add jumping and moving.
+}

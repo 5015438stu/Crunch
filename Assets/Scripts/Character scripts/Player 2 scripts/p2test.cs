@@ -72,10 +72,10 @@ public class p2test : MonoBehaviour
             if (context.performed)
             {
                 //full power full hold
-                Debug.Log("Jump Started");
-                rb.velocity = new Vector2(rb.velocity.x, jumpforce);
                 animator.SetBool("IsJumping", true);
                 animator.SetBool("IsFalling", false);
+                Debug.Log("Jump Started");
+                rb.velocity = new Vector2(rb.velocity.x, jumpforce);
                 jumpsremaining--;
             }
 

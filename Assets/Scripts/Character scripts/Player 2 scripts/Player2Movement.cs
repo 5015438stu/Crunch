@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Player2Movement : MonoBehaviour
 {
     [Header("Movement")]
-    private bool isfacingright = true;
     private float movespeed = 8f;
     private float hors;
 

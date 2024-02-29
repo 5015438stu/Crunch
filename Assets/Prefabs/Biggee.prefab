@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4335579968154530982}
   - component: {fileID: 5801828926454572568}
   - component: {fileID: 3764617882174446945}
+  - component: {fileID: -6911828012864639915}
   m_Layer: 0
   m_Name: Biggee
   m_TagString: P1
@@ -175,15 +176,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b72cb6aa4482b24a9df7d3118d04a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 4335579968154530982}
-  speed: 280
+  jumptime: 0
+  jumplength: 0.3
   jumpforce: 15
-  jumpheight: 3.5
-  gravityScale: 4
-  fallgravityscale: 6
-  buttontime: 0.3
-  cancelrate: 100
-  jumpamount: 1
+  maxjumps: 1
+  groundcheck: {fileID: 0}
+  ground:
+    serializedVersion: 2
+    m_Bits: 0
+  groundchecksize: {x: 0.5, y: 0.05}
+  rb: {fileID: 0}
+  animator: {fileID: 4335579968154530982}
+  move: {fileID: 0}
+  jump: {fileID: 0}
+  crouch: {fileID: 0}
 --- !u!95 &4335579968154530982
 Animator:
   serializedVersion: 5
@@ -217,18 +223,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c10fa7cea8497439109d14e663bd9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  dummy: {fileID: 0}
   animator: {fileID: 4335579968154530982}
   hitbox: {fileID: 5154598446355292800}
   enemylayers:
     serializedVersion: 2
     m_Bits: 128
+  LightPunch: {fileID: -9137968497609597549, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
+  LightKick: {fileID: 0}
+  HeavyPunch: {fileID: 0}
+  HeavyKick: {fileID: 0}
   attackDamage: 40
-  knockback: 10
+  knockbackx: 0
+  knockbacky: 0
   lastclickedtime: 0
   maxcombodelay: 1
   attackwait: 0
   attacking: 0
   zp: 0
+  comboend: 0
 --- !u!114 &3764617882174446945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,7 +256,134 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerhealth: 1000
+  currenthealth: 0
+  lerptimer: 0
+  chipspeed: 2
+  frontbar: {fileID: 0}
+  backbar: {fileID: 0}
   combat: {fileID: 5801828926454572568}
+--- !u!114 &-6911828012864639915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821279242919190250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1633672076579802590}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 7c74b456-205b-49a1-bcd6-d32d5443a1c8
+    m_ActionName: Gameplay/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth,/Keyboard/w,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1a5f218f-e99f-43b6-9401-2e8ef882daf4
+    m_ActionName: Gameplay/Move[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow,/XInputControllerWindows/leftStick]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: a13cfcd1-9ba6-40d0-a400-461a19a4a7a5
+    m_ActionName: Gameplay/Crouch[/Keyboard/s,/XInputControllerWindows/leftStick/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4b882404-b6b9-432e-ae41-0585c6126491
+    m_ActionName: Gameplay/LightPunch[/Keyboard/z,/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 4b1be47e-da57-4ba2-89d7-58fcb98f256c
+    m_ActionName: Gameplay/LightKick[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ff1773a2-6960-4309-b062-f2fce803303c
+    m_ActionName: Gameplay/HeavyPunch[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 16c562a7-368b-4a08-b91f-3d8b49c92d06
+    m_ActionName: Gameplay/HeavyKick[/Keyboard/anyKey]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 58ce5198-78a7-4955-bc08-1f3e65ee170c
+    m_ActionName: UI/New action
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &8000446194415790450
 GameObject:
   m_ObjectHideFlags: 0

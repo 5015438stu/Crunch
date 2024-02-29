@@ -29,7 +29,7 @@
                     "id": "a13cfcd1-9ba6-40d0-a400-461a19a4a7a5",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(pressPoint=1.401298E-45)",
                     "initialStateCheck": false
                 },
                 {
@@ -39,6 +39,33 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "MultiTap(tapCount=3)",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LightKick",
+                    "type": "Button",
+                    "id": "4b1be47e-da57-4ba2-89d7-58fcb98f256c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "HeavyPunch",
+                    "type": "Button",
+                    "id": "ff1773a2-6960-4309-b062-f2fce803303c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "HeavyKick",
+                    "type": "Button",
+                    "id": "16c562a7-368b-4a08-b91f-3d8b49c92d06",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
                     "initialStateCheck": false
                 }
             ],
@@ -178,7 +205,7 @@
                 {
                     "name": "",
                     "id": "9664b9ed-ba1a-459c-ba89-458937b3a57d",
-                    "path": "<Gamepad>/leftStick/left",
+                    "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -205,6 +232,39 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "LightPunch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bce18e2d-f155-4d49-b4ef-f0e8ba1d1efc",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "LightKick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ecc4b974-b956-4e94-858b-278824826fdb",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "HeavyPunch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da6e517a-b02b-4d91-b6c4-7c2e5a80218a",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "HeavyKick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
