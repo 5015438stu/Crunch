@@ -4170,7 +4170,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 64
-  groundchecksize: {x: 1.46, y: 0.01}
+  groundchecksize: {x: 1.46, y: 0.02}
   rb: {fileID: 2012152329}
   animator: {fileID: 2012152332}
   move: {fileID: 2575826022847119941, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}

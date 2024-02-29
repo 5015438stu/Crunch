@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "LightPunch",
+                    "type": "Button",
+                    "id": "4b882404-b6b9-432e-ae41-0585c6126491",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "MultiTap(tapCount=3)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -112,6 +121,28 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "left",
+                    "id": "7593456f-3f1d-44d7-a596-4a97bbd1c89d",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "8b3560de-8bd8-45a0-bbe5-f04a3de57b27",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "b54c8106-509f-4d60-9206-f36af88ee930",
                     "path": "<Gamepad>/leftStick",
@@ -120,6 +151,17 @@
                     "groups": "Gamepad",
                     "action": "Move",
                     "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "<>",
+                    "id": "32026841-5035-4f65-b987-71dca3d89124",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
@@ -141,6 +183,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "84ad79f1-64cd-4c33-b577-d1ab1fe446f2",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "LightPunch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79002da2-9ff3-477e-918b-b7c540a0f121",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "LightPunch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

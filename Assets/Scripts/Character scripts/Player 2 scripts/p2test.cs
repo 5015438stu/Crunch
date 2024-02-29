@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class p2test : MonoBehaviour
 {
     [Header("Movement")]
-    private bool isfacingright = true;
     private float movespeed = 8f;
     private float hors;
 
@@ -16,6 +15,9 @@ public class p2test : MonoBehaviour
     public float jumpforce = 15f;
     public int maxjumps = 1;
     int jumpsremaining;
+
+    [Header("Crouching")]
+    private bool iscrouching = false;
 
     [Header("GroundCheck")]
     public Transform groundcheck;
@@ -35,7 +37,21 @@ public class p2test : MonoBehaviour
         animator.SetFloat("Speed", rb.velocity.x);
         GroundCheck();
     }
-
+    public void OnCrouch(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            movespeed = 0f;
+          animator.SetBool("IsCrouching", true);
+          iscrouching = true;
+        }
+        if (context.canceled)
+        {
+            movespeed = 8f;
+            animator.SetBool("IsCrouching", false);
+            iscrouching = false;
+        }
+    }
     public void OnMove(InputAction.CallbackContext context)
     {
         hors = context.ReadValue<Vector2>().x;
