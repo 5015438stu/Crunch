@@ -2283,7 +2283,7 @@ MonoBehaviour:
   Cinder: {fileID: 1296758473472663999, guid: 2f3f3f37cd20f2241853e715fbccc179, type: 3}
   Ash: {fileID: 4383240094313326662, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
   Jean: {fileID: 197629616664244880, guid: 3f1a2a422dc26bb40adb5ef98c5b83f5, type: 3}
-  Biggee2: {fileID: 7821279242919190250, guid: 54dfb012df7cdf847b6cd1b2e20e9a51, type: 3}
+  Biggee2: {fileID: 7821279242919190250, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
 --- !u!4 &1491479911
 Transform:
   m_ObjectHideFlags: 0

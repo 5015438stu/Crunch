@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class stagechanger : MonoBehaviour
+public class Playermanager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
