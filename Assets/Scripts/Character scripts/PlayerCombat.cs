@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerCombat : MonoBehaviour
 {
     [Header("Refs")]
+    public Player2BiggeHealth health2;
     public Rigidbody2D rb;
     public DummyScript dummy;
     public Animator animator;
@@ -41,23 +42,81 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (attacking)
+        {
+            lastclickedtime += 1 * Time.deltaTime;
 
+            if (lastclickedtime > maxcombodelay)
+            {
+                lastclickedtime = 0;
+                Debug.Log("punch Timeout");
+                zpresses = 0;
+                zp = 0;
+                attacking = false;
+            }
+        }
     }
 
     public void OnLightPunch(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            attacking = true;
-            Debug.Log("Pawnch 1");
-            animator.SetTrigger("LP1");
-            knockbackx = -2f;
-            knockbacky = 2f;
+
+            zpresses++;
+            zp++;
+
+            if (zpresses == 1)
+            {
+                attacking = true;
+                Debug.Log("Pawnch 1");
+                animator.SetTrigger("LP1");
+                knockbackx = -2f;
+                knockbacky = 2f;
+                comboend = false;
+            }
+
+            if (zpresses == 2)
+            {
+                attacking = true;
+                Debug.Log("Pawnch 2");
+                animator.SetTrigger("LP2");
+                knockbackx = -1f;
+                knockbacky = 3f;
+            }
+
+            if (zpresses == 3)
+            {
+                attacking = true;
+                Debug.Log("Pawnch 3");
+                animator.SetTrigger("LP3");
+                comboend = true;
+                knockbackx = 5f;
+                knockbacky = 12f;
+            }
+            if (zpresses == 4)
+            {
+                attacking = false;
+                zpresses = 0;
+                zp = 0;
+                attacking = false;
+            }
         }
 
         if (context.canceled)
         {
             attacking = false;
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "P2")
+        {
+            if (attacking)
+            {
+                Debug.Log("Inflicted Damage");
+                health2.takedamage(attackDamage);
+                health2.takekb(knockbackx);
+            }
         }
     }
     /*

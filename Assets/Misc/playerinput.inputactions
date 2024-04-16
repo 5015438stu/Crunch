@@ -126,6 +126,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "de5236ee-8d56-48da-b482-589e272cf03c",
+                    "path": "<SwitchProControllerHID>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "AD",
                     "id": "1743a52f-720e-4d77-8607-a8139bc22b45",
                     "path": "2DVector",
@@ -226,6 +237,17 @@
                 },
                 {
                     "name": "",
+                    "id": "e81ba114-aeae-44fb-b01d-6652ff37d6b9",
+                    "path": "<SwitchProControllerHID>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "aa68cf20-b551-4b10-8825-6251f02ea913",
                     "path": "<Keyboard>/s",
                     "interactions": "",
@@ -259,6 +281,17 @@
                 },
                 {
                     "name": "",
+                    "id": "51be8edb-cc9d-40a3-9a0e-0316dc816f05",
+                    "path": "<SwitchProControllerHID>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "84ad79f1-64cd-4c33-b577-d1ab1fe446f2",
                     "path": "<Keyboard>/z",
                     "interactions": "",
@@ -281,11 +314,44 @@
                 },
                 {
                     "name": "",
+                    "id": "e05a3c30-5266-41ce-9fee-1a586b0c2625",
+                    "path": "<SwitchProControllerHID>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "LightPunch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "bce18e2d-f155-4d49-b4ef-f0e8ba1d1efc",
                     "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "LightKick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "473e2807-9745-4a22-8f9a-59fab22ed230",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "LightKick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "453685e2-3f31-4a99-898e-433307de0c74",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "LightKick",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -303,11 +369,55 @@
                 },
                 {
                     "name": "",
+                    "id": "5d895125-014e-478d-a2b3-4ff9f77376b1",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "HeavyPunch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cf543f51-2114-4014-8a76-2f486bfa70e2",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "HeavyPunch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "da6e517a-b02b-4d91-b6c4-7c2e5a80218a",
                     "path": "<Keyboard>/anyKey",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
+                    "action": "HeavyKick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "450e6410-dc90-4cb2-a406-bc48673806c2",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "HeavyKick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a0df467a-a1f9-4388-bc17-d5869da107c3",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "HeavyKick",
                     "isComposite": false,
                     "isPartOfComposite": false

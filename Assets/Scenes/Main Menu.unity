@@ -1818,6 +1818,95 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199203124}
   m_CullTransparentMesh: 1
+--- !u!1 &1255442404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1255442408}
+  - component: {fileID: 1255442407}
+  - component: {fileID: 1255442406}
+  - component: {fileID: 1255442405}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1255442405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255442404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d4dcc59458d994390d16068d943730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1255442406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255442404}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c3c678a1d9c074ea902e2c515ba9cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1255442407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255442404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0fa3ff3877206340b317e0c0a704beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Stay inside me
+    clip: {fileID: 8300000, guid: 23adc1020d21fd54dbe1f94c1fb99233, type: 3}
+    volume: 0.805
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Hurt1
+    clip: {fileID: 8300000, guid: f47e86c552cf38844acc38e08a301905, type: 3}
+    volume: 0.805
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MainMenuTheme
+    clip: {fileID: 8300000, guid: bfc53e6857b82da468ad0b77227344c9, type: 3}
+    volume: 0.805
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+--- !u!4 &1255442408
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255442404}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.25344643, y: -1.7011559, z: 1.6863765}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1513466419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2174,3 +2263,4 @@ SceneRoots:
   - {fileID: 1155204242}
   - {fileID: 297564709}
   - {fileID: 1513466422}
+  - {fileID: 1255442408}

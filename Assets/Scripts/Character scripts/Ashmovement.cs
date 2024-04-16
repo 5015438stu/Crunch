@@ -43,7 +43,7 @@ public class Ashmovement : MonoBehaviour
     {
         move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")); //walking
 
-        animator.SetFloat("Speed", move.x);
+        /*animator.SetFloat("Speed", move.x);*/
 
         if (Input.GetKeyDown(KeyCode.Space) && jumpamount == 1) //jumping
         {

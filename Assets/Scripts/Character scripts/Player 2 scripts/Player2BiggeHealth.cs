@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class HealthScript : MonoBehaviour
+public class Player2BiggeHealth : MonoBehaviour
 {
     public float playerhealth = 1000;
     public float currenthealth;
@@ -11,16 +12,17 @@ public class HealthScript : MonoBehaviour
     public float chipspeed = 2f;
     public Image frontbar;
     public Image backbar;
+    public bool hurt;
+    public float stuntime = .5f;
+    public float hurttime;
 
     public Rigidbody2D rb;
-    Animator animator;
-    public PlayerCombat combat;
-    public Player2combat combat2;
+    public Player2combat combat;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         currenthealth = playerhealth;
-        GetComponent<Rigidbody2D>();
     }
     // Update is called once per frame
     void Update()
@@ -33,12 +35,31 @@ public class HealthScript : MonoBehaviour
         {
             Die();
         }
+
+        if (hurt)
+        {
+            hurttime += 1 * Time.deltaTime;
+
+            if (hurttime > stuntime)
+            {
+                hurt = false;
+                hurttime = 0;
+                animator.SetBool("Hurt", false);
+            }
+        }
     }
+
     public void takedamage(float damage)
     {
         currenthealth -= damage;
         lerptimer = 0f;
         animator.SetBool("Hurt", true);
+        hurt = true;
+        FindObjectOfType<SoundManager>().Play("Hurt1");
+    }
+    public void takekb(float kb)
+    {
+        rb.AddForce(new Vector2(kb, kb), ForceMode2D.Impulse);
 
     }
     public void restorehealth(int healamount)
@@ -59,7 +80,7 @@ public class HealthScript : MonoBehaviour
             float percentComplete = lerptimer / chipspeed;
             backbar.fillAmount = Mathf.Lerp(fillb, hfrac, percentComplete);
         }
-        if(fillf < hfrac)
+        if (fillf < hfrac)
         {
             backbar.color = Color.green;
             backbar.fillAmount = hfrac;
@@ -68,11 +89,9 @@ public class HealthScript : MonoBehaviour
             frontbar.fillAmount = Mathf.Lerp(fillf, backbar.fillAmount, percentcomplete);
         }
     }
-
     void Die()
     {
         Debug.Log("LETMEGETUP");
-        // die animation
-        // respawn dummy
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

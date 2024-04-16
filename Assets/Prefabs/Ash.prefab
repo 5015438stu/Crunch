@@ -129,16 +129,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b72cb6aa4482b24a9df7d3118d04a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 3056542803902898358}
-  speed: 280
+  jumptime: 0
+  jumplength: 0.3
   jumpforce: 15
-  jumpheight: 3.5
-  gravityScale: 3
-  fallgravityscale: 6
-  buttontime: 0.3
-  cancelrate: 100
-  jumpamount: 1
-  grounded: 0
+  maxjumps: 1
+  groundcheck: {fileID: 0}
+  ground:
+    serializedVersion: 2
+    m_Bits: 0
+  groundchecksize: {x: 0.5, y: 0.05}
+  rb: {fileID: 0}
+  animator: {fileID: 3056542803902898358}
+  move: {fileID: 0}
+  jump: {fileID: 0}
+  crouch: {fileID: 0}
 --- !u!95 &3056542803902898358
 Animator:
   serializedVersion: 5
