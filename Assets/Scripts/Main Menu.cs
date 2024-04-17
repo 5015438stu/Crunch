@@ -18,6 +18,10 @@ public class MenuButtons : MonoBehaviour
     {
         Time.timeScale = 1;
     }
+    public void buttonsfx()
+    {
+        FindObjectOfType<SoundManager>().Play("ButtonSFX1");
+    }
 
     public void Reset()
     {

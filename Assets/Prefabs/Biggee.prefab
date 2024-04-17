@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60c10fa7cea8497439109d14e663bd9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health2: {fileID: 0}
   rb: {fileID: 3264055220040695127}
   dummy: {fileID: 0}
   animator: {fileID: 4335579968154530982}
@@ -293,7 +294,9 @@ MonoBehaviour:
   chipspeed: 2
   frontbar: {fileID: 0}
   backbar: {fileID: 0}
+  rb: {fileID: 3264055220040695127}
   combat: {fileID: 5801828926454572568}
+  combat2: {fileID: 0}
 --- !u!114 &-6911828012864639915
 MonoBehaviour:
   m_ObjectHideFlags: 0

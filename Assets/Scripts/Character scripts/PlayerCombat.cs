@@ -20,7 +20,7 @@ public class PlayerCombat : MonoBehaviour
 
     [Header("Knockback")]
     public int attackDamage = 40; //Change later for each attack
-    public float knockbackx = 0f; //Change later for each attack
+    public float knockbackx = 0f; //Change later for each attack fix kb https://www.youtube.com/watch?v=Jy1yXbKYW68
     public float knockbacky = 0f; //Change later for each attack
     public float lastclickedtime = 0f;
     public float maxcombodelay = 1f;

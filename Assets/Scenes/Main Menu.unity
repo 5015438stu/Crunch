@@ -739,6 +739,18 @@ MonoBehaviour:
           m_StringArgument: Test Level
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 430235019}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &430235021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1021,6 +1033,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Character Select
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 752656432}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &752656430
@@ -1394,7 +1418,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1063273400}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1063273398}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1063273400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1549,6 +1585,7 @@ GameObject:
   - component: {fileID: 1168232066}
   - component: {fileID: 1168232065}
   - component: {fileID: 1168232064}
+  - component: {fileID: 1168232067}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1644,6 +1681,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1168232067}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1168232065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1682,6 +1731,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1168232062}
   m_CullTransparentMesh: 1
+--- !u!114 &1168232067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168232062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435596931d9562045b72773c43e4213b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1199203124
 GameObject:
   m_ObjectHideFlags: 0
@@ -1892,6 +1953,12 @@ MonoBehaviour:
     pitch: 1
     loop: 1
     source: {fileID: 0}
+  - name: ButtonSFX1
+    clip: {fileID: 8300000, guid: 4968e51c0cc3f5b4ea640f9131d124fc, type: 3}
+    volume: 0.805
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &1255442408
 Transform:
   m_ObjectHideFlags: 0
@@ -2074,6 +2141,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1570257720}
         m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
         m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1570257720}
+        m_TargetAssemblyTypeName: MenuButtons, Assembly-CSharp
+        m_MethodName: buttonsfx
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

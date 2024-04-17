@@ -44,10 +44,10 @@ GameObject:
   - component: {fileID: 3264055220040695127}
   - component: {fileID: 1650250172488188137}
   - component: {fileID: 4335579968154530982}
-  - component: {fileID: 3764617882174446945}
   - component: {fileID: 4172665603626968409}
   - component: {fileID: 4268847411503749350}
   - component: {fileID: -720062735951227050}
+  - component: {fileID: 3817219913100049725}
   m_Layer: 0
   m_Name: P2 Biggee
   m_TagString: P2
@@ -217,25 +217,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &3764617882174446945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7821279242919190250}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27d46a75b1241734495634c9957d9cf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerhealth: 1000
-  currenthealth: 0
-  lerptimer: 0
-  chipspeed: 2
-  frontbar: {fileID: 0}
-  backbar: {fileID: 0}
-  combat: {fileID: 0}
 --- !u!114 &4172665603626968409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a728de0493658904cb0f82d0792c727a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: {fileID: 0}
   rb: {fileID: 3264055220040695127}
   dummy: {fileID: 0}
   animator: {fileID: 4335579968154530982}
@@ -404,6 +386,30 @@ MonoBehaviour:
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &3817219913100049725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7821279242919190250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23ebca05d4a01e442b15f492f3417cc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerhealth: 1000
+  currenthealth: 0
+  lerptimer: 0
+  chipspeed: 2
+  frontbar: {fileID: 0}
+  backbar: {fileID: 0}
+  hurt: 0
+  stuntime: 1
+  hurttime: 0
+  rb: {fileID: 3264055220040695127}
+  combat: {fileID: 4172665603626968409}
+  animator: {fileID: 4335579968154530982}
 --- !u!1 &8000446194415790450
 GameObject:
   m_ObjectHideFlags: 0
