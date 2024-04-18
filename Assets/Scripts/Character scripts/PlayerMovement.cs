@@ -15,10 +15,11 @@ public class PlayerMovement : MonoBehaviour
     public float jumplength = 0.3f;
     public float jumpforce = 15f;
     public int maxjumps = 1;
+    public bool isjumping = false;
     int jumpsremaining;
 
     [Header("Crouching")]
-    private bool iscrouching = false;
+    public bool iscrouching = false;
 
     [Header("GroundCheck")]
     public Transform groundcheck;
@@ -32,6 +33,10 @@ public class PlayerMovement : MonoBehaviour
     public InputActionReference jump;
     public InputActionReference crouch;
 
+    public void Start()
+    {
+        isjumping = false;
+    }
     private void Update()
     {
         rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
@@ -62,6 +67,8 @@ public class PlayerMovement : MonoBehaviour
         if (Physics2D.OverlapBox(groundcheck.position, groundchecksize, 0, ground))
         {
             jumpsremaining = maxjumps;
+
+            isjumping = false;
             animator.SetBool("IsFalling", false);
             animator.SetBool("IsJumping", false);
         }
@@ -78,6 +85,7 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Jump Started");
                 rb.velocity = new Vector2(rb.velocity.x, jumpforce);
                 jumpsremaining--;
+                isjumping = true;
             }
 
             if (context.canceled)
@@ -88,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("IsFalling", true);
                 animator.SetBool("IsJumping", false);
                 jumpsremaining--;
+                isjumping = true;
             }
         }
 

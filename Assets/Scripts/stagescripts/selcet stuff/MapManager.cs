@@ -26,10 +26,12 @@ public class MapManager : MonoBehaviour
         if (plmap == 1)
         {
             SceneManager.LoadScene("Plains");
+            pkmap = 0;
         }
-        if (pkmap == 2)
+        if (pkmap == 1)
         {
             SceneManager.LoadScene("Park");
+            plmap = 0;
         }
     }
 }

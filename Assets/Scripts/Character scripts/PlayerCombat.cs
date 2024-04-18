@@ -9,6 +9,7 @@ public class PlayerCombat : MonoBehaviour
     [Header("Refs")]
     public Player2BiggeHealth health2;
     public Rigidbody2D rb;
+    public PlayerMovement movement;
     public DummyScript dummy;
     public Animator animator;
     public BoxCollider2D hitbox;
@@ -49,27 +50,25 @@ public class PlayerCombat : MonoBehaviour
             if (lastclickedtime > maxcombodelay)
             {
                 lastclickedtime = 0;
-                Debug.Log("punch Timeout");
+                Debug.Log("Attack Timeout");
                 zpresses = 0;
                 zp = 0;
                 attacking = false;
             }
         }
     }
-
-    public void OnLightPunch(InputAction.CallbackContext context)
+    public void OnLightKick(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-
             zpresses++;
             zp++;
 
             if (zpresses == 1)
             {
                 attacking = true;
-                Debug.Log("Pawnch 1");
-                animator.SetTrigger("LP1");
+                Debug.Log("Kack 1");
+                animator.SetTrigger("IsLKicking");
                 knockbackx = -2f;
                 knockbacky = 2f;
                 comboend = false;
@@ -78,8 +77,8 @@ public class PlayerCombat : MonoBehaviour
             if (zpresses == 2)
             {
                 attacking = true;
-                Debug.Log("Pawnch 2");
-                animator.SetTrigger("LP2");
+                Debug.Log("Kack 2");
+                animator.SetTrigger("LK2");
                 knockbackx = -1f;
                 knockbacky = 3f;
             }
@@ -87,8 +86,8 @@ public class PlayerCombat : MonoBehaviour
             if (zpresses == 3)
             {
                 attacking = true;
-                Debug.Log("Pawnch 3");
-                animator.SetTrigger("LP3");
+                Debug.Log("Kack 3");
+                animator.SetTrigger("LK3");
                 comboend = true;
                 knockbackx = 5f;
                 knockbacky = 12f;
@@ -100,6 +99,63 @@ public class PlayerCombat : MonoBehaviour
                 zp = 0;
                 attacking = false;
             }
+
+            if (context.canceled)
+            {
+                attacking = false;
+            }
+        }
+    }
+    public void OnLightPunch(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (movement.isjumping == true)
+            {
+                
+            }
+            if (movement.isjumping == false)
+            {
+                zpresses++;
+                zp++;
+
+                if (zpresses == 1)
+                {
+                    attacking = true;
+                    Debug.Log("Pawnch 1");
+                    animator.SetTrigger("LP1");
+                    knockbackx = -2f;
+                    knockbacky = 2f;
+                    comboend = false;
+                }
+
+                if (zpresses == 2)
+                {
+                    attacking = true;
+                    Debug.Log("Pawnch 2");
+                    animator.SetTrigger("LP2");
+                    knockbackx = -1f;
+                    knockbacky = 3f;
+                }
+
+                if (zpresses == 3)
+                {
+                    attacking = true;
+                    Debug.Log("Pawnch 3");
+                    animator.SetTrigger("LP3");
+                    comboend = true;
+                    knockbackx = 5f;
+                    knockbacky = 12f;
+                }
+                if (zpresses == 4)
+                {
+                    attacking = false;
+                    zpresses = 0;
+                    zp = 0;
+                    attacking = false;
+                }
+            }
+            
         }
 
         if (context.canceled)
