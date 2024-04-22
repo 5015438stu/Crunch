@@ -7,10 +7,11 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    private float movespeed = 8f;
-    private float hors;
+    public float movespeed = 8f;
+    public float hors;
 
     [Header("Jumping")]
+    public float yvelo;
     public float jumptime;
     public float jumplength = 0.3f;
     public float jumpforce = 15f;
@@ -39,13 +40,26 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        yvelo = rb.velocity.y;
         rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
         animator.SetFloat("Speed", rb.velocity.x);
         GroundCheck();
+
+        if (rb.velocity.y > 1.5)
+        {
+            isjumping = true;
+            animator.SetBool("IsJumping", true);
+            animator.SetBool("IsFalling", false);
+        }
+        if (rb.velocity.y < -1)
+        {
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("IsFalling", true);
+        }
     }
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.started)
         {
             movespeed = 0f;
             animator.SetBool("IsCrouching", true);
@@ -77,15 +91,20 @@ public class PlayerMovement : MonoBehaviour
     {
         if (jumpsremaining > 0)
         {
-            if (context.performed)
+            if (context.started)
             {
                 //full power full hold
-                animator.SetBool("IsJumping", true);
-                animator.SetBool("IsFalling", false);
                 Debug.Log("Jump Started");
                 rb.velocity = new Vector2(rb.velocity.x, jumpforce);
                 jumpsremaining--;
                 isjumping = true;
+                animator.SetBool("IsJumping", true);
+                animator.SetBool("IsFalling", false);
+            }
+
+            if (context.performed)
+            {
+                Debug.Log("Jump Performed");
             }
 
             if (context.canceled)

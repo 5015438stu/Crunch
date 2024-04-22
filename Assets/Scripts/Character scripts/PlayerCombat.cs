@@ -64,40 +64,52 @@ public class PlayerCombat : MonoBehaviour
             zpresses++;
             zp++;
 
-            if (zpresses == 1)
+            if (movement.isjumping == true)
             {
                 attacking = true;
-                Debug.Log("Kack 1");
-                animator.SetTrigger("IsLKicking");
+                Debug.Log("AK 1");
+                animator.SetTrigger("AK1");
                 knockbackx = -2f;
                 knockbacky = 2f;
                 comboend = false;
             }
+            if (movement.isjumping == true)
+            {
+                if (zpresses == 1)
+                {
+                    attacking = true;
+                    Debug.Log("Kack 1");
+                    animator.SetTrigger("IsLKicking");
+                    knockbackx = -2f;
+                    knockbacky = 2f;
+                    comboend = false;
+                }
 
-            if (zpresses == 2)
-            {
-                attacking = true;
-                Debug.Log("Kack 2");
-                animator.SetTrigger("LK2");
-                knockbackx = -1f;
-                knockbacky = 3f;
-            }
+                if (zpresses == 2)
+                {
+                    attacking = true;
+                    Debug.Log("Kack 2");
+                    animator.SetTrigger("LK2");
+                    knockbackx = -1f;
+                    knockbacky = 3f;
+                }
 
-            if (zpresses == 3)
-            {
-                attacking = true;
-                Debug.Log("Kack 3");
-                animator.SetTrigger("LK3");
-                comboend = true;
-                knockbackx = 5f;
-                knockbacky = 12f;
-            }
-            if (zpresses == 4)
-            {
-                attacking = false;
-                zpresses = 0;
-                zp = 0;
-                attacking = false;
+                if (zpresses == 3)
+                {
+                    attacking = true;
+                    Debug.Log("Kack 3");
+                    animator.SetTrigger("LK3");
+                    comboend = true;
+                    knockbackx = 5f;
+                    knockbacky = 12f;
+                }
+                if (zpresses == 4)
+                {
+                    attacking = false;
+                    zpresses = 0;
+                    zp = 0;
+                    attacking = false;
+                }
             }
 
             if (context.canceled)
@@ -112,7 +124,12 @@ public class PlayerCombat : MonoBehaviour
         {
             if (movement.isjumping == true)
             {
-                
+                attacking = true;
+                Debug.Log("AK 1");
+                animator.SetTrigger("AK1");
+                knockbackx = -2f;
+                knockbacky = 2f;
+                comboend = false;
             }
             if (movement.isjumping == false)
             {

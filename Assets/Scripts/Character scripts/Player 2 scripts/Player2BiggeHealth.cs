@@ -17,7 +17,8 @@ public class Player2BiggeHealth : MonoBehaviour
     public float hurttime;
 
     public Rigidbody2D rb;
-    public Player2combat combat;
+    public PlayerCombat combat;
+    public Player2combat combat2;
     public Animator animator;
     // Start is called before the first frame update
     void Start()
