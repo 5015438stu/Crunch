@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class Player2Movement : MonoBehaviour
 {
     [Header("Movement")]
-    private float movespeed = 8f;
-    private float hors;
+    public float movespeed = 8f;
+    public float hors;
 
     [Header("Jumping")]
+    public float yvelo;
     public float jumptime;
     public float jumplength = 0.3f;
     public float jumpforce = 15f;
     public int maxjumps = 1;
-    int jumpsremaining;
+    public bool isjumping = false;
+    public int jumpsremaining;
 
     [Header("Crouching")]
-    private bool iscrouching = false;
+    public bool iscrouching = false;
 
     [Header("GroundCheck")]
     public Transform groundcheck;
@@ -28,15 +31,48 @@ public class Player2Movement : MonoBehaviour
     [Header("Refs")]
     public Rigidbody2D rb;
     public Animator animator;
+    public SpriteRenderer sprite;
     public InputActionReference move;
     public InputActionReference jump;
     public InputActionReference crouch;
 
+    [Header("Fliping")]
+    public float P1xpos;
+
+    public void Start()
+    {
+        isjumping = false;
+    }
+
     private void Update()
     {
+        yvelo = rb.velocity.y;
         rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
         animator.SetFloat("Speed", rb.velocity.x);
         GroundCheck();
+
+        P1xpos = GameObject.FindWithTag("P1").transform.position.x;
+
+        if (rb.velocity.y > 1.5)
+        {
+            isjumping = true;
+            animator.SetBool("IsJumping", true);
+            animator.SetBool("IsFalling", false);
+        }
+        if (rb.velocity.y < -1)
+        {
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("IsFalling", true);
+        }
+
+        if (P1xpos > transform.position.x)
+        {
+            sprite.flipX = true;
+        }
+        if (P1xpos < transform.position.x)
+        {
+            sprite.flipX = false;
+        }
     }
     public void OnCrouch(InputAction.CallbackContext context)
     {
@@ -62,6 +98,8 @@ public class Player2Movement : MonoBehaviour
         if (Physics2D.OverlapBox(groundcheck.position, groundchecksize, 0, ground))
         {
             jumpsremaining = maxjumps;
+
+            isjumping = false;
             animator.SetBool("IsFalling", false);
             animator.SetBool("IsJumping", false);
         }
@@ -70,14 +108,20 @@ public class Player2Movement : MonoBehaviour
     {
         if (jumpsremaining > 0)
         {
-            if (context.performed)
+            if (context.started)
             {
                 //full power full hold
-                animator.SetBool("IsJumping", true);
-                animator.SetBool("IsFalling", false);
                 Debug.Log("Jump Started");
                 rb.velocity = new Vector2(rb.velocity.x, jumpforce);
                 jumpsremaining--;
+                isjumping = true;
+                animator.SetBool("IsJumping", true);
+                animator.SetBool("IsFalling", false);
+            }
+
+            if (context.performed)
+            {
+                Debug.Log("Jump Performed");
             }
 
             if (context.canceled)
@@ -88,6 +132,7 @@ public class Player2Movement : MonoBehaviour
                 animator.SetBool("IsFalling", true);
                 animator.SetBool("IsJumping", false);
                 jumpsremaining--;
+                isjumping = true;
             }
         }
 

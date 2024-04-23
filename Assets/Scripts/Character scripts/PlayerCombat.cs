@@ -69,19 +69,21 @@ public class PlayerCombat : MonoBehaviour
                 attacking = true;
                 Debug.Log("AK 1");
                 animator.SetTrigger("AK1");
-                knockbackx = -2f;
-                knockbacky = 2f;
-                comboend = false;
+                knockbackx = 4f;
+                knockbacky = 4f;
+                comboend = true;
+                zpresses = 0;
+                zp = 0;
             }
-            if (movement.isjumping == true)
+            if (movement.isjumping == false)
             {
                 if (zpresses == 1)
                 {
                     attacking = true;
                     Debug.Log("Kack 1");
                     animator.SetTrigger("IsLKicking");
-                    knockbackx = -2f;
-                    knockbacky = 2f;
+                    knockbackx = 60f;
+                    knockbacky = 10f;
                     comboend = false;
                 }
 
@@ -90,8 +92,8 @@ public class PlayerCombat : MonoBehaviour
                     attacking = true;
                     Debug.Log("Kack 2");
                     animator.SetTrigger("LK2");
-                    knockbackx = -1f;
-                    knockbacky = 3f;
+                    knockbackx = -2f;
+                    knockbacky = 6f;
                 }
 
                 if (zpresses == 3)
@@ -100,8 +102,8 @@ public class PlayerCombat : MonoBehaviour
                     Debug.Log("Kack 3");
                     animator.SetTrigger("LK3");
                     comboend = true;
-                    knockbackx = 5f;
-                    knockbacky = 12f;
+                    knockbackx = 10f;
+                    knockbacky = 24f;
                 }
                 if (zpresses == 4)
                 {
@@ -127,9 +129,11 @@ public class PlayerCombat : MonoBehaviour
                 attacking = true;
                 Debug.Log("AK 1");
                 animator.SetTrigger("AK1");
-                knockbackx = -2f;
-                knockbacky = 2f;
-                comboend = false;
+                knockbackx = 60f;
+                knockbacky = 10f;
+                comboend = true;
+                zpresses = 0;
+                zp = 0;
             }
             if (movement.isjumping == false)
             {
@@ -141,8 +145,8 @@ public class PlayerCombat : MonoBehaviour
                     attacking = true;
                     Debug.Log("Pawnch 1");
                     animator.SetTrigger("LP1");
-                    knockbackx = -2f;
-                    knockbacky = 2f;
+                    knockbackx = -20f;
+                    knockbacky = 20f;
                     comboend = false;
                 }
 
@@ -151,8 +155,8 @@ public class PlayerCombat : MonoBehaviour
                     attacking = true;
                     Debug.Log("Pawnch 2");
                     animator.SetTrigger("LP2");
-                    knockbackx = -1f;
-                    knockbacky = 3f;
+                    knockbackx = -30f;
+                    knockbacky = 40f;
                 }
 
                 if (zpresses == 3)
@@ -161,8 +165,8 @@ public class PlayerCombat : MonoBehaviour
                     Debug.Log("Pawnch 3");
                     animator.SetTrigger("LP3");
                     comboend = true;
-                    knockbackx = 5f;
-                    knockbacky = 12f;
+                    knockbackx = 100f;
+                    knockbacky = 70f;
                 }
                 if (zpresses == 4)
                 {
@@ -188,7 +192,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 Debug.Log("Inflicted Damage");
                 health2.takedamage(attackDamage);
-                health2.takekb(knockbackx);
+                rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
             }
         }
     }

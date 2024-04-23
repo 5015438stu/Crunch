@@ -337,7 +337,7 @@
                 {
                     "name": "",
                     "id": "473e2807-9745-4a22-8f9a-59fab22ed230",
-                    "path": "",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -348,7 +348,7 @@
                 {
                     "name": "",
                     "id": "453685e2-3f31-4a99-898e-433307de0c74",
-                    "path": "",
+                    "path": "<SwitchProControllerHID>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

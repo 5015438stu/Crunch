@@ -140,7 +140,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 4
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 95e4e8713d98ed140915f141b2e62c63, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -232,6 +232,7 @@ MonoBehaviour:
   health: {fileID: 0}
   rb: {fileID: 3264055220040695127}
   dummy: {fileID: 0}
+  movement2: {fileID: 4268847411503749350}
   animator: {fileID: 4335579968154530982}
   hitbox: {fileID: 5154598446355292800}
   enemylayers:
@@ -242,14 +243,14 @@ MonoBehaviour:
   HeavyPunch: {fileID: 6381211458312739477, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   HeavyKick: {fileID: -9066179745752283474, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   attackDamage: 40
-  knockbackx: 0
-  knockbacky: 0
   lastclickedtime: 0
   maxcombodelay: 1
   attackwait: 0
   attacking: 0
   zp: 0
   comboend: 0
+  knockbackx: 0
+  knockbacky: 0
 --- !u!114 &4268847411503749350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,20 +263,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19218d0b02b6314eb93e05b97df424e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movespeed: 8
+  hors: 0
+  yvelo: 0
   jumptime: 0
   jumplength: 0.3
   jumpforce: 15
   maxjumps: 1
+  isjumping: 0
+  jumpsremaining: 0
+  iscrouching: 0
   groundcheck: {fileID: 2399742081762620908}
   ground:
     serializedVersion: 2
     m_Bits: 64
-  groundchecksize: {x: 1.36, y: 0.36}
+  groundchecksize: {x: 1.44, y: 0.35}
   rb: {fileID: 3264055220040695127}
   animator: {fileID: 4335579968154530982}
+  sprite: {fileID: 0}
   move: {fileID: -9137968497609597549, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   jump: {fileID: 5333029506162208025, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   crouch: {fileID: 4693896964530844571, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
+  P1xpos: 0
 --- !u!114 &-720062735951227050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,7 +417,8 @@ MonoBehaviour:
   stuntime: 1
   hurttime: 0
   rb: {fileID: 3264055220040695127}
-  combat: {fileID: 4172665603626968409}
+  combat: {fileID: 0}
+  combat2: {fileID: 4172665603626968409}
   animator: {fileID: 4335579968154530982}
 --- !u!1 &8000446194415790450
 GameObject:

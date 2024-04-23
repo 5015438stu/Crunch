@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -30,9 +27,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("Refs")]
     public Rigidbody2D rb;
     public Animator animator;
+    public SpriteRenderer sprite;
     public InputActionReference move;
     public InputActionReference jump;
     public InputActionReference crouch;
+
+    [Header("Fliping")]
+    public float P2xpos;
 
     public void Start()
     {
@@ -45,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Speed", rb.velocity.x);
         GroundCheck();
 
+        P2xpos = GameObject.FindWithTag("P2").transform.position.x;
+
         if (rb.velocity.y > 1.5)
         {
             isjumping = true;
@@ -55,6 +58,14 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsFalling", true);
+        }
+        if (P2xpos < transform.position.x)
+        {
+            sprite.flipX = true;
+        }
+        if (P2xpos > transform.position.x)
+        {
+            sprite.flipX = false;
         }
     }
     public void OnCrouch(InputAction.CallbackContext context)

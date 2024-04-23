@@ -39,6 +39,9 @@ public class Player2BiggeHealth : MonoBehaviour
 
         if (hurt)
         {
+
+            
+
             hurttime += 1 * Time.deltaTime;
 
             if (hurttime > stuntime)
@@ -53,16 +56,13 @@ public class Player2BiggeHealth : MonoBehaviour
     public void takedamage(float damage)
     {
         currenthealth -= damage;
+        rb.AddForce(new Vector2(combat.knockbackx, combat.knockbacky), ForceMode2D.Impulse);
         lerptimer = 0f;
         animator.SetBool("Hurt", true);
         hurt = true;
         FindObjectOfType<SoundManager>().Play("Hurt1");
     }
-    public void takekb(float kb)
-    {
-        rb.AddForce(new Vector2(kb, kb), ForceMode2D.Impulse);
-
-    }
+    
     public void restorehealth(int healamount)
     {
         currenthealth += healamount;

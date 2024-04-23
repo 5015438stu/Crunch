@@ -136,11 +136,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 95e4e8713d98ed140915f141b2e62c63, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -208,6 +208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b72cb6aa4482b24a9df7d3118d04a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movespeed: 8
+  hors: 0
+  yvelo: 0
   jumptime: 0
   jumplength: 0.3
   jumpforce: 15
@@ -218,12 +221,14 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 64
-  groundchecksize: {x: 1.44, y: 0.4}
+  groundchecksize: {x: 1.44, y: 0.35}
   rb: {fileID: 3264055220040695127}
   animator: {fileID: 4335579968154530982}
+  sprite: {fileID: 5715794617078640933}
   move: {fileID: 2575826022847119941, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   jump: {fileID: 5333029506162208025, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   crouch: {fileID: 4693896964530844571, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
+  P2xpos: 0
 --- !u!95 &4335579968154530982
 Animator:
   serializedVersion: 5
@@ -259,7 +264,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health2: {fileID: 0}
   rb: {fileID: 3264055220040695127}
-  movement: {fileID: 0}
+  movement: {fileID: 1633672076579802590}
   dummy: {fileID: 0}
   animator: {fileID: 4335579968154530982}
   hitbox: {fileID: 5154598446355292800}
