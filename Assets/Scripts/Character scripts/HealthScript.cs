@@ -16,11 +16,16 @@ public class HealthScript : MonoBehaviour
     Animator animator;
     public PlayerCombat combat;
     public Player2combat combat2;
+    public GameObject pfp;
+
     // Start is called before the first frame update
     void Start()
     {
+        pfp.SetActive(true);
         currenthealth = playerhealth;
+        GetComponent<GameObject>();
         GetComponent<Rigidbody2D>();
+        GetComponent<Player2combat>();
     }
     // Update is called once per frame
     void Update()

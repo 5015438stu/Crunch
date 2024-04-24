@@ -414,6 +414,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 64983589}
         m_TargetAssemblyTypeName: potraitbiggee, Assembly-CSharp
         m_MethodName: ImageChange
@@ -770,7 +782,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 455618817}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &455618817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,6 +1023,18 @@ MonoBehaviour:
           m_StringArgument: Plains
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &484338134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,11 +1090,11 @@ MonoBehaviour:
   p1selected: 0
   biggee: {fileID: 64983589}
   cinder: {fileID: 1060111100}
-  ash: {fileID: 0}
+  ash: {fileID: 480120362}
   jean: {fileID: 887454421}
   game: {fileID: 0}
-  cinderp2: {fileID: 0}
-  ashp2: {fileID: 0}
+  cinderp2: {fileID: 1329739128}
+  ashp2: {fileID: 1071040083}
   biggeep2: {fileID: 620964603}
   jeanp2: {fileID: 1045424118}
   allbuttons: {fileID: 377974877}
@@ -1658,6 +1694,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 620964603}
         m_TargetAssemblyTypeName: potraitbiggee2, Assembly-CSharp
         m_MethodName: ImageChange
@@ -1842,6 +1890,18 @@ MonoBehaviour:
           m_StringArgument: Plains
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &721654681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1977,7 +2037,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 738377838}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &738377838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2346,10 +2418,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0.50980395}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.78039217}
-    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.84313726}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.4627451}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 0.8156863}
+    m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.6745098}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 0.5372549}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2364,10 +2436,22 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 887454419}
+  m_TargetGraphic: {fileID: 64983587}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 887454421}
         m_TargetAssemblyTypeName: potraitjean, Assembly-CSharp
         m_MethodName: ImageChange
@@ -2518,7 +2602,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 920344424}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &920344424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2639,7 +2735,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 951552508}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &951552508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2894,7 +3002,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 979192967}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &979192967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3068,12 +3188,12 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.79607844}
-    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.8352941}
-    m_DisabledColor: {r: 0, g: 0, b: 0, a: 0.5019608}
-    m_ColorMultiplier: 4.09
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.50980395}
+    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.4627451}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 0.8156863}
+    m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.6745098}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 0.5372549}
+    m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
@@ -3091,6 +3211,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1045424118}
         m_TargetAssemblyTypeName: potraitjean2, Assembly-CSharp
         m_MethodName: ImageChange
@@ -3241,10 +3373,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0.50980395}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.78039217}
-    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.84313726}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.4627451}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 0.8156863}
+    m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.6745098}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 0.5372549}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3259,10 +3391,22 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1060111098}
+  m_TargetGraphic: {fileID: 64983587}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1060111100}
         m_TargetAssemblyTypeName: potraitcinder, Assembly-CSharp
         m_MethodName: ImageChange
@@ -3393,10 +3537,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0.50980395}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.78039217}
-    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.84313726}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.4627451}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 0.8156863}
+    m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.6745098}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 0.5254902}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -3415,6 +3559,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1071040083}
         m_TargetAssemblyTypeName: potraitash2, Assembly-CSharp
         m_MethodName: ImageChange
@@ -4230,10 +4386,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0.50980395}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.78039217}
-    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.84313726}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.4627451}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 0.8156863}
+    m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.6745098}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4252,6 +4408,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1329739128}
         m_TargetAssemblyTypeName: potraitcinder2, Assembly-CSharp
         m_MethodName: ImageChange
@@ -4483,6 +4651,120 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1388794477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1388794482}
+  - component: {fileID: 1388794481}
+  - component: {fileID: 1388794480}
+  - component: {fileID: 1388794479}
+  - component: {fileID: 1388794478}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1388794478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388794477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8b28523441c99c46bb324be2de6f41e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1388794479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388794477}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d4dcc59458d994390d16068d943730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1388794480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388794477}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67c3c678a1d9c074ea902e2c515ba9cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1388794481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388794477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0fa3ff3877206340b317e0c0a704beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Stay inside me
+    clip: {fileID: 8300000, guid: 23adc1020d21fd54dbe1f94c1fb99233, type: 3}
+    volume: 0.805
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Hurt1
+    clip: {fileID: 8300000, guid: f47e86c552cf38844acc38e08a301905, type: 3}
+    volume: 0.805
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MainMenuTheme
+    clip: {fileID: 8300000, guid: bfc53e6857b82da468ad0b77227344c9, type: 3}
+    volume: 0.805
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: ButtonSFX1
+    clip: {fileID: 8300000, guid: 4968e51c0cc3f5b4ea640f9131d124fc, type: 3}
+    volume: 0.805
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: CharacterSelectTheme
+    clip: {fileID: 8300000, guid: 767e1ee8acc314e48b93d4e5bb24dbb3, type: 3}
+    volume: 0.805
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+--- !u!4 &1388794482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388794477}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.25344643, y: -1.7011559, z: 1.6863765}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1391626682
 GameObject:
   m_ObjectHideFlags: 0
@@ -4545,10 +4827,10 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 0.50980395}
-    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.78039217}
-    m_PressedColor: {r: 0, g: 0, b: 0, a: 1}
-    m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.84313726}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_HighlightedColor: {r: 0, g: 0, b: 0, a: 0.4627451}
+    m_PressedColor: {r: 0, g: 0, b: 0, a: 0.8156863}
+    m_SelectedColor: {r: 0, g: 0, b: 0, a: 0.6745098}
+    m_DisabledColor: {r: 0, g: 0, b: 0, a: 0.5372549}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4563,10 +4845,22 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1391626685}
+  m_TargetGraphic: {fileID: 64983587}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1391626687}
         m_TargetAssemblyTypeName: potraitash, Assembly-CSharp
         m_MethodName: ImageChange
@@ -5018,7 +5312,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1549864442}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1549864442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5288,7 +5594,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1665298382}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1665298382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5409,7 +5727,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1705006475}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1388794478}
+        m_TargetAssemblyTypeName: charaselect, Assembly-CSharp
+        m_MethodName: buttonsfx
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1705006475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6268,3 +6598,4 @@ SceneRoots:
   - {fileID: 1366509137}
   - {fileID: 1504205141}
   - {fileID: 35517601}
+  - {fileID: 1388794482}

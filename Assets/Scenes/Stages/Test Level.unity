@@ -728,7 +728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &334790749
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2228,6 +2228,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3817219913100049725, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
+      propertyPath: pfp
+      value: 
+      objectReference: {fileID: 1455650184}
+    - target: {fileID: 3817219913100049725, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
       propertyPath: combat
       value: 
       objectReference: {fileID: 1798164720}
@@ -2247,10 +2251,6 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 1798164714}
-    - target: {fileID: 4268847411503749350, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
-      propertyPath: sprite
-      value: 
-      objectReference: {fileID: 1438141544}
     - target: {fileID: 7821279242919190250, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
       propertyPath: m_Name
       value: P2 Biggee
@@ -2833,11 +2833,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427170921}
   m_CullTransparentMesh: 1
---- !u!212 &1438141544 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 5715794617078640933, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
-  m_PrefabInstance: {fileID: 997371223}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1455650184
 GameObject:
   m_ObjectHideFlags: 0
@@ -2855,7 +2850,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1455650185
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3081,6 +3076,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3764617882174446945, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
+      propertyPath: pfp
+      value: 
+      objectReference: {fileID: 334790748}
     - target: {fileID: 3764617882174446945, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
       propertyPath: backbar
       value: 
@@ -4535,7 +4534,7 @@ Transform:
   m_GameObject: {fileID: 2079933656}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.68424034, y: -1.5913999, z: -13.199474}
+  m_LocalPosition: {x: -0.6842402, y: -1.5913999, z: -13.199474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

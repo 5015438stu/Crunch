@@ -124,8 +124,11 @@ public class Player2combat : MonoBehaviour
     }
     public void OnLightPunch(InputAction.CallbackContext context)
     {
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+
         if (context.performed)
         {
+            
             if (movement2.isjumping == true)
             {
                 attacking = true;
@@ -183,7 +186,8 @@ public class Player2combat : MonoBehaviour
 
         if (context.canceled)
         {
-            attacking = false;
+            rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

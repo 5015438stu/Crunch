@@ -4330,15 +4330,15 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1779002337}
-  - {fileID: 1491479911}
-  - {fileID: 752239388}
-  - {fileID: 376552769}
   - {fileID: 1029422343}
-  - {fileID: 874240611}
-  - {fileID: 495474252}
-  - {fileID: 665945605}
-  - {fileID: 1989146842}
-  - {fileID: 1522272237}
   - {fileID: 755602948}
   - {fileID: 660430697}
+  - {fileID: 1779002337}
+  - {fileID: 1522272237}
+  - {fileID: 376552769}
+  - {fileID: 495474252}
+  - {fileID: 1491479911}
+  - {fileID: 752239388}
+  - {fileID: 874240611}
+  - {fileID: 665945605}
+  - {fileID: 1989146842}

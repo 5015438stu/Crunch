@@ -20,9 +20,14 @@ public class Player2BiggeHealth : MonoBehaviour
     public PlayerCombat combat;
     public Player2combat combat2;
     public Animator animator;
+    public ParticleSystem hit = default;
+    public GameObject pfp;
+
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<GameObject>();
+        pfp.SetActive(true);
         currenthealth = playerhealth;
     }
     // Update is called once per frame
@@ -61,6 +66,7 @@ public class Player2BiggeHealth : MonoBehaviour
         animator.SetBool("Hurt", true);
         hurt = true;
         FindObjectOfType<SoundManager>().Play("Hurt1");
+        hit.Play();
     }
     
     public void restorehealth(int healamount)

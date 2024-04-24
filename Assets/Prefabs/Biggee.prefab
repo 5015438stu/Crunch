@@ -305,6 +305,7 @@ MonoBehaviour:
   rb: {fileID: 3264055220040695127}
   combat: {fileID: 5801828926454572568}
   combat2: {fileID: 0}
+  pfp: {fileID: 0}
 --- !u!114 &-6911828012864639915
 MonoBehaviour:
   m_ObjectHideFlags: 0

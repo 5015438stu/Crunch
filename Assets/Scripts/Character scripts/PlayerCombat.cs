@@ -20,16 +20,23 @@ public class PlayerCombat : MonoBehaviour
     public InputActionReference HeavyKick;
 
     [Header("Knockback")]
-    public int attackDamage = 40; //Change later for each attack
     public float knockbackx = 0f; //Change later for each attack fix kb https://www.youtube.com/watch?v=Jy1yXbKYW68
     public float knockbacky = 0f; //Change later for each attack
+
+    [Header("Damage")]
     public float lastclickedtime = 0f;
+    public int attackDamage = 40; //Change later for each attack
     public float maxcombodelay = 1f;
     public static int zpresses = 0;
     public float attackwait;
     public bool attacking;
     public float zp = 0f;
     public bool comboend = false;
+
+    [Header("Blocking")]
+    public bool isblocking;
+    public bool blockready;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,13 +45,26 @@ public class PlayerCombat : MonoBehaviour
         dummy = GetComponent<DummyScript>();
         hitbox = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        movement = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (movement.hors == -1)
+        {
+            blockready = true;
+        }
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
         if (attacking)
         {
+            if (movement.isjumping == false)
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+                Debug.Log("YfreezeON");
+            } 
+
             lastclickedtime += 1 * Time.deltaTime;
 
             if (lastclickedtime > maxcombodelay)
@@ -122,6 +142,9 @@ public class PlayerCombat : MonoBehaviour
     }
     public void OnLightPunch(InputAction.CallbackContext context)
     {
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+        Debug.Log("YfreezeOFF");
+
         if (context.performed)
         {
             if (movement.isjumping == true)
@@ -181,7 +204,8 @@ public class PlayerCombat : MonoBehaviour
 
         if (context.canceled)
         {
-            attacking = false;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+            Debug.Log("YfreezeOFF");
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
