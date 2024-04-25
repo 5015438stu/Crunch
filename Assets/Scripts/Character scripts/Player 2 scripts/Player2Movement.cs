@@ -65,11 +65,11 @@ public class Player2Movement : MonoBehaviour
             animator.SetBool("IsFalling", true);
         }
 
-        if (P1xpos > transform.position.x)
+        if (P1xpos < transform.position.x)
         {
             sprite.flipX = true;
         }
-        if (P1xpos < transform.position.x)
+        if (P1xpos > transform.position.x)
         {
             sprite.flipX = false;
         }
@@ -115,6 +115,7 @@ public class Player2Movement : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, jumpforce);
                 jumpsremaining--;
                 isjumping = true;
+                FindObjectOfType<SoundManager>().Play("JumpSFX");
                 animator.SetBool("IsJumping", true);
                 animator.SetBool("IsFalling", false);
             }

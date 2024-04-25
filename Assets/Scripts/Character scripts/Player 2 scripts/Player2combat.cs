@@ -10,6 +10,7 @@ public class Player2combat : MonoBehaviour
     public HealthScript health;
     public Rigidbody2D rb;
     public DummyScript dummy;
+    public PlayerCombat combat;
     public Player2Movement movement2;
     public Animator animator;
     public BoxCollider2D hitbox;
@@ -194,9 +195,14 @@ public class Player2combat : MonoBehaviour
     {
         if(collision.gameObject.tag == "P1")
         {
-            if (attacking)
+            if (attacking && combat.blockready == false)
             {
                 health.takedamage(attackDamage);
+            }
+            if (attacking && combat.blockready == true)
+            {
+                Debug.Log("DamnIGotBlocked:c");
+
             }
         }
     }

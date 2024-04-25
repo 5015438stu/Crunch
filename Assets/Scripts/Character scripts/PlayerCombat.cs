@@ -7,10 +7,10 @@ using UnityEngine.InputSystem;
 public class PlayerCombat : MonoBehaviour
 {
     [Header("Refs")]
+    public Player2combat combat2;
     public Player2BiggeHealth health2;
     public Rigidbody2D rb;
     public PlayerMovement movement;
-    public DummyScript dummy;
     public Animator animator;
     public BoxCollider2D hitbox;
     public LayerMask enemylayers;
@@ -36,13 +36,15 @@ public class PlayerCombat : MonoBehaviour
     [Header("Blocking")]
     public bool isblocking;
     public bool blockready;
+    public bool blockpriming;
+    public Transform blockcheck;
+    public Vector2 blockarea = new Vector2(0.5F, 0.05f);
 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        dummy = GetComponent<DummyScript>();
         hitbox = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         movement = GetComponent<PlayerMovement>();
@@ -51,14 +53,21 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Blockcheck();
+
         if (movement.hors == -1)
         {
             blockready = true;
+        }
+        else
+        {
+            blockready = false;
         }
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         if (attacking)
         {
+            movement.movespeed = 4f;
             if (movement.isjumping == false)
             {
                 rb.constraints = RigidbodyConstraints2D.FreezePositionY;
@@ -76,6 +85,28 @@ public class PlayerCombat : MonoBehaviour
                 attacking = false;
             }
         }
+        if (attacking == false)
+        {
+            movement.movespeed = 8f;
+        }
+    }
+    public void Blockcheck()
+    {
+        if (Physics2D.OverlapBox(blockcheck.position, blockarea, 0, enemylayers))
+        {
+            blockpriming = true;
+
+            if (blockready && blockpriming && combat2.attacking)
+            {
+                Debug.Log("GetBlockedBozo");
+                animator.SetBool("IsBlocking", true);
+            }
+            else
+            {
+                animator.SetBool("IsBlocking", false);
+            }
+        }
+       
     }
     public void OnLightKick(InputAction.CallbackContext context)
     {
@@ -89,8 +120,8 @@ public class PlayerCombat : MonoBehaviour
                 attacking = true;
                 Debug.Log("AK 1");
                 animator.SetTrigger("AK1");
-                knockbackx = 4f;
-                knockbacky = 4f;
+                knockbackx = 50f;
+                knockbacky = 10f;
                 comboend = true;
                 zpresses = 0;
                 zp = 0;
@@ -103,7 +134,7 @@ public class PlayerCombat : MonoBehaviour
                     Debug.Log("Kack 1");
                     animator.SetTrigger("IsLKicking");
                     knockbackx = 60f;
-                    knockbacky = 10f;
+                    knockbacky = 20f;
                     comboend = false;
                 }
 
@@ -112,8 +143,8 @@ public class PlayerCombat : MonoBehaviour
                     attacking = true;
                     Debug.Log("Kack 2");
                     animator.SetTrigger("LK2");
-                    knockbackx = -2f;
-                    knockbacky = 6f;
+                    knockbackx = 30f;
+                    knockbacky = 30f;
                 }
 
                 if (zpresses == 3)
@@ -122,8 +153,8 @@ public class PlayerCombat : MonoBehaviour
                     Debug.Log("Kack 3");
                     animator.SetTrigger("LK3");
                     comboend = true;
-                    knockbackx = 10f;
-                    knockbacky = 24f;
+                    knockbackx = 100f;
+                    knockbacky = 40f;
                 }
                 if (zpresses == 4)
                 {
@@ -169,7 +200,7 @@ public class PlayerCombat : MonoBehaviour
                     Debug.Log("Pawnch 1");
                     animator.SetTrigger("LP1");
                     knockbackx = -20f;
-                    knockbacky = 20f;
+                    knockbacky = 0f;
                     comboend = false;
                 }
 
@@ -179,7 +210,7 @@ public class PlayerCombat : MonoBehaviour
                     Debug.Log("Pawnch 2");
                     animator.SetTrigger("LP2");
                     knockbackx = -30f;
-                    knockbacky = 40f;
+                    knockbacky = 0f;
                 }
 
                 if (zpresses == 3)
@@ -189,7 +220,7 @@ public class PlayerCombat : MonoBehaviour
                     animator.SetTrigger("LP3");
                     comboend = true;
                     knockbackx = 100f;
-                    knockbacky = 70f;
+                    knockbacky = 50f;
                 }
                 if (zpresses == 4)
                 {
@@ -212,13 +243,27 @@ public class PlayerCombat : MonoBehaviour
     {
         if (collision.gameObject.tag == "P2")
         {
-            if (attacking)
+            if (attacking && combat2.attacking == false)
             {
                 Debug.Log("Inflicted Damage");
                 health2.takedamage(attackDamage);
                 rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
             }
+            if (attacking && combat2.attacking == false)
+            {
+                Debug.Log("clash");
+                rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
+            }
+            if (blockready && blockpriming)
+            {
+                FindObjectOfType<SoundManager>().Play("BigThuddy1");
+            }
         }
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireCube(blockcheck.position, blockarea);
     }
     /*
         public Animator animator;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9142739580475022835}
   - component: {fileID: 5577432849467173093}
   - component: {fileID: 3877433336888957916}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4896,7 +4896,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2399742081762620908}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: groundcheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4935,7 +4935,7 @@ GameObject:
   - component: {fileID: 4268847411503749350}
   - component: {fileID: -720062735951227050}
   - component: {fileID: 3817219913100049725}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: P2 Biggee
   m_TagString: P2
   m_Icon: {fileID: 0}
@@ -5120,6 +5120,7 @@ MonoBehaviour:
   health: {fileID: 0}
   rb: {fileID: 3264055220040695127}
   dummy: {fileID: 0}
+  combat: {fileID: 0}
   movement2: {fileID: 4268847411503749350}
   animator: {fileID: 4335579968154530982}
   hitbox: {fileID: 5154598446355292800}
@@ -5309,6 +5310,7 @@ MonoBehaviour:
   combat2: {fileID: 4172665603626968409}
   animator: {fileID: 4335579968154530982}
   hit: {fileID: 5577432849467173093}
+  pfp: {fileID: 0}
 --- !u!1 &8000446194415790450
 GameObject:
   m_ObjectHideFlags: 0
@@ -5319,7 +5321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3952213315350018813}
   - component: {fileID: 5154598446355292800}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}

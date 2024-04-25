@@ -109,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, jumpforce);
                 jumpsremaining--;
                 isjumping = true;
+                FindObjectOfType<SoundManager>().Play("JumpSFX");
                 animator.SetBool("IsJumping", true);
                 animator.SetBool("IsFalling", false);
             }

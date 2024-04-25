@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HealthScript : MonoBehaviour
@@ -11,11 +12,15 @@ public class HealthScript : MonoBehaviour
     public float chipspeed = 2f;
     public Image frontbar;
     public Image backbar;
+    public bool hurt;
+    public float stuntime = .5f;
+    public float hurttime;
 
     public Rigidbody2D rb;
-    Animator animator;
     public PlayerCombat combat;
     public Player2combat combat2;
+    public Animator animator;
+    public ParticleSystem hit = default;
     public GameObject pfp;
 
     // Start is called before the first frame update
@@ -38,12 +43,31 @@ public class HealthScript : MonoBehaviour
         {
             Die();
         }
+
+        if (hurt)
+        {
+
+
+
+            hurttime += 1 * Time.deltaTime;
+
+            if (hurttime > stuntime)
+            {
+                hurt = false;
+                hurttime = 0;
+                animator.SetBool("Hurt", false);
+            }
+        }
     }
     public void takedamage(float damage)
     {
         currenthealth -= damage;
+        rb.AddForce(new Vector2(combat.knockbackx, combat.knockbacky), ForceMode2D.Impulse);
         lerptimer = 0f;
         animator.SetBool("Hurt", true);
+        hurt = true;
+        FindObjectOfType<SoundManager>().Play("Hurt1");
+        hit.Play();
 
     }
     public void restorehealth(int healamount)
@@ -76,8 +100,7 @@ public class HealthScript : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("LETMEGETUP");
-        // die animation
-        // respawn dummy
+        Debug.Log("LETP1GETUP");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
