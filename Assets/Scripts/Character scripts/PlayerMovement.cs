@@ -41,6 +41,10 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (transform.rotation != Quaternion.Euler(0, 0, 0))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
         yvelo = rb.velocity.y;
         rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
         animator.SetFloat("Speed", rb.velocity.x);

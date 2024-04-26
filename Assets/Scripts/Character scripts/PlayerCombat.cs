@@ -19,14 +19,18 @@ public class PlayerCombat : MonoBehaviour
     public InputActionReference HeavyPunch;
     public InputActionReference HeavyKick;
 
+    [Header("Delays")]
+    public float lastclickedtime = 0f;
+    public float maxcombodelay = 1f;
+    public float delaytimer = 0f;
+    public float delay = 1f;
+
     [Header("Knockback")]
     public float knockbackx = 0f; //Change later for each attack fix kb https://www.youtube.com/watch?v=Jy1yXbKYW68
     public float knockbacky = 0f; //Change later for each attack
 
     [Header("Damage")]
-    public float lastclickedtime = 0f;
     public int attackDamage = 40; //Change later for each attack
-    public float maxcombodelay = 1f;
     public static int zpresses = 0;
     public float attackwait;
     public bool attacking;
@@ -65,13 +69,30 @@ public class PlayerCombat : MonoBehaviour
         }
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
+        if (comboend)
+        {
+            delaytimer += 1 * Time.deltaTime;
+            zpresses = 0;
+            zp = 0;
+
+            if (delaytimer >= delay)
+            {
+                comboend = false;
+                Debug.Log("attack Delay");
+                delaytimer = 0;
+            }
+        }
+        if (comboend == false)
+        {
+
+        }
+
         if (attacking)
         {
             movement.movespeed = 4f;
             if (movement.isjumping == false)
             {
                 rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-                Debug.Log("YfreezeON");
             } 
 
             lastclickedtime += 1 * Time.deltaTime;
@@ -96,14 +117,25 @@ public class PlayerCombat : MonoBehaviour
         {
             blockpriming = true;
 
-            if (blockready && blockpriming && combat2.attacking)
+            if (blockready && blockpriming && combat2.attacking && movement.iscrouching == false)
             {
                 Debug.Log("GetBlockedBozo");
                 animator.SetBool("IsBlocking", true);
+
             }
             else
             {
                 animator.SetBool("IsBlocking", false);
+            }
+
+            if (blockready && blockpriming && combat2.attacking && movement.iscrouching)
+            {
+                Debug.Log("GetCBlockedBozo");
+                animator.SetBool("IsCrouchBlocking", true);
+            }
+            else
+            {
+                animator.SetBool("IsCrouchBlocking", false);
             }
         }
        
@@ -112,56 +144,60 @@ public class PlayerCombat : MonoBehaviour
     {
         if (context.performed)
         {
-            zpresses++;
-            zp++;
-
-            if (movement.isjumping == true)
+            if (comboend == false)
             {
-                attacking = true;
-                Debug.Log("AK 1");
-                animator.SetTrigger("AK1");
-                knockbackx = 50f;
-                knockbacky = 10f;
-                comboend = true;
-                zpresses = 0;
-                zp = 0;
-            }
-            if (movement.isjumping == false)
-            {
-                if (zpresses == 1)
-                {
-                    attacking = true;
-                    Debug.Log("Kack 1");
-                    animator.SetTrigger("IsLKicking");
-                    knockbackx = 60f;
-                    knockbacky = 20f;
-                    comboend = false;
-                }
+                zpresses++;
+                zp++;
 
-                if (zpresses == 2)
+                if (movement.isjumping == true)
                 {
                     attacking = true;
-                    Debug.Log("Kack 2");
-                    animator.SetTrigger("LK2");
-                    knockbackx = 30f;
-                    knockbacky = 30f;
-                }
-
-                if (zpresses == 3)
-                {
-                    attacking = true;
-                    Debug.Log("Kack 3");
-                    animator.SetTrigger("LK3");
+                    Debug.Log("AK 1");
+                    animator.SetTrigger("AK1");
+                    knockbackx = 50f;
+                    knockbacky = 10f;
                     comboend = true;
-                    knockbackx = 100f;
-                    knockbacky = 40f;
-                }
-                if (zpresses == 4)
-                {
-                    attacking = false;
                     zpresses = 0;
                     zp = 0;
-                    attacking = false;
+                }
+                if (movement.isjumping == false)
+                {
+                    if (zpresses == 1)
+                    {
+                        attacking = true;
+                        Debug.Log("Kack 1");
+                        animator.SetTrigger("IsLKicking");
+                        knockbackx = 60f;
+                        knockbacky = 20f;
+                        comboend = false;
+                    }
+
+                    if (zpresses == 2)
+                    {
+                        attacking = true;
+                        Debug.Log("Kack 2");
+                        animator.SetTrigger("LK2");
+                        knockbackx = 30f;
+                        knockbacky = 30f;
+                    }
+
+                    if (zpresses == 3)
+                    {
+                        attacking = true;
+                        Debug.Log("Kack 3");
+                        animator.SetTrigger("LK3");
+                        comboend = true;
+                        knockbackx = 100f;
+                        knockbacky = 40f;
+                    }
+                    if (zpresses == 4)
+                    {
+                        attacking = false;
+                    }
+                }
+                else
+                {
+                    return;
                 }
             }
 
@@ -174,63 +210,76 @@ public class PlayerCombat : MonoBehaviour
     public void OnLightPunch(InputAction.CallbackContext context)
     {
         rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-        Debug.Log("YfreezeOFF");
 
         if (context.performed)
         {
-            if (movement.isjumping == true)
+            if (context.performed)
             {
-                attacking = true;
-                Debug.Log("AK 1");
-                animator.SetTrigger("AK1");
-                knockbackx = 60f;
-                knockbacky = 10f;
-                comboend = true;
-                zpresses = 0;
-                zp = 0;
+                if (comboend == false)
+                {
+                    if (comboend == false)
+                    {
+
+
+                    }
+                    if (movement.isjumping == true)
+                    {
+                        attacking = true;
+                        Debug.Log("AK 1");
+                        animator.SetTrigger("AK1");
+                        knockbackx = 60f;
+                        knockbacky = 10f;
+                        comboend = true;
+                        zpresses = 0;
+                        zp = 0;
+                    }
+                    if (movement.isjumping == false)
+                    {
+                        zpresses++;
+                        zp++;
+
+                        if (zpresses == 1)
+                        {
+                            attacking = true;
+                            Debug.Log("Pawnch 1");
+                            animator.SetTrigger("LP1");
+                            knockbackx = -20f;
+                            knockbacky = 20f;
+                            comboend = false;
+                        }
+
+                        if (zpresses == 2)
+                        {
+                            attacking = true;
+                            Debug.Log("Pawnch 2");
+                            animator.SetTrigger("LP2");
+                            knockbackx = -30f;
+                            knockbacky = 40f;
+                        }
+
+                        if (zpresses == 3)
+                        {
+                            attacking = true;
+                            Debug.Log("Pawnch 3");
+                            animator.SetTrigger("LP3");
+                            comboend = true;
+                            knockbackx = 100f;
+                            knockbacky = 70f;
+                        }
+                        if (zpresses == 4)
+                        {
+                            attacking = false;
+                        }
+
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+
             }
-            if (movement.isjumping == false)
-            {
-                zpresses++;
-                zp++;
 
-                if (zpresses == 1)
-                {
-                    attacking = true;
-                    Debug.Log("Pawnch 1");
-                    animator.SetTrigger("LP1");
-                    knockbackx = -20f;
-                    knockbacky = 0f;
-                    comboend = false;
-                }
-
-                if (zpresses == 2)
-                {
-                    attacking = true;
-                    Debug.Log("Pawnch 2");
-                    animator.SetTrigger("LP2");
-                    knockbackx = -30f;
-                    knockbacky = 0f;
-                }
-
-                if (zpresses == 3)
-                {
-                    attacking = true;
-                    Debug.Log("Pawnch 3");
-                    animator.SetTrigger("LP3");
-                    comboend = true;
-                    knockbackx = 100f;
-                    knockbacky = 50f;
-                }
-                if (zpresses == 4)
-                {
-                    attacking = false;
-                    zpresses = 0;
-                    zp = 0;
-                    attacking = false;
-                }
-            }
-            
         }
 
         if (context.canceled)
@@ -249,7 +298,7 @@ public class PlayerCombat : MonoBehaviour
                 health2.takedamage(attackDamage);
                 rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
             }
-            if (attacking && combat2.attacking == false)
+            if (attacking && combat2.attacking == true)
             {
                 Debug.Log("clash");
                 rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);

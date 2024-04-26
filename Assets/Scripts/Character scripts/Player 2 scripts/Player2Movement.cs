@@ -46,6 +46,11 @@ public class Player2Movement : MonoBehaviour
 
     private void Update()
     {
+        if (transform.rotation != Quaternion.Euler(0, 0, 0))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+
         yvelo = rb.velocity.y;
         rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
         animator.SetFloat("Speed", rb.velocity.x);
@@ -56,6 +61,7 @@ public class Player2Movement : MonoBehaviour
         if (rb.velocity.y > 1.5)
         {
             isjumping = true;
+            jumpsremaining = 0;
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsFalling", false);
         }

@@ -2227,6 +2227,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2399742081762620908, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.04487801
+      objectReference: {fileID: 0}
+    - target: {fileID: 2399742081762620908, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.87
+      objectReference: {fileID: 0}
     - target: {fileID: 3817219913100049725, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
       propertyPath: pfp
       value: 
@@ -2244,6 +2252,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1909898287}
     - target: {fileID: 4172665603626968409, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
+      propertyPath: delay
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4172665603626968409, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
       propertyPath: dummy
       value: 
       objectReference: {fileID: 8378480153240522094}
@@ -2255,6 +2267,10 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 1798164714}
+    - target: {fileID: 4268847411503749350, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
+      propertyPath: groundchecksize.y
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 7821279242919190250, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
       propertyPath: m_Name
       value: P2 Biggee
@@ -3117,6 +3133,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 225856670}
     - target: {fileID: 5801828926454572568, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
+      propertyPath: delay
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5801828926454572568, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
       propertyPath: combat2
       value: 
       objectReference: {fileID: 997371225}
@@ -3124,6 +3144,14 @@ PrefabInstance:
       propertyPath: health2
       value: 
       objectReference: {fileID: 997371226}
+    - target: {fileID: 5801828926454572568, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
+      propertyPath: blockarea.x
+      value: 5.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 5801828926454572568, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
+      propertyPath: blockarea.y
+      value: 1.16
+      objectReference: {fileID: 0}
     - target: {fileID: 7821279242919190250, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
       propertyPath: m_Name
       value: Biggee

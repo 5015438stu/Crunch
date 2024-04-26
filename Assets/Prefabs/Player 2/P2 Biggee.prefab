@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &250298345030132862
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 955425872874215451}
+  m_Layer: 0
+  m_Name: blockrange
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &955425872874215451
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250298345030132862}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.109756, y: 0.03255811, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 149737751057704143}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &995583303876551909
 GameObject:
   m_ObjectHideFlags: 0
@@ -4957,6 +4988,7 @@ Transform:
   m_Children:
   - {fileID: 2399742081762620908}
   - {fileID: 3952213315350018813}
+  - {fileID: 955425872874215451}
   - {fileID: 9142739580475022835}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5120,6 +5152,7 @@ MonoBehaviour:
   health: {fileID: 0}
   rb: {fileID: 3264055220040695127}
   dummy: {fileID: 0}
+  combat2: {fileID: 4172665603626968409}
   combat: {fileID: 0}
   movement2: {fileID: 4268847411503749350}
   animator: {fileID: 4335579968154530982}
@@ -5131,15 +5164,22 @@ MonoBehaviour:
   LightKick: {fileID: -3662175730211792092, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   HeavyPunch: {fileID: 6381211458312739477, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   HeavyKick: {fileID: -9066179745752283474, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
-  attackDamage: 40
   lastclickedtime: 0
   maxcombodelay: 1
+  delaytimer: 0
+  delay: 1
+  attackDamage: 40
   attackwait: 0
   attacking: 0
   zp: 0
   comboend: 0
   knockbackx: 0
   knockbacky: 0
+  isblocking: 0
+  blockready: 0
+  blockpriming: 0
+  blockcheck: {fileID: 955425872874215451}
+  blockarea: {x: 6.8, y: 0}
 --- !u!114 &4268847411503749350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5264,7 +5304,19 @@ MonoBehaviour:
     m_ActionId: 4b882404-b6b9-432e-ae41-0585c6126491
     m_ActionName: Gameplay/LightPunch[/Keyboard/z,/XInputControllerWindows/buttonNorth]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4172665603626968409}
+        m_TargetAssemblyTypeName: Player2combat, Assembly-CSharp
+        m_MethodName: OnLightKick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 4b1be47e-da57-4ba2-89d7-58fcb98f256c
     m_ActionName: Gameplay/LightKick[/Keyboard/x]
   - m_PersistentCalls:
