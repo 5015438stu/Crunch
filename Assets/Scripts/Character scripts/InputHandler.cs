@@ -7,6 +7,8 @@ using Cinemachine;
 
 public class InputHandler : MonoBehaviour
 {
+    static public InputHandler Instance;
+
     float currenttime = 0f;
     public float startingtime = 300f;
     public CinemachineVirtualCamera vc;

@@ -1759,9 +1759,10 @@ GameObject:
   - component: {fileID: 716926446}
   - component: {fileID: 716926448}
   - component: {fileID: 716926447}
+  - component: {fileID: 716926449}
   m_Layer: 5
   m_Name: P2Fbar
-  m_TagString: Untagged
+  m_TagString: p2fbar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1823,6 +1824,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716926445}
   m_CullTransparentMesh: 1
+--- !u!114 &716926449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716926445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c39f7f6b973985340b1d43538e412774, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Image: {fileID: 0}
 --- !u!1 &721850108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,7 +1850,7 @@ GameObject:
   - component: {fileID: 721850110}
   m_Layer: 5
   m_Name: pfp
-  m_TagString: Untagged
+  m_TagString: biggeep2pfp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2143,9 +2157,10 @@ GameObject:
   - component: {fileID: 780181642}
   - component: {fileID: 780181644}
   - component: {fileID: 780181643}
+  - component: {fileID: 780181645}
   m_Layer: 5
   m_Name: P2Bbar
-  m_TagString: Untagged
+  m_TagString: p2bbar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2207,6 +2222,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780181641}
   m_CullTransparentMesh: 1
+--- !u!114 &780181645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780181641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a507161f434948c4c83434fd335a8fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 780181643}
 --- !u!1 &837724875
 GameObject:
   m_ObjectHideFlags: 0
@@ -3050,9 +3078,10 @@ GameObject:
   - component: {fileID: 1143636094}
   - component: {fileID: 1143636096}
   - component: {fileID: 1143636095}
+  - component: {fileID: 1143636097}
   m_Layer: 5
   m_Name: P1Fbar
-  m_TagString: Untagged
+  m_TagString: p1fbar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3114,6 +3143,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1143636093}
   m_CullTransparentMesh: 1
+--- !u!114 &1143636097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143636093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bee23cf103c302479f02480331dfc6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1143636095}
 --- !u!1 &1234475941
 GameObject:
   m_ObjectHideFlags: 0
@@ -4262,9 +4304,10 @@ GameObject:
   - component: {fileID: 2097179371}
   - component: {fileID: 2097179373}
   - component: {fileID: 2097179372}
+  - component: {fileID: 2097179374}
   m_Layer: 5
   m_Name: P1Bbar
-  m_TagString: Untagged
+  m_TagString: p1bbar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4326,6 +4369,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097179370}
   m_CullTransparentMesh: 1
+--- !u!114 &2097179374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2097179370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dafd9bde1b2f174eac843410e2202ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 2097179372}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

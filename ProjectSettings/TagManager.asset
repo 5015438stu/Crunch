@@ -8,6 +8,10 @@ TagManager:
   - P1
   - P2
   - selector
+  - p2fbar
+  - p2bbar
+  - p1fbar
+  - p1bbar
   layers:
   - Default
   - TransparentFX

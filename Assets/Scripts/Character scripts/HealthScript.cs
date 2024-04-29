@@ -10,8 +10,6 @@ public class HealthScript : MonoBehaviour
     public float currenthealth;
     public float lerptimer;
     public float chipspeed = 2f;
-    public Image frontbar;
-    public Image backbar;
     public bool hurt;
     public float stuntime = .5f;
     public float hurttime;
@@ -22,6 +20,8 @@ public class HealthScript : MonoBehaviour
     public Animator animator;
     public ParticleSystem hit = default;
     public GameObject pfp;
+    public Image frontbar;
+    public Image backbar;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +29,8 @@ public class HealthScript : MonoBehaviour
         pfp.SetActive(true);
         currenthealth = playerhealth;
         GetComponent<GameObject>();
-        GetComponent<Rigidbody2D>();
-        GetComponent<Player2combat>();
+        GetComponent<Rigidbody2D>();/*
+        combat2 = GameObject.FindWithTag("P2").GetComponent<Player2combat>();*/
     }
     // Update is called once per frame
     void Update()

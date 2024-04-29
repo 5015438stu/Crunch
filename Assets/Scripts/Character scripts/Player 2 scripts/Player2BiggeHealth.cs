@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -26,7 +27,8 @@ public class Player2BiggeHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<GameObject>();
+        combat = GameObject.FindWithTag("P1").GetComponent<PlayerCombat>();
+        pfp = GetComponent<GameObject>();
         pfp.SetActive(true);
         currenthealth = playerhealth;
     }

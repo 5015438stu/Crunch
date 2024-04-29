@@ -308,11 +308,13 @@ MonoBehaviour:
   LightKick: {fileID: -3662175730211792092, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   HeavyPunch: {fileID: 6381211458312739477, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   HeavyKick: {fileID: -9066179745752283474, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
+  lastclickedtime: 0
+  maxcombodelay: 1
+  delaytimer: 0
+  delay: 0.6
   knockbackx: 0
   knockbacky: 0
-  lastclickedtime: 0
   attackDamage: 40
-  maxcombodelay: 1
   attackwait: 0
   attacking: 0
   zp: 0
@@ -321,7 +323,7 @@ MonoBehaviour:
   blockready: 0
   blockpriming: 0
   blockcheck: {fileID: 8240979997264112985}
-  blockarea: {x: 6.79, y: 0}
+  blockarea: {x: 5.51, y: 1.16}
 --- !u!114 &3764617882174446945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -338,8 +340,6 @@ MonoBehaviour:
   currenthealth: 0
   lerptimer: 0
   chipspeed: 2
-  frontbar: {fileID: 0}
-  backbar: {fileID: 0}
   hurt: 0
   stuntime: 0.5
   hurttime: 0
@@ -347,8 +347,10 @@ MonoBehaviour:
   combat: {fileID: 5801828926454572568}
   combat2: {fileID: 0}
   animator: {fileID: 4335579968154530982}
-  hit: {fileID: 0}
+  hit: {fileID: 6562939970697868121}
   pfp: {fileID: 0}
+  frontbar: {fileID: 0}
+  backbar: {fileID: 0}
 --- !u!114 &-6911828012864639915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,7 +500,7 @@ Transform:
   m_GameObject: {fileID: 7832786864034155481}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.109756, y: 0.15944193, z: 3.1994743}
+  m_LocalPosition: {x: -0, y: 0.15944193, z: 3.1994743}
   m_LocalScale: {x: 0.6097561, y: 0.4651163, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -52,6 +52,8 @@ public class PlayerCombat : MonoBehaviour
         hitbox = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         movement = GetComponent<PlayerMovement>();
+        combat2 = GameObject.FindWithTag("P2").GetComponent<Player2combat>();
+        health2 = GameObject.FindWithTag("P2").GetComponent<Player2BiggeHealth>();
     }
 
     // Update is called once per frame
