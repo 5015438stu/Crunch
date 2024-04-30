@@ -35,24 +35,34 @@ public class Player2Movement : MonoBehaviour
     public InputActionReference move;
     public InputActionReference jump;
     public InputActionReference crouch;
+    public Player2BiggeHealth health2;
 
     [Header("Fliping")]
     public float P1xpos;
 
+
     public void Start()
     {
+        health2 = GetComponent<Player2BiggeHealth>();
         isjumping = false;
     }
 
     private void Update()
     {
+        if (health2.hurt == true)
+        {
+            return;
+        }
+        else
+        {
+            rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
+        }
         if (transform.rotation != Quaternion.Euler(0, 0, 0))
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
         yvelo = rb.velocity.y;
-        rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
         animator.SetFloat("Speed", rb.velocity.x);
         GroundCheck();
 

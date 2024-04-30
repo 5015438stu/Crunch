@@ -18,8 +18,8 @@ public class eventsystem : MonoBehaviour
     public GameObject Biggee2;
 
 
-    bool p1spawned = false;
-    bool p2spawned = false;
+    public bool p1spawned = false;
+    public bool p2spawned = false;
 
     // Start is called before the first frame update
     void Start()

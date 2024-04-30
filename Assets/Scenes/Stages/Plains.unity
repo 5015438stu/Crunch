@@ -1836,7 +1836,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39f7f6b973985340b1d43538e412774, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Image: {fileID: 0}
+  Image: {fileID: 716926447}
 --- !u!1 &721850108
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,6 +2524,8 @@ MonoBehaviour:
   readytxt: {fileID: 1519864183}
   gotxt: {fileID: 619183200}
   count: 0
+  P1: {fileID: 0}
+  P2: {fileID: 0}
   Countdown: {fileID: 234964951}
 --- !u!1 &901955322
 GameObject:
@@ -3440,6 +3442,8 @@ MonoBehaviour:
   Ash: {fileID: 4383240094313326662, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
   Jean: {fileID: 197629616664244880, guid: 3f1a2a422dc26bb40adb5ef98c5b83f5, type: 3}
   Biggee2: {fileID: 7821279242919190250, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
+  p1spawned: 0
+  p2spawned: 0
 --- !u!4 &1491479911
 Transform:
   m_ObjectHideFlags: 0

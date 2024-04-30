@@ -12,9 +12,12 @@ public class InputHandler : MonoBehaviour
     float currenttime = 0f;
     public float startingtime = 300f;
     public CinemachineVirtualCamera vc;
+    public CinemachineTargetGroup tg;
     public GameObject readytxt;
     public GameObject gotxt;
     public bool count;
+    public GameObject P1;
+    public GameObject P2;
 
     [SerializeField] TextMeshProUGUI Countdown;
 
@@ -23,10 +26,15 @@ public class InputHandler : MonoBehaviour
         StartCoroutine(gamestart());
         currenttime = startingtime;
         count = false;
+        P1 = GameObject.FindWithTag("P1");
+        P2 = GameObject.FindWithTag("P2");
+        vc = gameObject.GetComponent<CinemachineVirtualCamera>();
+        tg = gameObject.GetComponent<CinemachineTargetGroup>();
     }
 
     void Update()
     {
+         
         if (count)
         {
             currenttime -= 1 * Time.deltaTime;

@@ -91,7 +91,8 @@ public class PlayerCombat : MonoBehaviour
 
         if (attacking)
         {
-            movement.movespeed = 4f;
+            movement.movespeed = 6f;
+
             if (movement.isjumping == false)
             {
                 rb.constraints = RigidbodyConstraints2D.FreezePositionY;
@@ -156,8 +157,8 @@ public class PlayerCombat : MonoBehaviour
                     attacking = true;
                     Debug.Log("AK 1");
                     animator.SetTrigger("AK1");
-                    knockbackx = 50f;
-                    knockbacky = 10f;
+                    knockbackx = 40f;
+                    knockbacky = 50f;
                     comboend = true;
                     zpresses = 0;
                     zp = 0;
@@ -169,8 +170,8 @@ public class PlayerCombat : MonoBehaviour
                         attacking = true;
                         Debug.Log("Kack 1");
                         animator.SetTrigger("IsLKicking");
-                        knockbackx = 60f;
-                        knockbacky = 20f;
+                        knockbackx = -20f;
+                        knockbacky = 10f;
                         comboend = false;
                     }
 
@@ -179,8 +180,8 @@ public class PlayerCombat : MonoBehaviour
                         attacking = true;
                         Debug.Log("Kack 2");
                         animator.SetTrigger("LK2");
-                        knockbackx = 30f;
-                        knockbacky = 30f;
+                        knockbackx = -10f;
+                        knockbacky = 20f;
                     }
 
                     if (zpresses == 3)
@@ -189,8 +190,8 @@ public class PlayerCombat : MonoBehaviour
                         Debug.Log("Kack 3");
                         animator.SetTrigger("LK3");
                         comboend = true;
-                        knockbackx = 100f;
-                        knockbacky = 40f;
+                        knockbackx = 30f;
+                        knockbacky = 50f;
                     }
                     if (zpresses == 4)
                     {
@@ -229,8 +230,8 @@ public class PlayerCombat : MonoBehaviour
                         attacking = true;
                         Debug.Log("AK 1");
                         animator.SetTrigger("AK1");
-                        knockbackx = 60f;
-                        knockbacky = 10f;
+                        knockbackx = 40f;
+                        knockbacky = 50f;
                         comboend = true;
                         zpresses = 0;
                         zp = 0;
@@ -246,7 +247,7 @@ public class PlayerCombat : MonoBehaviour
                             Debug.Log("Pawnch 1");
                             animator.SetTrigger("LP1");
                             knockbackx = -20f;
-                            knockbacky = 20f;
+                            knockbacky = 30f;
                             comboend = false;
                         }
 
@@ -255,8 +256,8 @@ public class PlayerCombat : MonoBehaviour
                             attacking = true;
                             Debug.Log("Pawnch 2");
                             animator.SetTrigger("LP2");
-                            knockbackx = -30f;
-                            knockbacky = 40f;
+                            knockbackx = 25f;
+                            knockbacky = 20f;
                         }
 
                         if (zpresses == 3)
@@ -265,8 +266,9 @@ public class PlayerCombat : MonoBehaviour
                             Debug.Log("Pawnch 3");
                             animator.SetTrigger("LP3");
                             comboend = true;
-                            knockbackx = 100f;
-                            knockbacky = 70f;
+                            knockbackx = 40f;
+                            knockbacky = 50f;
+                            lastclickedtime = .9f;
                         }
                         if (zpresses == 4)
                         {
@@ -287,7 +289,7 @@ public class PlayerCombat : MonoBehaviour
         if (context.canceled)
         {
             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-            Debug.Log("YfreezeOFF");
+            
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -298,12 +300,11 @@ public class PlayerCombat : MonoBehaviour
             {
                 Debug.Log("Inflicted Damage");
                 health2.takedamage(attackDamage);
-                rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
             }
             if (attacking && combat2.attacking == true)
             {
+
                 Debug.Log("clash");
-                rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
             }
             if (blockready && blockpriming)
             {

@@ -27,8 +27,12 @@ public class Player2BiggeHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
+        pfp = GetComponent<GameObject>();*/
+
+        GetComponent<GameObject>();
+        GetComponent<Rigidbody2D>();
         combat = GameObject.FindWithTag("P1").GetComponent<PlayerCombat>();
-        pfp = GetComponent<GameObject>();
         pfp.SetActive(true);
         currenthealth = playerhealth;
     }

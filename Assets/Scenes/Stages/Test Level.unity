@@ -1713,7 +1713,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 761572483}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f773ec92c6c1ea4e8324ca57c104ad3, type: 3}
   m_Name: 
@@ -2271,10 +2271,6 @@ PrefabInstance:
       propertyPath: frontbar
       value: 
       objectReference: {fileID: 1909898287}
-    - target: {fileID: 4172665603626968409, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
-      propertyPath: dummy
-      value: 
-      objectReference: {fileID: 8378480153240522094}
     - target: {fileID: 4172665603626968409, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
       propertyPath: combat
       value: 
@@ -4448,9 +4444,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingtime: 999
   vc: {fileID: 0}
+  tg: {fileID: 0}
   readytxt: {fileID: 0}
   gotxt: {fileID: 0}
   count: 0
+  P1: {fileID: 0}
+  P2: {fileID: 0}
   Countdown: {fileID: 2037834683}
 --- !u!1 &2040058146
 GameObject:

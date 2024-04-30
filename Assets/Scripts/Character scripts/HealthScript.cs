@@ -17,6 +17,7 @@ public class HealthScript : MonoBehaviour
     public Rigidbody2D rb;
     public PlayerCombat combat;
     public Player2combat combat2;
+    public PlayerMovement move;
     public Animator animator;
     public ParticleSystem hit = default;
     public GameObject pfp;
@@ -29,6 +30,7 @@ public class HealthScript : MonoBehaviour
         pfp.SetActive(true);
         currenthealth = playerhealth;
         GetComponent<GameObject>();
+        GetComponent<PlayerMovement>();
         GetComponent<Rigidbody2D>();/*
         combat2 = GameObject.FindWithTag("P2").GetComponent<Player2combat>();*/
     }
@@ -46,7 +48,6 @@ public class HealthScript : MonoBehaviour
 
         if (hurt)
         {
-
 
 
             hurttime += 1 * Time.deltaTime;
@@ -80,6 +81,7 @@ public class HealthScript : MonoBehaviour
         float fillf = frontbar.fillAmount;
         float fillb = backbar.fillAmount;
         float hfrac = currenthealth / playerhealth;
+
         if (fillb > hfrac)
         {
             frontbar.fillAmount = hfrac;
