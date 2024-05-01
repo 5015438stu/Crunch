@@ -43,6 +43,7 @@ public class Player2Movement : MonoBehaviour
 
     public void Start()
     {
+        Debug.Log("Stun2");
         health2 = GetComponent<Player2BiggeHealth>();
         isjumping = false;
     }
@@ -57,6 +58,7 @@ public class Player2Movement : MonoBehaviour
         {
             rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
         }
+
         if (transform.rotation != Quaternion.Euler(0, 0, 0))
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);

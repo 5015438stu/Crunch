@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     public InputActionReference move;
     public InputActionReference jump;
     public InputActionReference crouch;
+    public HealthScript health;
 
     [Header("Fliping")]
     public float P2xpos;
@@ -38,13 +39,25 @@ public class PlayerMovement : MonoBehaviour
     public void Start()
     {
         isjumping = false;
+        health = GetComponent<HealthScript>();
     }
     private void Update()
     {
+        if (health.hurt == true)
+        {
+            Debug.Log("Stun1");
+            return;
+        }
+        else
+        {
+            rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
+        }
+
         if (transform.rotation != Quaternion.Euler(0, 0, 0))
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
+
         yvelo = rb.velocity.y;
         rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
         animator.SetFloat("Speed", rb.velocity.x);
@@ -70,6 +83,11 @@ public class PlayerMovement : MonoBehaviour
         if (P2xpos > transform.position.x)
         {
             sprite.flipX = false;
+        }
+
+        if (iscrouching)
+        {
+            movespeed = 0f;
         }
     }
     public void OnCrouch(InputAction.CallbackContext context)

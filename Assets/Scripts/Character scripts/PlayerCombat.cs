@@ -91,7 +91,7 @@ public class PlayerCombat : MonoBehaviour
 
         if (attacking)
         {
-            movement.movespeed = 6f;
+            movement.movespeed = 8f;
 
             if (movement.isjumping == false)
             {
@@ -207,6 +207,8 @@ public class PlayerCombat : MonoBehaviour
             if (context.canceled)
             {
                 attacking = false;
+                rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+                Debug.Log("YfreezeOFF");
             }
         }
     }
@@ -289,7 +291,8 @@ public class PlayerCombat : MonoBehaviour
         if (context.canceled)
         {
             rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-            
+            Debug.Log("YfreezeOFF");
+            attacking = false;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -300,10 +303,11 @@ public class PlayerCombat : MonoBehaviour
             {
                 Debug.Log("Inflicted Damage");
                 health2.takedamage(attackDamage);
+                rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
             }
             if (attacking && combat2.attacking == true)
             {
-
+                rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
                 Debug.Log("clash");
             }
             if (blockready && blockpriming)

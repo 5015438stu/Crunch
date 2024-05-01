@@ -287,7 +287,7 @@ public class Player2combat : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "P1")
+        /*if(collision.gameObject.tag == "P1")
         {
             if (attacking && combat.blockready == false)
             {
@@ -305,6 +305,25 @@ public class Player2combat : MonoBehaviour
                 Debug.Log("clash");
                 rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
                 ///stun
+            }
+        }*/
+
+        if (collision.gameObject.tag == "P1")
+        {
+            if (attacking && combat.attacking == false)
+            {
+                Debug.Log("Inflicted Damage");
+                health.takedamage(attackDamage);
+                rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
+            }
+            if (attacking && combat.attacking == true)
+            {
+                rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
+                Debug.Log("clash");
+            }
+            if (blockready && blockpriming)
+            {
+                FindObjectOfType<SoundManager>().Play("BigThuddy1");
             }
         }
     }

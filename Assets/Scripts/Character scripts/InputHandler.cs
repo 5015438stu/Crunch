@@ -23,6 +23,7 @@ public class InputHandler : MonoBehaviour
 
     void Start()
     {
+        SetCamera();
         StartCoroutine(gamestart());
         currenttime = startingtime;
         count = false;
@@ -46,6 +47,10 @@ public class InputHandler : MonoBehaviour
             }
         }
         
+    }
+    void SetCamera()
+    {
+        tg.AddMember(P1.transform, 1, 0);
     }
     IEnumerator gamestart()
     {

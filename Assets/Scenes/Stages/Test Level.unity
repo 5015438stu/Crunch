@@ -1216,7 +1216,7 @@ Transform:
   m_GameObject: {fileID: 428545604}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.68424034, y: -1.2614, z: -13.199474}
+  m_LocalPosition: {x: -0.6842402, y: -1.2614, z: -13.199474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3121,6 +3121,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 334790748}
     - target: {fileID: 3764617882174446945, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
+      propertyPath: move
+      value: 
+      objectReference: {fileID: 2143120300}
+    - target: {fileID: 3764617882174446945, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
       propertyPath: backbar
       value: 
       objectReference: {fileID: 1984053225}
@@ -3132,6 +3136,10 @@ PrefabInstance:
       propertyPath: frontbar
       value: 
       objectReference: {fileID: 225856670}
+    - target: {fileID: 3764617882174446945, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5801828926454572568, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
       propertyPath: combat2
       value: 
@@ -4605,7 +4613,7 @@ Transform:
   m_GameObject: {fileID: 2079933656}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.68424034, y: -1.2614, z: -13.199474}
+  m_LocalPosition: {x: -0.6842402, y: -1.2614, z: -13.199474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4794,6 +4802,17 @@ MonoBehaviour:
   hitbox: {fileID: 8378480153240522090}
   combat: {fileID: 0}
   healtbar: {fileID: 0}
+--- !u!114 &2143120300 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1633672076579802590, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
+  m_PrefabInstance: {fileID: 1528944543}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b72cb6aa4482b24a9df7d3118d04a08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8378480153240522089
 PrefabInstance:
   m_ObjectHideFlags: 0
