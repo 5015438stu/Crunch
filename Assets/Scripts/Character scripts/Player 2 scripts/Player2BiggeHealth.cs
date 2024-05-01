@@ -11,8 +11,6 @@ public class Player2BiggeHealth : MonoBehaviour
     public float currenthealth;
     public float lerptimer;
     public float chipspeed = 2f;
-    public Image frontbar;
-    public Image backbar;
     public bool hurt;
     public float stuntime = .5f;
     public float hurttime;
@@ -20,19 +18,21 @@ public class Player2BiggeHealth : MonoBehaviour
     public Rigidbody2D rb;
     public PlayerCombat combat;
     public Player2combat combat2;
+    public Player2Movement movement;
     public Animator animator;
     public ParticleSystem hit = default;
     public GameObject pfp;
+    public Image frontbar;
+    public Image backbar;
 
     // Start is called before the first frame update
     void Start()
     {
-        /*
-        pfp = GetComponent<GameObject>();*/
-
         GetComponent<GameObject>();
         GetComponent<Rigidbody2D>();
+        GetComponent<Player2Movement>();
         combat = GameObject.FindWithTag("P1").GetComponent<PlayerCombat>();
+
         pfp.SetActive(true);
         currenthealth = playerhealth;
     }

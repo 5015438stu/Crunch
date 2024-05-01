@@ -61,6 +61,15 @@ public class PlayerCombat : MonoBehaviour
     {
         Blockcheck();
 
+        if (movement.flipped)
+        {
+            knockbackx *= -1;
+        }
+        else
+        {
+            return;
+        }
+
         if (movement.hors == -1)
         {
             blockready = true;

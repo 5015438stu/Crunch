@@ -18,6 +18,8 @@ public class InputHandler : MonoBehaviour
     public bool count;
     public GameObject P1;
     public GameObject P2;
+    public float roundcount;
+    public float rountwincount;
 
     [SerializeField] TextMeshProUGUI Countdown;
 
@@ -27,8 +29,8 @@ public class InputHandler : MonoBehaviour
         StartCoroutine(gamestart());
         currenttime = startingtime;
         count = false;
-        P1 = GameObject.FindWithTag("P1");
-        P2 = GameObject.FindWithTag("P2");
+        P1 = GameObject.Find("Biggee(Clone)");
+        P2 = GameObject.Find("P2 Biggee(Clone)");
         vc = gameObject.GetComponent<CinemachineVirtualCamera>();
         tg = gameObject.GetComponent<CinemachineTargetGroup>();
     }
@@ -48,7 +50,7 @@ public class InputHandler : MonoBehaviour
         }
         
     }
-    void SetCamera()
+    public void SetCamera()
     {
         tg.AddMember(P1.transform, 1, 0);
     }

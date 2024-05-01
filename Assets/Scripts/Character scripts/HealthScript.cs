@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class HealthScript : MonoBehaviour
 {
+    [Header("Health")]
     public float playerhealth = 1000;
     public float currenthealth;
     public float lerptimer;
@@ -14,6 +15,7 @@ public class HealthScript : MonoBehaviour
     public float stuntime = .5f;
     public float hurttime;
 
+    [Header("Refs")]
     public Rigidbody2D rb;
     public PlayerCombat combat;
     public Player2combat combat2;
@@ -24,15 +26,20 @@ public class HealthScript : MonoBehaviour
     public Image frontbar;
     public Image backbar;
 
+    [Header("Misc")]
+    public float deaths;
+
     // Start is called before the first frame update
     void Start()
     {
-        pfp.SetActive(true);
-        currenthealth = playerhealth;
         GetComponent<GameObject>();
         GetComponent<PlayerMovement>();
-        GetComponent<Rigidbody2D>();/*
-        combat2 = GameObject.FindWithTag("P2").GetComponent<Player2combat>();*/
+        GetComponent<Rigidbody2D>();
+        GetComponent<PlayerMovement>();
+        combat2 = GameObject.FindWithTag("P2").GetComponent<Player2combat>();
+
+        pfp.SetActive(true);
+        currenthealth = playerhealth;
     }
     // Update is called once per frame
     void Update()
@@ -104,5 +111,6 @@ public class HealthScript : MonoBehaviour
     {
         Debug.Log("LETP1GETUP");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        deaths++;
     }
 }

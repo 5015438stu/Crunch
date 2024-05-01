@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Misc")]
+    public Transform trans;
+
     [Header("Movement")]
     public float movespeed = 8f;
     public float hors;
@@ -35,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Fliping")]
     public float P2xpos;
+    public bool flipped;
 
     public void Start()
     {
@@ -59,7 +63,9 @@ public class PlayerMovement : MonoBehaviour
         }
 
         yvelo = rb.velocity.y;
+
         rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
+
         animator.SetFloat("Speed", rb.velocity.x);
         GroundCheck();
 
@@ -79,10 +85,12 @@ public class PlayerMovement : MonoBehaviour
         if (P2xpos < transform.position.x)
         {
             sprite.flipX = true;
+            flipped = true;
         }
         if (P2xpos > transform.position.x)
         {
             sprite.flipX = false;
+            flipped = false;
         }
 
         if (iscrouching)
