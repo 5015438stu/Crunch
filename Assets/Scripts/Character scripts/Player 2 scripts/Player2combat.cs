@@ -69,6 +69,7 @@ public class Player2combat : MonoBehaviour
         {
             blockready = true;
         }
+
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         if (comboend)
@@ -121,7 +122,7 @@ public class Player2combat : MonoBehaviour
         {
             blockpriming = true;
 
-            if (blockready && blockpriming && combat.attacking)
+            if (blockready && blockpriming && combat.attacking) /// blocking
             {
                 Debug.Log("GetBlockedBozo");
                 animator.SetBool("IsBlocking", true);
@@ -130,19 +131,23 @@ public class Player2combat : MonoBehaviour
             {
                 animator.SetBool("IsBlocking", false);
             }
+
+            if (blockready && blockpriming && combat.attacking && movement2.iscrouching)
+            {
+                Debug.Log("GetCBlockedBozo");
+                animator.SetBool("IsCrouchBlocking", true);
+            }
+            else
+            {
+                animator.SetBool("IsCrouchBlocking", false);
+            }
         }
-        if (blockready && blockpriming && combat.attacking && movement2.iscrouching)
-        {
-            Debug.Log("GetCBlockedBozo");
-            animator.SetBool("IsCrouchBlocking", true);
-        }
-        else
-        {
-            animator.SetBool("IsCrouchBlocking", false);
-        }
+        
     }
     public void OnLightKick(InputAction.CallbackContext context)
     {
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+
         if (context.performed)
         {
             if (comboend == false)
@@ -205,6 +210,7 @@ public class Player2combat : MonoBehaviour
             if (context.canceled)
             {
                 attacking = false;
+                rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             }
         }
     }
@@ -310,13 +316,13 @@ public class Player2combat : MonoBehaviour
 
         if (collision.gameObject.tag == "P1")
         {
-            if (attacking && combat.attacking == false)
+            if (attacking && combat.attacking == false) //normal hit
             {
                 Debug.Log("Inflicted Damage");
                 health.takedamage(attackDamage);
                 rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
             }
-            if (attacking && combat.attacking == true)
+            if (attacking && combat.attacking == true) //clashing
             {
                 rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
                 Debug.Log("clash");

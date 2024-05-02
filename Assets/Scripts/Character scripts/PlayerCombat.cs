@@ -78,6 +78,7 @@ public class PlayerCombat : MonoBehaviour
         {
             blockready = false;
         }
+
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         if (comboend)
@@ -86,7 +87,7 @@ public class PlayerCombat : MonoBehaviour
             zpresses = 0;
             zp = 0;
 
-            if (delaytimer >= delay)
+            if (delaytimer <= delay)
             {
                 comboend = false;
                 Debug.Log("attack Delay");
@@ -156,6 +157,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (context.performed)
         {
+
             if (comboend == false)
             {
                 zpresses++;
@@ -216,90 +218,79 @@ public class PlayerCombat : MonoBehaviour
             if (context.canceled)
             {
                 attacking = false;
-                rb.constraints = RigidbodyConstraints2D.FreezePositionY;
                 Debug.Log("YfreezeOFF");
             }
         }
     }
     public void OnLightPunch(InputAction.CallbackContext context)
     {
-        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
 
         if (context.performed)
         {
-            if (context.performed)
+
+            if (comboend == false)
             {
-                if (comboend == false)
+                if (movement.isjumping == true)
                 {
-                    if (comboend == false)
-                    {
+                    attacking = true;
+                    Debug.Log("AK 1");
+                    animator.SetTrigger("AK1");
+                    knockbackx = 40f;
+                    knockbacky = 50f;
+                    comboend = true;
+                    zpresses = 0;
+                    zp = 0;
+                }
+                if (movement.isjumping == false)
+                {
+                    zpresses++;
+                    zp++;
 
-
-                    }
-                    if (movement.isjumping == true)
+                    if (zpresses == 1)
                     {
                         attacking = true;
-                        Debug.Log("AK 1");
-                        animator.SetTrigger("AK1");
+                        Debug.Log("Pawnch 1");
+                        animator.SetTrigger("LP1");
+                        knockbackx = -20f;
+                        knockbacky = 30f;
+                        comboend = false;
+                    }
+
+                    if (zpresses == 2)
+                    {
+                        attacking = true;
+                        Debug.Log("Pawnch 2");
+                        animator.SetTrigger("LP2");
+                        knockbackx = 25f;
+                        knockbacky = 20f;
+                    }
+
+                    if (zpresses == 3)
+                    {
+                        attacking = true;
+                        Debug.Log("Pawnch 3");
+                        animator.SetTrigger("LP3");
+                        comboend = true;
                         knockbackx = 40f;
                         knockbacky = 50f;
-                        comboend = true;
-                        zpresses = 0;
-                        zp = 0;
+                        lastclickedtime = .9f;
                     }
-                    if (movement.isjumping == false)
+                    if (zpresses == 4)
                     {
-                        zpresses++;
-                        zp++;
-
-                        if (zpresses == 1)
-                        {
-                            attacking = true;
-                            Debug.Log("Pawnch 1");
-                            animator.SetTrigger("LP1");
-                            knockbackx = -20f;
-                            knockbacky = 30f;
-                            comboend = false;
-                        }
-
-                        if (zpresses == 2)
-                        {
-                            attacking = true;
-                            Debug.Log("Pawnch 2");
-                            animator.SetTrigger("LP2");
-                            knockbackx = 25f;
-                            knockbacky = 20f;
-                        }
-
-                        if (zpresses == 3)
-                        {
-                            attacking = true;
-                            Debug.Log("Pawnch 3");
-                            animator.SetTrigger("LP3");
-                            comboend = true;
-                            knockbackx = 40f;
-                            knockbacky = 50f;
-                            lastclickedtime = .9f;
-                        }
-                        if (zpresses == 4)
-                        {
-                            attacking = false;
-                        }
-
+                        attacking = false;
                     }
-                    else
-                    {
-                        return;
-                    }
+
                 }
-
+                else
+                {
+                    return;
+                }
             }
 
         }
 
         if (context.canceled)
         {
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             Debug.Log("YfreezeOFF");
             attacking = false;
         }
