@@ -67,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
 
         animator.SetFloat("Speed", rb.velocity.x);
+
         GroundCheck();
 
         P2xpos = GameObject.FindWithTag("P2").transform.position.x;

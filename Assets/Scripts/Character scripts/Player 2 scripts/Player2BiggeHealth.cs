@@ -39,6 +39,14 @@ public class Player2BiggeHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (frontbar == null)
+        {
+            return;
+        }
+        if (backbar == null)
+        {
+            return;
+        }
         currenthealth = Mathf.Clamp(currenthealth, 0, playerhealth);
 
         UpdateHealthUI();

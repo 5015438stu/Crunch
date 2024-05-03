@@ -35,6 +35,15 @@ public class CharacterSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (allbuttons == null)
+        {
+            return;
+        }
+        if (allbuttons2 == null)
+        {
+            return;
+        }
+
         GetComponent<eventsystem>();
 
         if (jean.selectchara == 1)

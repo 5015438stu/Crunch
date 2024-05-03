@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -59,28 +60,6 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Blockcheck();
-
-        if (movement.flipped)
-        {
-            knockbackx *= -1;
-        }
-        else
-        {
-            return;
-        }
-
-        if (movement.hors == -1)
-        {
-            blockready = true;
-        }
-        else
-        {
-            blockready = false;
-        }
-
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-
         if (comboend)
         {
             delaytimer += 1 * Time.deltaTime;
@@ -101,12 +80,16 @@ public class PlayerCombat : MonoBehaviour
 
         if (attacking)
         {
-            movement.movespeed = 8f;
+            movement.movespeed = 6f;
 
             if (movement.isjumping == false)
             {
                 rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-            } 
+            }
+            if (movement.isjumping == true)
+            {
+                rb.constraints = RigidbodyConstraints2D.None;
+            }
 
             lastclickedtime += 1 * Time.deltaTime;
 
@@ -119,10 +102,43 @@ public class PlayerCombat : MonoBehaviour
                 attacking = false;
             }
         }
+
         if (attacking == false)
         {
             movement.movespeed = 8f;
         }
+
+        Blockcheck();
+
+        if (movement.flipped)
+        {
+            knockbackx *= -1;
+        }
+        else
+        {
+            return;
+        }
+
+        if (movement.hors == -1)
+        {
+            blockready = true;
+        }
+        else
+        {
+            blockready = false;
+        }
+        if (movement.hors == 1 && movement.flipped)
+        {
+            blockready = true;
+        }
+        else
+        {
+            blockready = false;
+        }
+
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        
     }
     public void Blockcheck()
     {
@@ -155,6 +171,8 @@ public class PlayerCombat : MonoBehaviour
     }
     public void OnLightKick(InputAction.CallbackContext context)
     {
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+
         if (context.performed)
         {
 
@@ -203,6 +221,7 @@ public class PlayerCombat : MonoBehaviour
                         comboend = true;
                         knockbackx = 30f;
                         knockbacky = 50f;
+                        lastclickedtime = .9f;
                     }
                     if (zpresses == 4)
                     {
@@ -218,7 +237,7 @@ public class PlayerCombat : MonoBehaviour
             if (context.canceled)
             {
                 attacking = false;
-                Debug.Log("YfreezeOFF");
+                rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             }
         }
     }
@@ -291,8 +310,7 @@ public class PlayerCombat : MonoBehaviour
 
         if (context.canceled)
         {
-            Debug.Log("YfreezeOFF");
-            attacking = false;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -307,12 +325,13 @@ public class PlayerCombat : MonoBehaviour
             }
             if (attacking && combat2.attacking == true)
             {
-                rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
+
+                FindObjectOfType<SoundManager>().Play("BigThuddy1");
                 Debug.Log("clash");
             }
-            if (blockready && blockpriming)
+            if (combat2.blockready && combat2.blockpriming)
             {
-                FindObjectOfType<SoundManager>().Play("BigThuddy1");
+                return;
             }
         }
     }

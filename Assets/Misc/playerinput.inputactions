@@ -137,6 +137,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "a8659dca-5673-419f-b7c0-e3ca29f33e3c",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "AD",
                     "id": "1743a52f-720e-4d77-8607-a8139bc22b45",
                     "path": "2DVector",
@@ -274,7 +285,7 @@
                     "path": "<Gamepad>/leftStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -283,6 +294,17 @@
                     "name": "",
                     "id": "51be8edb-cc9d-40a3-9a0e-0316dc816f05",
                     "path": "<SwitchProControllerHID>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Crouch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9f5ccffe-2a00-48cf-8f17-891ca74a6fa8",
+                    "path": "<XInputController>/leftStick/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",

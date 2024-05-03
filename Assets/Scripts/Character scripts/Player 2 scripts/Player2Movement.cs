@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class Player2Movement : MonoBehaviour
 {
+    [Header("Misc")]
+    public Transform trans;
+
     [Header("Movement")]
     public float movespeed = 8f;
     public float hors;
@@ -39,11 +42,10 @@ public class Player2Movement : MonoBehaviour
 
     [Header("Fliping")]
     public float P1xpos;
-
+    public bool flipped;
 
     public void Start()
     {
-        Debug.Log("Stun2");
         health2 = GetComponent<Player2BiggeHealth>();
         isjumping = false;
     }
@@ -52,6 +54,7 @@ public class Player2Movement : MonoBehaviour
     {
         if (health2.hurt == true)
         {
+            Debug.Log("Stun2");
             return;
         }
         else
@@ -65,7 +68,9 @@ public class Player2Movement : MonoBehaviour
         }
 
         yvelo = rb.velocity.y;
+
         animator.SetFloat("Speed", rb.velocity.x);
+
         GroundCheck();
 
         P1xpos = GameObject.FindWithTag("P1").transform.position.x;
@@ -86,10 +91,17 @@ public class Player2Movement : MonoBehaviour
         if (P1xpos < transform.position.x)
         {
             sprite.flipX = true;
+            flipped = true;
         }
         if (P1xpos > transform.position.x)
         {
             sprite.flipX = false;
+            flipped = false;
+        }
+
+        if (iscrouching)
+        {
+            movespeed = 0f;
         }
     }
     public void OnCrouch(InputAction.CallbackContext context)

@@ -51,6 +51,7 @@ public class Player2combat : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         hitbox = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        movement2 = GetComponent<Player2Movement>();
         combat = GameObject.FindWithTag("P1").GetComponent<PlayerCombat>();
         health = GameObject.FindWithTag("P1").GetComponent<HealthScript>();
     }
@@ -59,6 +60,15 @@ public class Player2combat : MonoBehaviour
     void Update()
     {
         Blockcheck();
+
+        if (movement2.flipped)
+        {
+            knockbackx *= -1;
+        }
+        else
+        {
+            return;
+        }
 
         if (movement2.hors <= .9)
         {
@@ -122,7 +132,7 @@ public class Player2combat : MonoBehaviour
         {
             blockpriming = true;
 
-            if (blockready && blockpriming && combat.attacking) /// blocking
+            if (blockready && blockpriming && combat.attacking && movement2.iscrouching == false) /// blocking
             {
                 Debug.Log("GetBlockedBozo");
                 animator.SetBool("IsBlocking", true);
@@ -160,8 +170,8 @@ public class Player2combat : MonoBehaviour
                     attacking = true;
                     Debug.Log("AK 1");
                     animator.SetTrigger("AK1");
-                    knockbackx = 50f;
-                    knockbacky = 10f;
+                    knockbackx = 40f;
+                    knockbacky = 50f;
                     comboend = true;
                     zpresses = 0;
                     zp = 0;
@@ -173,8 +183,8 @@ public class Player2combat : MonoBehaviour
                         attacking = true;
                         Debug.Log("Kack 1");
                         animator.SetTrigger("IsLKicking");
-                        knockbackx = 60f;
-                        knockbacky = 20f;
+                        knockbackx = -20f;
+                        knockbacky = 10f;
                         comboend = false;
                     }
 
@@ -183,8 +193,8 @@ public class Player2combat : MonoBehaviour
                         attacking = true;
                         Debug.Log("Kack 2");
                         animator.SetTrigger("LK2");
-                        knockbackx = 30f;
-                        knockbacky = 30f;
+                        knockbackx = -10f;
+                        knockbacky = 20f;
                     }
 
                     if (zpresses == 3)
@@ -193,8 +203,8 @@ public class Player2combat : MonoBehaviour
                         Debug.Log("Kack 3");
                         animator.SetTrigger("LK3");
                         comboend = true;
-                        knockbackx = 100f;
-                        knockbacky = 40f;
+                        knockbackx = 30f;
+                        knockbacky = 50f;
                     }
                     if (zpresses == 4)
                     {
@@ -223,11 +233,6 @@ public class Player2combat : MonoBehaviour
         {
             if (comboend == false)
             {
-                if (comboend == false)
-                {
-
-
-                }
                 if (movement2.isjumping == true)
                 {
                     attacking = true;
@@ -293,26 +298,6 @@ public class Player2combat : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        /*if(collision.gameObject.tag == "P1")
-        {
-            if (attacking && combat.blockready == false)
-            {
-                Debug.Log("Inflicted Damage");
-                health.takedamage(attackDamage);
-                rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
-            }
-            if (attacking && combat.blockready == true)
-            {
-                FindObjectOfType<SoundManager>().Play("BigThuddy1");
-                ///stun
-            }
-            if (attacking && combat2.attacking == true)
-            {
-                Debug.Log("clash");
-                rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
-                ///stun
-            }
-        }*/
 
         if (collision.gameObject.tag == "P1")
         {
@@ -324,12 +309,13 @@ public class Player2combat : MonoBehaviour
             }
             if (attacking && combat.attacking == true) //clashing
             {
-                rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
-                Debug.Log("clash");
+
+                FindObjectOfType<SoundManager>().Play("BigThuddy2");
+                Debug.Log("clash2");
             }
-            if (blockready && blockpriming)
+            if (combat.blockready && combat.blockpriming)
             {
-                FindObjectOfType<SoundManager>().Play("BigThuddy1");
+                return;
             }
         }
     }
