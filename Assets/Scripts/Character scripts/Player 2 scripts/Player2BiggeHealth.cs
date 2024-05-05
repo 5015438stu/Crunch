@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Player2BiggeHealth : MonoBehaviour
 {
+    [Header("Health")]
     public float playerhealth = 1000;
     public float currenthealth;
     public float lerptimer;
@@ -15,15 +16,19 @@ public class Player2BiggeHealth : MonoBehaviour
     public float stuntime = .5f;
     public float hurttime;
 
+    [Header("Refs")]
     public Rigidbody2D rb;
     public PlayerCombat combat;
     public Player2combat combat2;
-    public Player2Movement movement;
+    public Player2Movement movement2;
     public Animator animator;
     public ParticleSystem hit = default;
     public GameObject pfp;
     public Image frontbar;
     public Image backbar;
+
+    [Header("Misc")]
+    public float deaths;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +58,12 @@ public class Player2BiggeHealth : MonoBehaviour
 
         if (currenthealth <= 0)
         {
+            movement2.movespeed = 0f;
             Die();
+        }
+        else
+        {
+            movement2.movespeed = 8f;
         }
 
         if (hurt)
@@ -113,6 +123,33 @@ public class Player2BiggeHealth : MonoBehaviour
     void Die()
     {
         Debug.Log("LETMEGETUP");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        deaths++;
+        if (InputHandler.Instance != null )
+        {
+            Debug.Log("Round Change");
+            InputHandler.Instance.Roundchange();
+        }
+        else
+        {
+            return;
+        }
+    }
+
+    IEnumerator RoundChange()
+    {
+        if (movement2.isjumping == true)
+        {
+            animator.SetTrigger("KD2");
+        }
+        else
+        {
+            animator.SetTrigger("KD1");
+        }
+
+        yield return new WaitForSeconds(3);
+
+
+        currenthealth = playerhealth;
+
     }
 }

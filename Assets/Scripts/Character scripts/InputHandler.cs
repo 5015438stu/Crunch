@@ -16,6 +16,8 @@ public class InputHandler : MonoBehaviour
     public CinemachineTargetGroup tg;
     public GameObject P1;
     public GameObject P2;
+    public HealthScript health;
+    public Player2BiggeHealth health2;
     public GameObject readytxt;
     public GameObject gotxt;
 
@@ -48,8 +50,10 @@ public class InputHandler : MonoBehaviour
 
         P1 = GameObject.Find("Biggee(Clone)");
         P2 = GameObject.Find("P2 Biggee(Clone)");
-        vc = gameObject.GetComponent<CinemachineVirtualCamera>();
-        tg = gameObject.GetComponent<CinemachineTargetGroup>();
+        vc = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
+        tg = GameObject.Find("Targetgroup").GetComponent<CinemachineTargetGroup>();
+        /*health = GameObject.FindWithTag("P1").GetComponent<HealthScript>();
+        health2 = GameObject.FindWithTag("P2").GetComponent<Player2BiggeHealth>();*/
 
         roundcount = 1;
         rountwincount = 3;
@@ -84,6 +88,10 @@ public class InputHandler : MonoBehaviour
             return;
         }
 
+    }
+    public void Roundchange()
+    {
+        roundcount++;
     }
     public void SetCamera()
     {

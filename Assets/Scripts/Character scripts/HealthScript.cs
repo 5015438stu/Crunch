@@ -46,11 +46,23 @@ public class HealthScript : MonoBehaviour
     {
         currenthealth = Mathf.Clamp(currenthealth, 0, playerhealth);
 
-        UpdateHealthUI();
+        if (frontbar != null )
+        {
+            UpdateHealthUI();
+        }
+        else
+        {
+            return;
+        }
 
         if (currenthealth <= 0)
         {
+            move.movespeed = 0f;
             Die();
+        }
+        else
+        {
+            move.movespeed = 8f;
         }
 
         if (hurt)
@@ -110,7 +122,38 @@ public class HealthScript : MonoBehaviour
     void Die()
     {
         Debug.Log("LETP1GETUP");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+
         deaths++;
+
+        if (InputHandler.Instance != null)
+        {
+            Debug.Log("Round Change");
+            InputHandler.Instance.Roundchange();
+        }
+        else
+        {
+            return;
+        }
+
+        StartCoroutine(RoundChange());
+    }
+
+    IEnumerator RoundChange()
+    {
+        if (move.isjumping == true)
+        {
+            animator.SetTrigger("KD2");
+        }
+        else
+        {
+            animator.SetTrigger("KD1");
+        }
+
+        yield return new WaitForSeconds(3);
+
+
+        currenthealth = playerhealth;
+
     }
 }
