@@ -79,7 +79,6 @@ public class InputHandler : MonoBehaviour
 
         if (P1 != null)
         {
-
             SetCamera();
 
         } 
@@ -95,6 +94,7 @@ public class InputHandler : MonoBehaviour
     }
     public void SetCamera()
     {
+        Debug.Log("CameraSet");
         tg.AddMember(P1.transform, 1, 0);
         tg.AddMember(P2.transform, 1, 0);
     }

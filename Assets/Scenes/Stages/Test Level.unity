@@ -1140,7 +1140,7 @@ Transform:
   m_GameObject: {fileID: 428545604}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6842402, y: -1.2614, z: -13.199474}
+  m_LocalPosition: {x: -0.68424034, y: -1.2614, z: -13.199474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2273,6 +2273,18 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: JumpSFX
     clip: {fileID: 8300000, guid: d85ed2013563a08469124b4eb31bc24b, type: 3}
+    volume: 0.805
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Whoosh1
+    clip: {fileID: 8300000, guid: 8c4964aa694fb8342abf3e330d1d2b7d, type: 3}
+    volume: 0.805
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Dead1
+    clip: {fileID: 8300000, guid: ede3f74418728d54495da08f698b90a1, type: 3}
     volume: 0.805
     pitch: 1
     loop: 0
@@ -3982,7 +3994,7 @@ Transform:
   m_GameObject: {fileID: 2079933656}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6842402, y: -1.2614, z: -13.199474}
+  m_LocalPosition: {x: -0.68424034, y: -1.2614, z: -13.199474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4301,5 +4313,5 @@ SceneRoots:
   - {fileID: 452106524}
   - {fileID: 2091793145}
   - {fileID: 997371223}
-  - {fileID: 1528944543}
   - {fileID: 8378480153240522089}
+  - {fileID: 1528944543}

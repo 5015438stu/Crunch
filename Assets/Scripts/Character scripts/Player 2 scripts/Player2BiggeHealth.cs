@@ -26,9 +26,13 @@ public class Player2BiggeHealth : MonoBehaviour
     public GameObject pfp;
     public Image frontbar;
     public Image backbar;
+    public BoxCollider2D hurtbox;
+    public InputHandler inputHandler;
 
     [Header("Misc")]
     public float deaths;
+    public bool isdead;
+    public bool deathsfx;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +41,7 @@ public class Player2BiggeHealth : MonoBehaviour
         GetComponent<Rigidbody2D>();
         GetComponent<Player2Movement>();
         combat = GameObject.FindWithTag("P1").GetComponent<PlayerCombat>();
+        inputHandler = gameObject.AddComponent<InputHandler>();
 
         pfp.SetActive(true);
         currenthealth = playerhealth;
@@ -58,18 +63,35 @@ public class Player2BiggeHealth : MonoBehaviour
 
         if (currenthealth <= 0)
         {
+
             movement2.movespeed = 0f;
             Die();
+            isdead = true;
+            hurt = false;
+            animator.SetBool("Hurt", false);
+            animator.SetTrigger("KD2");
+
+            if (deathsfx == false)
+            {
+                deathsfx = true;
+                FindObjectOfType<SoundManager>().Play("Dead1");
+            }
         }
         else
         {
             movement2.movespeed = 8f;
+            isdead = false;
+            deathsfx = false;
         }
 
         if (hurt)
         {
+            if (combat.knockbacky > 40)
+            {
 
-            
+                animator.SetBool("Hurt", false);
+                animator.SetTrigger("KD1");
+            }
 
             hurttime += 1 * Time.deltaTime;
 
@@ -80,17 +102,29 @@ public class Player2BiggeHealth : MonoBehaviour
                 animator.SetBool("Hurt", false);
             }
         }
+     
     }
 
     public void takedamage(float damage)
     {
-        currenthealth -= damage;
-        rb.AddForce(new Vector2(combat.knockbackx, combat.knockbacky), ForceMode2D.Impulse);
-        lerptimer = 0f;
-        animator.SetBool("Hurt", true);
-        hurt = true;
-        FindObjectOfType<SoundManager>().Play("Hurt1");
-        hit.Play();
+        if (isdead == false)
+        {
+            currenthealth -= damage;
+            rb.AddForce(new Vector2(combat.knockbackx, combat.knockbacky), ForceMode2D.Impulse);
+            lerptimer = 0f;
+            animator.SetBool("Hurt", true);
+            hurt = true;
+            FindObjectOfType<SoundManager>().Play("Hurt1");
+            hit.Play();
+        }
+        else
+        {
+            hurt = false;
+            animator.SetBool("Hurt", false);
+            return;
+        }
+
+        
     }
     
     public void restorehealth(int healamount)
@@ -122,34 +156,17 @@ public class Player2BiggeHealth : MonoBehaviour
     }
     void Die()
     {
-        Debug.Log("LETMEGETUP");
-        deaths++;
-        if (InputHandler.Instance != null )
-        {
-            Debug.Log("Round Change");
-            InputHandler.Instance.Roundchange();
-        }
-        else
-        {
-            return;
-        }
-    }
+        inputHandler.Roundchange();
+        StartCoroutine(RoundChange());
 
+    }
     IEnumerator RoundChange()
     {
-        if (movement2.isjumping == true)
-        {
-            animator.SetTrigger("KD2");
-        }
-        else
-        {
-            animator.SetTrigger("KD1");
-        }
 
+        Debug.Log("Round Change");
+        deaths++;
         yield return new WaitForSeconds(3);
 
-
         currenthealth = playerhealth;
-
     }
 }

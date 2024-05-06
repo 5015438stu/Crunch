@@ -122,6 +122,8 @@ public class Player2combat : MonoBehaviour
         if (attacking == false)
         {
             movement2.movespeed = 8f;
+            knockbackx = 0;
+            knockbacky = 0;
         }
 
         
@@ -167,6 +169,7 @@ public class Player2combat : MonoBehaviour
 
                 if (movement2.isjumping == true)
                 {
+                    FindObjectOfType<SoundManager>().Play("Whoosh1");
                     attacking = true;
                     Debug.Log("AK 1");
                     animator.SetTrigger("AK1");
@@ -235,6 +238,7 @@ public class Player2combat : MonoBehaviour
             {
                 if (movement2.isjumping == true)
                 {
+                    FindObjectOfType<SoundManager>().Play("Whoosh1");
                     attacking = true;
                     Debug.Log("AK 1");
                     animator.SetTrigger("AK1");

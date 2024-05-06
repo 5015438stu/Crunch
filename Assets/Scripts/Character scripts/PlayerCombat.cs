@@ -106,6 +106,8 @@ public class PlayerCombat : MonoBehaviour
         if (attacking == false)
         {
             movement.movespeed = 8f;
+            knockbackx = 0;
+            knockbacky = 0;
         }
 
         Blockcheck();
@@ -121,6 +123,7 @@ public class PlayerCombat : MonoBehaviour
 
         if (movement.hors == -1)
         {
+            movement.movespeed = 5f;
             blockready = true;
         }
         else
@@ -183,6 +186,7 @@ public class PlayerCombat : MonoBehaviour
 
                 if (movement.isjumping == true)
                 {
+                    FindObjectOfType<SoundManager>().Play("Whoosh1");
                     attacking = true;
                     Debug.Log("AK 1");
                     animator.SetTrigger("AK1");
@@ -251,6 +255,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 if (movement.isjumping == true)
                 {
+                    FindObjectOfType<SoundManager>().Play("Whoosh1");
                     attacking = true;
                     Debug.Log("AK 1");
                     animator.SetTrigger("AK1");

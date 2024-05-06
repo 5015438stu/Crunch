@@ -25,9 +25,13 @@ public class HealthScript : MonoBehaviour
     public GameObject pfp;
     public Image frontbar;
     public Image backbar;
+    public InputHandler inputHandler;
 
     [Header("Misc")]
     public float deaths;
+    public bool isdead;
+    public bool deathsfx = false;
+    public GameObject[] score;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +41,7 @@ public class HealthScript : MonoBehaviour
         GetComponent<Rigidbody2D>();
         GetComponent<PlayerMovement>();
         combat2 = GameObject.FindWithTag("P2").GetComponent<Player2combat>();
+        inputHandler = gameObject.AddComponent<InputHandler>();
 
         pfp.SetActive(true);
         currenthealth = playerhealth;
@@ -44,30 +49,52 @@ public class HealthScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currenthealth = Mathf.Clamp(currenthealth, 0, playerhealth);
-
-        if (frontbar != null )
-        {
-            UpdateHealthUI();
-        }
-        else
+        if (frontbar == null)
         {
             return;
         }
+        if (backbar == null)
+        {
+            return;
+        }
+        currenthealth = Mathf.Clamp(currenthealth, 0, playerhealth);
+        
+        UpdateHealthUI();
 
         if (currenthealth <= 0)
         {
             move.movespeed = 0f;
             Die();
+            isdead = true;
+            hurt = false;
+            animator.SetBool("Hurt", false);
+            animator.SetTrigger("KD2");
+
+            if (deathsfx == false)
+            {
+                FindObjectOfType<SoundManager>().Play("Dead1");
+                deathsfx = true;
+            }
+            else
+            {
+                return;
+            }
         }
         else
         {
             move.movespeed = 8f;
+            isdead = false;
+            deathsfx = false;
         }
 
         if (hurt)
         {
+            if (combat.knockbacky > 40)
+            {
 
+                animator.SetBool("Hurt", false);
+                animator.SetTrigger("KD1");
+            }
 
             hurttime += 1 * Time.deltaTime;
 
@@ -81,13 +108,22 @@ public class HealthScript : MonoBehaviour
     }
     public void takedamage(float damage)
     {
-        currenthealth -= damage;
-        rb.AddForce(new Vector2(combat.knockbackx, combat.knockbacky), ForceMode2D.Impulse);
-        lerptimer = 0f;
-        animator.SetBool("Hurt", true);
-        hurt = true;
-        FindObjectOfType<SoundManager>().Play("Hurt1");
-        hit.Play();
+        if (isdead == false)
+        {
+            currenthealth -= damage;
+            rb.AddForce(new Vector2(combat.knockbackx, combat.knockbacky), ForceMode2D.Impulse);
+            lerptimer = 0f;
+            FindObjectOfType<SoundManager>().Play("Hurt1");
+            animator.SetBool("Hurt", true);
+            hurt = true;
+            hit.Play();
+        }
+        else
+        {
+            hurt = false;
+            animator.SetBool("Hurt", false);
+            return;
+        }
 
     }
     public void restorehealth(int healamount)
@@ -121,39 +157,24 @@ public class HealthScript : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("LETP1GETUP");
 
-
-        deaths++;
-
-        if (InputHandler.Instance != null)
-        {
-            Debug.Log("Round Change");
-            InputHandler.Instance.Roundchange();
-        }
-        else
-        {
-            return;
-        }
+        inputHandler.Roundchange();
 
         StartCoroutine(RoundChange());
+
     }
 
     IEnumerator RoundChange()
     {
-        if (move.isjumping == true)
-        {
-            animator.SetTrigger("KD2");
-        }
-        else
-        {
-            animator.SetTrigger("KD1");
-        }
-
+        Debug.Log("Round Change");
+        FindObjectOfType<SoundManager>().Play("Dead1");
+        deaths++;
         yield return new WaitForSeconds(3);
+
 
 
         currenthealth = playerhealth;
 
     }
+    ///for each enemy death add one to score
 }

@@ -31,6 +31,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2067120422361186994}
   - {fileID: 1925829283128295080}
   - {fileID: 7651497931767709470}
   - {fileID: 7433549023366190967}
@@ -5111,6 +5112,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &2354219242299286024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2067120422361186994}
+  m_Layer: 0
+  m_Name: Score
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2067120422361186994
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2354219242299286024}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -964.1, y: -541.6501, z: -3.1994743}
+  m_LocalScale: {x: 1.64, y: 2.1499999, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 404495813086701534}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5960874006076743987
 GameObject:
   m_ObjectHideFlags: 0
@@ -5649,7 +5681,11 @@ MonoBehaviour:
   pfp: {fileID: 8174528044946923669}
   frontbar: {fileID: 8215289113598840381}
   backbar: {fileID: 2061034251310609406}
+  hurtbox: {fileID: 1650250172488188137}
+  inputHandler: {fileID: 0}
   deaths: 0
+  isdead: 1
+  deathsfx: 0
 --- !u!1 &8000446194415790450
 GameObject:
   m_ObjectHideFlags: 0
