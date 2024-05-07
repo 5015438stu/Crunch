@@ -98,7 +98,14 @@ public class Player2Movement : MonoBehaviour
             sprite.flipX = false;
             flipped = false;
         }
-
+        if (hors == -1)
+        {
+            movespeed = 5f;
+        }
+        else if (hors == 1 && flipped)
+        {
+            movespeed = 5f;
+        }
         if (iscrouching)
         {
             movespeed = 0f;

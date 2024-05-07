@@ -70,7 +70,7 @@ public class Player2combat : MonoBehaviour
             return;
         }
 
-        if (movement2.hors <= .9)
+        if (movement2.hors <= .8)
         {
             blockready = false;
             
@@ -136,25 +136,28 @@ public class Player2combat : MonoBehaviour
 
             if (blockready && blockpriming && combat.attacking && movement2.iscrouching == false) /// blocking
             {
+                isblocking = true;
                 Debug.Log("GetBlockedBozo");
                 animator.SetBool("IsBlocking", true);
             }
-            else
+            else if(blockready && blockpriming && combat.attacking && movement2.iscrouching)
             {
-                animator.SetBool("IsBlocking", false);
-            }
-
-            if (blockready && blockpriming && combat.attacking && movement2.iscrouching)
-            {
+                isblocking = true;
                 Debug.Log("GetCBlockedBozo");
                 animator.SetBool("IsCrouchBlocking", true);
             }
             else
             {
+                isblocking = false;
                 animator.SetBool("IsCrouchBlocking", false);
+                animator.SetBool("IsBlocking", false);
             }
+
         }
-        
+        else
+        {
+            blockpriming = false;
+        }
     }
     public void OnLightKick(InputAction.CallbackContext context)
     {
@@ -302,25 +305,28 @@ public class Player2combat : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
         if (collision.gameObject.tag == "P1")
         {
-            if (attacking && combat.attacking == false) //normal hit
+            if (combat.isblocking == false)
             {
-                Debug.Log("Inflicted Damage");
-                health.takedamage(attackDamage);
-                rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
+                if (attacking && combat.attacking == false) //normal hit
+                {
+                    Debug.Log("Inflicted Damage2");
+                    health.takedamage(attackDamage);
+                    rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
+                }
+                if (attacking && combat.attacking == true) //clashing
+                {
+                    rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
+                    FindObjectOfType<SoundManager>().Play("BigThuddy2");
+                    Debug.Log("clash2");
+                }
             }
-            if (attacking && combat.attacking == true) //clashing
+            else
             {
-
-                FindObjectOfType<SoundManager>().Play("BigThuddy2");
-                Debug.Log("clash2");
+                FindObjectOfType<SoundManager>().Play("Hurt2");
             }
-            if (combat.blockready && combat.blockpriming)
-            {
-                return;
-            }
+            
         }
     }
     private void OnDrawGizmosSelected()

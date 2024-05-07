@@ -49,6 +49,7 @@ public class HealthScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (frontbar == null)
         {
             return;

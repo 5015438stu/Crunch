@@ -94,6 +94,19 @@ public class PlayerMovement : MonoBehaviour
             flipped = false;
         }
 
+        if (hors == -1)
+        {
+            movespeed = 5f;
+        }
+        else if (hors == 1 && flipped)
+        {
+            movespeed = 5f;
+        }
+        if (iscrouching)
+        {
+            movespeed = 0f;
+        }
+
         if (iscrouching)
         {
             movespeed = 0f;

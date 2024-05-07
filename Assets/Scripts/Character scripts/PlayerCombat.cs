@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -15,6 +15,8 @@ public class PlayerCombat : MonoBehaviour
     public Animator animator;
     public BoxCollider2D hitbox;
     public LayerMask enemylayers;
+    public Image frontbar;
+    public Image backbar;
     public InputActionReference LightPunch;
     public InputActionReference LightKick;
     public InputActionReference HeavyPunch;
@@ -45,6 +47,11 @@ public class PlayerCombat : MonoBehaviour
     public Transform blockcheck;
     public Vector2 blockarea = new Vector2(0.5F, 0.05f);
 
+    [Header("CrunchMeter")]
+    public float maxcrunch = 1000;
+    public float currentcrunch;
+    public float lerptimer;
+    public float chipspeed = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -55,18 +62,41 @@ public class PlayerCombat : MonoBehaviour
         movement = GetComponent<PlayerMovement>();
         combat2 = GameObject.FindWithTag("P2").GetComponent<Player2combat>();
         health2 = GameObject.FindWithTag("P2").GetComponent<Player2BiggeHealth>();
+        currentcrunch = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateCrunchUI();
+
+        Blockcheck();
+
+        if (movement.flipped)
+        {
+            knockbackx *= -1;
+        }
+        else
+        {
+            return;
+        }
+
+        if (movement.hors == -1)
+        {
+            blockready = true;
+        }
+        else
+        {
+            blockready = false;
+        }
+
         if (comboend)
         {
             delaytimer += 1 * Time.deltaTime;
             zpresses = 0;
             zp = 0;
 
-            if (delaytimer <= delay)
+            if (delaytimer > delay)
             {
                 comboend = false;
                 Debug.Log("attack Delay");
@@ -110,39 +140,40 @@ public class PlayerCombat : MonoBehaviour
             knockbacky = 0;
         }
 
-        Blockcheck();
-
-        if (movement.flipped)
-        {
-            knockbackx *= -1;
-        }
-        else
-        {
-            return;
-        }
-
-        if (movement.hors == -1)
-        {
-            movement.movespeed = 5f;
-            blockready = true;
-        }
-        else
-        {
-            blockready = false;
-        }
-        if (movement.hors == 1 && movement.flipped)
-        {
-            blockready = true;
-        }
-        else
-        {
-            blockready = false;
-        }
+        
 
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         
     }
+    public void updatebar(float damage)
+    {
+        currentcrunch += damage;
+    }
+    public void UpdateCrunchUI()
+    {
+        float fillf = frontbar.fillAmount;
+        float fillb = backbar.fillAmount;
+        float hfrac = currentcrunch / maxcrunch;
+
+        if (fillb > hfrac)
+        {
+            frontbar.fillAmount = hfrac;
+            backbar.color = Color.red;
+            lerptimer += Time.deltaTime;
+            float percentComplete = lerptimer / chipspeed;
+            backbar.fillAmount = Mathf.Lerp(fillb, hfrac, percentComplete);
+        }
+        if (fillf < hfrac)
+        {
+            backbar.color = Color.green;
+            backbar.fillAmount = hfrac;
+            lerptimer += Time.deltaTime;
+            float percentcomplete = lerptimer / chipspeed;
+            frontbar.fillAmount = Mathf.Lerp(fillf, backbar.fillAmount, percentcomplete);
+        }
+    }
+
     public void Blockcheck()
     {
         if (Physics2D.OverlapBox(blockcheck.position, blockarea, 0, enemylayers))
@@ -151,24 +182,28 @@ public class PlayerCombat : MonoBehaviour
 
             if (blockready && blockpriming && combat2.attacking && movement.iscrouching == false)
             {
+                isblocking = true;
                 Debug.Log("GetBlockedBozo");
                 animator.SetBool("IsBlocking", true);
 
             }
-            else
+            else if (blockready && blockpriming && combat2.attacking && movement.iscrouching)
             {
-                animator.SetBool("IsBlocking", false);
-            }
-
-            if (blockready && blockpriming && combat2.attacking && movement.iscrouching)
-            {
+                isblocking = true;
                 Debug.Log("GetCBlockedBozo");
                 animator.SetBool("IsCrouchBlocking", true);
             }
             else
             {
+                isblocking = false;
                 animator.SetBool("IsCrouchBlocking", false);
+                animator.SetBool("IsBlocking", false);
             }
+    
+        }
+        else
+        {
+            blockpriming = false;
         }
        
     }
@@ -322,23 +357,27 @@ public class PlayerCombat : MonoBehaviour
     {
         if (collision.gameObject.tag == "P2")
         {
-            if (attacking && combat2.attacking == false)
+            if (combat2.isblocking == false)
             {
-                Debug.Log("Inflicted Damage");
-                health2.takedamage(attackDamage);
-                rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
+                if (attacking && combat2.attacking == false)
+                {
+                    Debug.Log("Inflicted Damage");
+                    updatebar(attackDamage);
+                    health2.takedamage(attackDamage);
+                    rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
+                }
+                if (attacking && combat2.attacking == true)
+                {
+                    rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
+                    FindObjectOfType<SoundManager>().Play("BigThuddy2");
+                    Debug.Log("clash");
+                }
             }
-            if (attacking && combat2.attacking == true)
+            else
             {
-
-                FindObjectOfType<SoundManager>().Play("BigThuddy1");
-                Debug.Log("clash");
+                FindObjectOfType<SoundManager>().Play("Hurt2");
             }
-            if (combat2.blockready && combat2.blockpriming)
-            {
-                return;
-            }
-        }
+        }  
     }
     private void OnDrawGizmosSelected()
     {
