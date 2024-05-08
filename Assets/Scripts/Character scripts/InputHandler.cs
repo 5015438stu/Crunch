@@ -16,8 +16,6 @@ public class InputHandler : MonoBehaviour
     public CinemachineTargetGroup tg;
     public GameObject P1;
     public GameObject P2;
-    public HealthScript health;
-    public Player2BiggeHealth health2;
     public GameObject readytxt;
     public GameObject gotxt;
 
@@ -29,6 +27,9 @@ public class InputHandler : MonoBehaviour
     public float currenttime = 0f;
     public float startingtime = 300f;
     public bool count;
+
+    [Header("Camera")]
+    public bool isset = false;
 
 
     void Start()
@@ -48,12 +49,8 @@ public class InputHandler : MonoBehaviour
         currenttime = startingtime;
         count = false;
 
-        P1 = GameObject.Find("Biggee(Clone)");
-        P2 = GameObject.Find("P2 Biggee(Clone)");
-        vc = GameObject.Find("Virtual Camera").GetComponent<CinemachineVirtualCamera>();
-        tg = GameObject.Find("Targetgroup").GetComponent<CinemachineTargetGroup>();
-        /*health = GameObject.FindWithTag("P1").GetComponent<HealthScript>();
-        health2 = GameObject.FindWithTag("P2").GetComponent<Player2BiggeHealth>();*/
+        P1 = GameObject.FindWithTag("P1");
+        P2 = GameObject.FindWithTag("P2");
 
         roundcount = 1;
         rountwincount = 3;
@@ -61,7 +58,7 @@ public class InputHandler : MonoBehaviour
 
     void Update()
     {
-        
+
         if (gotxt == null)
         {
             return;
@@ -84,9 +81,17 @@ public class InputHandler : MonoBehaviour
         } 
         else
         {
-            return;
+            P1 = GameObject.FindWithTag("P1");
         }
 
+        if (P2 == null)
+        {
+            P2 = GameObject.FindWithTag("P2");
+        } 
+        else
+        {
+            return;
+        }
     }
     public void Roundchange()
     {
@@ -94,9 +99,16 @@ public class InputHandler : MonoBehaviour
     }
     public void SetCamera()
     {
-        Debug.Log("CameraSet");
-        tg.AddMember(P1.transform, 1, 0);
-        tg.AddMember(P2.transform, 1, 0);
+        if (isset == false) 
+        {
+            isset = true;
+            Debug.Log("CameraSet");
+            tg.AddMember(P1.transform, 1, 0);
+            tg.AddMember(P2.transform, 1, 0);
+        } else
+        {
+            return;
+        }
     }
     IEnumerator gamestart()
     {

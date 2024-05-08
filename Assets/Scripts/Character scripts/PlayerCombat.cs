@@ -149,14 +149,16 @@ public class PlayerCombat : MonoBehaviour
     public void updatebar(float damage)
     {
         currentcrunch += damage;
+        Debug.Log("barupdate.");
     }
     public void UpdateCrunchUI()
     {
+
         float fillf = frontbar.fillAmount;
         float fillb = backbar.fillAmount;
         float hfrac = currentcrunch / maxcrunch;
 
-        if (fillb > hfrac)
+        if (fillb > hfrac) //greatezr
         {
             frontbar.fillAmount = hfrac;
             backbar.color = Color.red;
@@ -164,7 +166,7 @@ public class PlayerCombat : MonoBehaviour
             float percentComplete = lerptimer / chipspeed;
             backbar.fillAmount = Mathf.Lerp(fillb, hfrac, percentComplete);
         }
-        if (fillf < hfrac)
+        if (fillf < hfrac) //less
         {
             backbar.color = Color.green;
             backbar.fillAmount = hfrac;

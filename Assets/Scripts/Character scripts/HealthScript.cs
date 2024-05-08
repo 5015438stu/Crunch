@@ -28,7 +28,7 @@ public class HealthScript : MonoBehaviour
     public InputHandler inputHandler;
 
     [Header("Misc")]
-    public float deaths;
+    public int deaths;
     public bool isdead;
     public bool deathsfx = false;
     public GameObject[] score;
@@ -159,23 +159,18 @@ public class HealthScript : MonoBehaviour
     void Die()
     {
 
+        deaths += 1;
+        score[deaths].SetActive(true);
         inputHandler.Roundchange();
-
         StartCoroutine(RoundChange());
-
     }
 
     IEnumerator RoundChange()
     {
         Debug.Log("Round Change");
         FindObjectOfType<SoundManager>().Play("Dead1");
-        deaths++;
         yield return new WaitForSeconds(3);
-
-
-
         currenthealth = playerhealth;
-
     }
     ///for each enemy death add one to score
 }
