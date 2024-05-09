@@ -21,6 +21,7 @@ public class PlayerCombat : MonoBehaviour
     public InputActionReference LightKick;
     public InputActionReference HeavyPunch;
     public InputActionReference HeavyKick;
+    public InputActionReference LightCrunch;
 
     [Header("Delays")]
     public float lastclickedtime = 0f;
@@ -52,6 +53,12 @@ public class PlayerCombat : MonoBehaviour
     public float currentcrunch;
     public float lerptimer;
     public float chipspeed = 2f;
+
+    [Header("CrunchMoves")]
+    public bool flexing;
+    public float flexlength = 1.5f;
+    public float flextime;
+
 
     // Start is called before the first frame update
     void Start()
@@ -208,6 +215,32 @@ public class PlayerCombat : MonoBehaviour
             blockpriming = false;
         }
        
+    }
+
+    public void OnLightCrunch(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            flexing = true;
+
+            if (flexing)
+            {
+                flextime += 1 * Time.deltaTime;
+
+                animator.SetBool("IsFlexing", true);
+
+                if (flextime >= flexlength)
+                {
+                    animator.SetBool("IsFlexing", false);
+                    flexing = false;
+                    flextime = 0;
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
     }
     public void OnLightKick(InputAction.CallbackContext context)
     {
@@ -373,6 +406,12 @@ public class PlayerCombat : MonoBehaviour
                     rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
                     FindObjectOfType<SoundManager>().Play("BigThuddy2");
                     Debug.Log("clash");
+                }
+                if (combat2.attacking && flexing)
+                {
+                    flexing = false;
+                    animator.SetBool("IsFlexing", false);
+                    animator.SetTrigger("FlexAttack");
                 }
             }
             else
