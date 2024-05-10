@@ -7,12 +7,10 @@ using UnityEngine.UI;
 
 public class Player2Movement : MonoBehaviour
 {
-    [Header("Misc")]
-    public Transform trans;
-
     [Header("Movement")]
     public float movespeed = 8f;
     public float hors;
+    public float xvelo;
 
     [Header("Jumping")]
     public float yvelo;
@@ -68,6 +66,7 @@ public class Player2Movement : MonoBehaviour
         }
 
         yvelo = rb.velocity.y;
+        xvelo = rb.velocity.x;
 
         animator.SetFloat("Speed", rb.velocity.x);
 
@@ -98,11 +97,11 @@ public class Player2Movement : MonoBehaviour
             sprite.flipX = false;
             flipped = false;
         }
-        if (hors == -1)
+        if (hors == 1)
         {
             movespeed = 5f;
         }
-        else if (hors == 1 && flipped)
+        else if (hors == -1 && flipped)
         {
             movespeed = 5f;
         }

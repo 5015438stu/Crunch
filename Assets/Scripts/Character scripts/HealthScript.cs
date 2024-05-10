@@ -14,6 +14,7 @@ public class HealthScript : MonoBehaviour
     public bool hurt;
     public float stuntime = .5f;
     public float hurttime;
+    bool setdeath = false;
 
     [Header("Refs")]
     public Rigidbody2D rb;
@@ -25,12 +26,12 @@ public class HealthScript : MonoBehaviour
     public GameObject pfp;
     public Image frontbar;
     public Image backbar;
+    public BoxCollider2D hurtbox;
     public InputHandler inputHandler;
 
     [Header("Misc")]
     public int deaths;
     public bool isdead;
-    public bool deathsfx = false;
     public GameObject[] score;
 
     // Start is called before the first frame update
@@ -71,10 +72,11 @@ public class HealthScript : MonoBehaviour
             animator.SetBool("Hurt", false);
             animator.SetTrigger("KD2");
 
-            if (deathsfx == false)
+            if (setdeath == false)
             {
+                deaths += 1;
+                setdeath = true;
                 FindObjectOfType<SoundManager>().Play("Dead1");
-                deathsfx = true;
             }
             else
             {
@@ -83,9 +85,7 @@ public class HealthScript : MonoBehaviour
         }
         else
         {
-            move.movespeed = 8f;
             isdead = false;
-            deathsfx = false;
         }
 
         if (hurt)
@@ -158,18 +158,16 @@ public class HealthScript : MonoBehaviour
 
     void Die()
     {
-
-        deaths += 1;
-        score[deaths].SetActive(true);
         inputHandler.Roundchange();
         StartCoroutine(RoundChange());
+
     }
 
     IEnumerator RoundChange()
     {
-        Debug.Log("Round Change");
-        FindObjectOfType<SoundManager>().Play("Dead1");
         yield return new WaitForSeconds(3);
+        Debug.Log("Round Change");
+        score[deaths].SetActive(true);
         currenthealth = playerhealth;
     }
     ///for each enemy death add one to score

@@ -15,6 +15,7 @@ public class Player2BiggeHealth : MonoBehaviour
     public bool hurt;
     public float stuntime = .5f;
     public float hurttime;
+    bool setdeath = false;
 
     [Header("Refs")]
     public Rigidbody2D rb;
@@ -30,9 +31,9 @@ public class Player2BiggeHealth : MonoBehaviour
     public InputHandler inputHandler;
 
     [Header("Misc")]
-    public float deaths;
+    public int deaths;
     public bool isdead;
-    public bool deathsfx;
+    public GameObject[] score;
 
     // Start is called before the first frame update
     void Start()
@@ -71,17 +72,21 @@ public class Player2BiggeHealth : MonoBehaviour
             animator.SetBool("Hurt", false);
             animator.SetTrigger("KD2");
 
-            if (deathsfx == false)
+            if (setdeath == false)
             {
-                deathsfx = true;
+                deaths += 1;
+                setdeath = true;
                 FindObjectOfType<SoundManager>().Play("Dead1");
             }
+            else
+            {
+                return;
+            }
+
         }
         else
         {
-            movement2.movespeed = 8f;
             isdead = false;
-            deathsfx = false;
         }
 
         if (hurt)
@@ -137,6 +142,7 @@ public class Player2BiggeHealth : MonoBehaviour
         float fillf = frontbar.fillAmount;
         float fillb = backbar.fillAmount;
         float hfrac = currenthealth / playerhealth;
+
         if (fillb > hfrac)
         {
             frontbar.fillAmount = hfrac;
@@ -160,13 +166,14 @@ public class Player2BiggeHealth : MonoBehaviour
         StartCoroutine(RoundChange());
 
     }
+
     IEnumerator RoundChange()
     {
-
-        Debug.Log("Round Change");
-        deaths++;
         yield return new WaitForSeconds(3);
-
+        Debug.Log("Round Change");
+        score[deaths].SetActive(true);
         currenthealth = playerhealth;
     }
+
+    
 }

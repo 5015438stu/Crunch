@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player2combat : MonoBehaviour
 {
     [Header("Refs")]
     public HealthScript health;
+    public Player2BiggeHealth health2;
     public Rigidbody2D rb;
     public Player2combat combat2;
     public PlayerCombat combat;
@@ -15,6 +17,8 @@ public class Player2combat : MonoBehaviour
     public Animator animator;
     public BoxCollider2D hitbox;
     public LayerMask enemylayers;
+    public Image frontbar;
+    public Image backbar;
     public InputActionReference LightPunch;
     public InputActionReference LightKick;
     public InputActionReference HeavyPunch;
@@ -45,6 +49,17 @@ public class Player2combat : MonoBehaviour
     public Transform blockcheck;
     public Vector2 blockarea = new Vector2(0.5F, 0.05f);
 
+    [Header("CrunchMeter")]
+    public float maxcrunch = 1000;
+    public float currentcrunch;
+    public float lerptimer;
+    public float chipspeed = 2f;
+
+    [Header("CrunchMoves")]
+    public bool flexing;
+    public float flexlength = 1.5f;
+    public float flextime;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,34 +69,12 @@ public class Player2combat : MonoBehaviour
         movement2 = GetComponent<Player2Movement>();
         combat = GameObject.FindWithTag("P1").GetComponent<PlayerCombat>();
         health = GameObject.FindWithTag("P1").GetComponent<HealthScript>();
+        currentcrunch = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Blockcheck();
-
-        if (movement2.flipped)
-        {
-            knockbackx *= -1;
-        }
-        else
-        {
-            return;
-        }
-
-        if (movement2.hors <= .8)
-        {
-            blockready = false;
-            
-        }
-        else
-        {
-            blockready = true;
-        }
-
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-
         if (comboend)
         {
             delaytimer += 1 * Time.deltaTime;
@@ -97,7 +90,7 @@ public class Player2combat : MonoBehaviour
         }
         if (comboend == false)
         {
-            
+
         }
         if (attacking)
         {
@@ -121,12 +114,64 @@ public class Player2combat : MonoBehaviour
         }
         if (attacking == false)
         {
-            movement2.movespeed = 8f;
             knockbackx = 0;
             knockbacky = 0;
         }
 
-        
+        if (movement2.flipped)
+        {
+            knockbackx *= -1;
+        }
+        else
+        {
+            return;
+        }
+
+        if (movement2.hors <= .8)
+        {
+            blockready = false;
+            
+        }
+        else
+        {
+            blockready = true;
+        }
+
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+
+        Blockcheck();
+
+        UpdateCrunchUI();
+    }
+    public void updatebar(float damage)
+    {
+        currentcrunch += damage;
+        Debug.Log("barupdate.");
+    }
+    public void UpdateCrunchUI()
+    {
+
+        float fillf = frontbar.fillAmount;
+        float fillb = backbar.fillAmount;
+        float hfrac = currentcrunch / maxcrunch;
+
+        if (fillb > hfrac) //greatezr
+        {
+            frontbar.fillAmount = hfrac;
+            backbar.color = Color.red;
+            lerptimer += Time.deltaTime;
+            float percentComplete = lerptimer / chipspeed;
+            backbar.fillAmount = Mathf.Lerp(fillb, hfrac, percentComplete);
+        }
+        if (fillf < hfrac) //less
+        {
+            backbar.color = Color.green;
+            backbar.fillAmount = hfrac;
+            lerptimer += Time.deltaTime;
+            float percentcomplete = lerptimer / chipspeed;
+            frontbar.fillAmount = Mathf.Lerp(fillf, backbar.fillAmount, percentcomplete);
+        }
     }
     public void Blockcheck()
     {
@@ -159,6 +204,16 @@ public class Player2combat : MonoBehaviour
             blockpriming = false;
         }
     }
+    public void OnLightCrunch(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            flexing = true;
+
+
+        }
+    }
+
     public void OnLightKick(InputAction.CallbackContext context)
     {
         rb.constraints = RigidbodyConstraints2D.FreezePositionY;
@@ -312,6 +367,7 @@ public class Player2combat : MonoBehaviour
                 if (attacking && combat.attacking == false) //normal hit
                 {
                     Debug.Log("Inflicted Damage2");
+                    updatebar(attackDamage);
                     health.takedamage(attackDamage);
                     rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
                 }
@@ -320,6 +376,13 @@ public class Player2combat : MonoBehaviour
                     rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
                     FindObjectOfType<SoundManager>().Play("BigThuddy2");
                     Debug.Log("clash2");
+                }
+                if (combat.attacking && flexing)
+                {
+                    flexing = false;
+                    animator.SetBool("IsFlexing", false);
+                    attacking = true;
+                    animator.SetTrigger("FlexAttack");
                 }
             }
             else

@@ -3,12 +3,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Misc")]
-    public Transform trans;
 
     [Header("Movement")]
     public float movespeed = 8f;
     public float hors;
+    public float xvelo;
 
     [Header("Jumping")]
     public float yvelo;
@@ -63,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         yvelo = rb.velocity.y;
+        xvelo = rb.velocity.x;
 
         rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
 
@@ -83,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsFalling", true);
         }
+
         if (P2xpos < transform.position.x)
         {
             sprite.flipX = true;
@@ -98,31 +99,36 @@ public class PlayerMovement : MonoBehaviour
         {
             movespeed = 5f;
         }
-        else if (hors == 1 && flipped)
+        else
+        {
+            movespeed = 8f;
+        }
+
+        if (hors == 1 && flipped)
         {
             movespeed = 5f;
         }
-        if (iscrouching)
+        else if (hors == -1 && flipped)
         {
-            movespeed = 0f;
+            movespeed = 8f;
         }
+
 
         if (iscrouching)
         {
             movespeed = 0f;
         }
+
     }
     public void OnCrouch(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            movespeed = 0f;
             animator.SetBool("IsCrouching", true);
             iscrouching = true;
         }
         if (context.canceled)
         {
-            movespeed = 8f;
             animator.SetBool("IsCrouching", false);
             iscrouching = false;
         }

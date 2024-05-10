@@ -75,30 +75,8 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateCrunchUI();
-
-        Blockcheck();
-
-        if (movement.flipped)
-        {
-            knockbackx *= -1;
-        }
-        else
-        {
-            return;
-        }
-
-        if (movement.hors == -1)
-        {
-            blockready = true;
-        }
-        else
-        {
-            blockready = false;
-        }
-
         if (comboend)
-        {
+        { 
             delaytimer += 1 * Time.deltaTime;
             zpresses = 0;
             zp = 0;
@@ -118,6 +96,9 @@ public class PlayerCombat : MonoBehaviour
         if (attacking)
         {
             movement.movespeed = 6f;
+            animator.SetBool("IsFlexing", false);
+            flexing = false;
+            flextime = 0;
 
             if (movement.isjumping == false)
             {
@@ -142,12 +123,52 @@ public class PlayerCombat : MonoBehaviour
 
         if (attacking == false)
         {
-            movement.movespeed = 8f;
             knockbackx = 0;
             knockbacky = 0;
         }
+        if (flexing)
+        {
+            flextime += 1 * Time.deltaTime;
 
-        
+            animator.SetBool("IsFlexing", true);
+
+            if (flextime >= flexlength)
+            {
+                animator.SetBool("IsFlexing", false);
+                flexing = false;
+                flextime = 0;
+            }
+        }
+        else
+        {
+            return;
+        }
+
+        if (movement.flipped)
+        {
+            knockbackx *= -1;
+        }
+        else
+        {
+            return;
+        }
+
+        if (movement.hors == -1)
+        {
+            blockready = true;
+        }
+        else
+        {
+            blockready = false;
+        }
+
+        if (currentcrunch > maxcrunch)
+        {
+            currentcrunch = maxcrunch;
+        }
+
+        Blockcheck();
+        UpdateCrunchUI();
 
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
@@ -223,23 +244,7 @@ public class PlayerCombat : MonoBehaviour
         {
             flexing = true;
 
-            if (flexing)
-            {
-                flextime += 1 * Time.deltaTime;
-
-                animator.SetBool("IsFlexing", true);
-
-                if (flextime >= flexlength)
-                {
-                    animator.SetBool("IsFlexing", false);
-                    flexing = false;
-                    flextime = 0;
-                }
-            }
-            else
-            {
-                return;
-            }
+            
         }
     }
     public void OnLightKick(InputAction.CallbackContext context)
