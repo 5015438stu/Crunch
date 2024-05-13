@@ -37,6 +37,7 @@ public class Player2combat : MonoBehaviour
     public bool attacking;
     public float zp = 0f;
     public bool comboend = false;
+    public bool invs = false;
 
     [Header("Knockback")]
     public float knockbackx = 0f; //Change later for each attack
@@ -77,6 +78,8 @@ public class Player2combat : MonoBehaviour
     {
         if (comboend)
         {
+            rb.constraints = RigidbodyConstraints2D.None;
+
             delaytimer += 1 * Time.deltaTime;
             zpresses = 0;
             zp = 0;
@@ -92,9 +95,13 @@ public class Player2combat : MonoBehaviour
         {
 
         }
+
         if (attacking)
         {
             movement2.movespeed = 6f;
+            animator.SetBool("IsFlexing", false);
+            flexing = false;
+            flextime = 0;
 
             if (movement2.isjumping == false)
             {
@@ -112,10 +119,29 @@ public class Player2combat : MonoBehaviour
                 attacking = false;
             }
         }
+
         if (attacking == false)
         {
             knockbackx = 0;
             knockbacky = 0;
+        }
+
+        if (flexing)
+        {
+            flextime += 1 * Time.deltaTime;
+
+            animator.SetBool("IsFlexing", true);
+
+            if (flextime >= flexlength)
+            {
+                animator.SetBool("IsFlexing", false);
+                flexing = false;
+                flextime = 0;
+            }
+        }
+        else
+        {
+            return;
         }
 
         if (movement2.flipped)
@@ -137,12 +163,13 @@ public class Player2combat : MonoBehaviour
             blockready = true;
         }
 
+        Blockcheck();
+        UpdateCrunchUI();
+
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
 
-        Blockcheck();
-
-        UpdateCrunchUI();
+        
     }
     public void updatebar(float damage)
     {
@@ -209,8 +236,7 @@ public class Player2combat : MonoBehaviour
         if (context.performed)
         {
             flexing = true;
-
-
+            invs = true;
         }
     }
 
@@ -362,7 +388,7 @@ public class Player2combat : MonoBehaviour
     {
         if (collision.gameObject.tag == "P1")
         {
-            if (combat.isblocking == false)
+            if (combat.isblocking == false && combat.invs == false)
             {
                 if (attacking && combat.attacking == false) //normal hit
                 {
@@ -371,25 +397,37 @@ public class Player2combat : MonoBehaviour
                     health.takedamage(attackDamage);
                     rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
                 }
-                if (attacking && combat.attacking == true) //clashing
+
+                if (flexing == false && attacking && combat.attacking == true) //clashing
                 {
                     rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
                     FindObjectOfType<SoundManager>().Play("BigThuddy2");
                     Debug.Log("clash2");
                 }
-                if (combat.attacking && flexing)
+                else if (flexing == true && attacking && combat.attacking == true) //counter
                 {
-                    flexing = false;
                     animator.SetBool("IsFlexing", false);
                     attacking = true;
                     animator.SetTrigger("FlexAttack");
+                    combat.comboend = true;
+                    health.takedamage(attackDamage);
+                    rb.AddForce(new Vector2(50f, 10f), ForceMode2D.Impulse);
+                }
+                if (combat.attacking && flexing)
+                {
+                    animator.SetBool("IsFlexing", false);
+                    animator.SetTrigger("FlexAttack");
+                    combat.comboend = true;
+                    health.takedamage(attackDamage);
+                    rb.AddForce(new Vector2(50f, 10f), ForceMode2D.Impulse);
+                    attacking = true;
                 }
             }
-            else
+            else if (combat.invs == true)
             {
-                FindObjectOfType<SoundManager>().Play("Hurt2");
+                Debug.Log("whiff2");
             }
-            
+          
         }
     }
     private void OnDrawGizmosSelected()

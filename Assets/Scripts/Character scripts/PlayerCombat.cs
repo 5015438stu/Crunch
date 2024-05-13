@@ -40,6 +40,7 @@ public class PlayerCombat : MonoBehaviour
     public bool attacking;
     public float zp = 0f;
     public bool comboend = false;
+    public bool invs = false;
 
     [Header("Blocking")]
     public bool isblocking;
@@ -75,13 +76,17 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
         if (comboend)
-        { 
+        {
+            rb.constraints = RigidbodyConstraints2D.None;
+
             delaytimer += 1 * Time.deltaTime;
             zpresses = 0;
             zp = 0;
 
-            if (delaytimer > delay)
+            if (delaytimer >= delay)
             {
                 comboend = false;
                 Debug.Log("attack Delay");
@@ -111,7 +116,7 @@ public class PlayerCombat : MonoBehaviour
 
             lastclickedtime += 1 * Time.deltaTime;
 
-            if (lastclickedtime > maxcombodelay)
+            if (lastclickedtime >= maxcombodelay)
             {
                 lastclickedtime = 0;
                 Debug.Log("Attack Timeout");
@@ -121,11 +126,9 @@ public class PlayerCombat : MonoBehaviour
             }
         }
 
-        if (attacking == false)
-        {
-            knockbackx = 0;
-            knockbacky = 0;
-        }
+        Blockcheck();
+        UpdateCrunchUI();
+
         if (flexing)
         {
             flextime += 1 * Time.deltaTime;
@@ -142,6 +145,12 @@ public class PlayerCombat : MonoBehaviour
         else
         {
             return;
+        }
+
+        if (attacking == false)
+        {
+            knockbackx = 0;
+            knockbacky = 0;
         }
 
         if (movement.flipped)
@@ -162,17 +171,10 @@ public class PlayerCombat : MonoBehaviour
             blockready = false;
         }
 
-        if (currentcrunch > maxcrunch)
-        {
-            currentcrunch = maxcrunch;
-        }
-
-        Blockcheck();
-        UpdateCrunchUI();
+        
 
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-        
     }
     public void updatebar(float damage)
     {
@@ -240,11 +242,18 @@ public class PlayerCombat : MonoBehaviour
 
     public void OnLightCrunch(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (currentcrunch > 100)
         {
-            flexing = true;
-
-            
+            if (context.performed)
+            {
+                currentcrunch -= 100;
+                flexing = true;
+                invs = true;
+            }
+        }
+        else
+        {
+            return;
         }
     }
     public void OnLightKick(InputAction.CallbackContext context)
@@ -270,6 +279,7 @@ public class PlayerCombat : MonoBehaviour
                     comboend = true;
                     zpresses = 0;
                     zp = 0;
+                    delaytimer = 1f;
                 }
                 if (movement.isjumping == false)
                 {
@@ -301,6 +311,7 @@ public class PlayerCombat : MonoBehaviour
                         knockbackx = 30f;
                         knockbacky = 50f;
                         lastclickedtime = .9f;
+                        delaytimer = .6f;
                     }
                     if (zpresses == 4)
                     {
@@ -322,6 +333,7 @@ public class PlayerCombat : MonoBehaviour
     }
     public void OnLightPunch(InputAction.CallbackContext context)
     {
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
 
         if (context.performed)
         {
@@ -339,6 +351,7 @@ public class PlayerCombat : MonoBehaviour
                     comboend = true;
                     zpresses = 0;
                     zp = 0;
+                    delaytimer = 1f;
                 }
                 if (movement.isjumping == false)
                 {
@@ -373,6 +386,7 @@ public class PlayerCombat : MonoBehaviour
                         knockbackx = 40f;
                         knockbacky = 50f;
                         lastclickedtime = .9f;
+                        delaytimer = .6f;
                     }
                     if (zpresses == 4)
                     {
@@ -397,7 +411,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (collision.gameObject.tag == "P2")
         {
-            if (combat2.isblocking == false)
+            if (combat2.isblocking == false && combat2.invs == false)
             {
                 if (attacking && combat2.attacking == false)
                 {
@@ -406,23 +420,36 @@ public class PlayerCombat : MonoBehaviour
                     health2.takedamage(attackDamage);
                     rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
                 }
-                if (attacking && combat2.attacking == true)
+
+                if (flexing == false && attacking && combat2.attacking == true)
                 {
                     rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
                     FindObjectOfType<SoundManager>().Play("BigThuddy2");
                     Debug.Log("clash");
                 }
+                else if (flexing == true && attacking && combat2.attacking == true) //anti flex clash
+                {
+                    Debug.Log("Inflicted Damage");
+                    updatebar(attackDamage);
+                    health2.takedamage(attackDamage);
+                    rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
+                }
+
                 if (combat2.attacking && flexing)
                 {
-                    flexing = false;
                     animator.SetBool("IsFlexing", false);
                     animator.SetTrigger("FlexAttack");
+                    combat2.comboend = true;
+                    health2.takedamage(attackDamage);
+                    rb.AddForce(new Vector2(50f, 10f), ForceMode2D.Impulse);
+                    attacking = true;
                 }
             }
-            else
+            else if (combat2.invs == true)
             {
-                FindObjectOfType<SoundManager>().Play("Hurt2");
+                Debug.Log("whiff");
             }
+           
         }  
     }
     private void OnDrawGizmosSelected()

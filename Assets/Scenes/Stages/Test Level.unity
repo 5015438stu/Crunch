@@ -3028,6 +3028,10 @@ PrefabInstance:
       propertyPath: health2
       value: 
       objectReference: {fileID: 997371226}
+    - target: {fileID: 5801828926454572568, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
+      propertyPath: LightCrunch
+      value: 
+      objectReference: {fileID: -8655821792887002559, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
     - target: {fileID: 7821279242919190250, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
       propertyPath: m_Name
       value: Biggee
