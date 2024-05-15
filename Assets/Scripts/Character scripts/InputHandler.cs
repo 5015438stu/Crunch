@@ -20,8 +20,11 @@ public class InputHandler : MonoBehaviour
     public GameObject gotxt;
 
     [Header("Rounds")]
-    public float roundcount;
-    public float rountwincount;
+    public bool roundwon;
+    public bool p1winner;
+    public bool p2winner;
+    public GameObject winscreen;
+    public TextMeshProUGUI wintext;
 
     [Header("Countdown")]
     public float currenttime = 0f;
@@ -51,14 +54,23 @@ public class InputHandler : MonoBehaviour
 
         P1 = GameObject.FindWithTag("P1");
         P2 = GameObject.FindWithTag("P2");
-
-        roundcount = 1;
-        rountwincount = 3;
     }
 
     void Update()
-    {
+    {   
+        if (roundwon)
+        {
+            winscreen.SetActive(true);
 
+            if (p1winner)
+            {
+                wintext.text = "PLAYER 1 WON";
+            }
+            else if (p2winner)
+            {
+                wintext.text = "PLAYER 2 WON";
+            }
+        }
         if (gotxt == null)
         {
             return;
@@ -93,9 +105,17 @@ public class InputHandler : MonoBehaviour
             return;
         }
     }
-    public void Roundchange()
+    public void p1death()
     {
-        roundcount++;
+        Debug.Log("roundover");
+        roundwon = true;
+        p2winner = true;
+    }
+    public void p2death()
+    {
+        Debug.Log("roundover");
+        roundwon = true;
+        p1winner = true;
     }
     public void SetCamera()
     {
@@ -112,11 +132,8 @@ public class InputHandler : MonoBehaviour
     }
     IEnumerator gamestart()
     {
-        /*rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezePositionY;*/
         readytxt.SetActive(true);
         yield return new WaitForSeconds(1);
-        /*rb.constraints = RigidbodyConstraints2D.None | RigidbodyConstraints2D.None;
-        rb.AddForce(new Vector2(Xspeed, Yspeed * -5f), ForceMode2D.Impulse);*/
         readytxt.SetActive(false);
         gotxt.SetActive(true);
         StartCoroutine(textOff());

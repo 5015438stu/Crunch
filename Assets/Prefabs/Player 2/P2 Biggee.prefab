@@ -5648,6 +5648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 0}
+  health2: {fileID: 0}
   rb: {fileID: 3264055220040695127}
   combat2: {fileID: 4172665603626968409}
   combat: {fileID: 0}
@@ -5657,6 +5658,8 @@ MonoBehaviour:
   enemylayers:
     serializedVersion: 2
     m_Bits: 128
+  frontbar: {fileID: 7089560757453358021}
+  backbar: {fileID: 5144470733089848713}
   LightPunch: {fileID: -9137968497609597549, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   LightKick: {fileID: -3662175730211792092, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   HeavyPunch: {fileID: 6381211458312739477, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
@@ -5670,6 +5673,7 @@ MonoBehaviour:
   attacking: 0
   zp: 0
   comboend: 0
+  invs: 0
   knockbackx: 0
   knockbacky: 0
   isblocking: 0
@@ -5677,6 +5681,13 @@ MonoBehaviour:
   blockpriming: 0
   blockcheck: {fileID: 955425872874215451}
   blockarea: {x: 6.8, y: 0.95}
+  maxcrunch: 1000
+  currentcrunch: 0
+  lerptimer: 0
+  chipspeed: 2
+  flexing: 0
+  flexlength: 1.5
+  flextime: 0
 --- !u!114 &4268847411503749350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5689,9 +5700,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19218d0b02b6314eb93e05b97df424e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trans: {fileID: 0}
   movespeed: 8
   hors: 0
+  xvelo: 0
   yvelo: 0
   jumptime: 0
   jumplength: 0.3
@@ -5872,7 +5883,9 @@ MonoBehaviour:
   inputHandler: {fileID: 0}
   deaths: 0
   isdead: 1
-  deathsfx: 0
+  score:
+  - {fileID: 8909528974162397494}
+  - {fileID: 758829338486103957}
 --- !u!1 &8000446194415790450
 GameObject:
   m_ObjectHideFlags: 0

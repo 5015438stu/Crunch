@@ -14,6 +14,9 @@ public class HealthScript : MonoBehaviour
     public bool hurt;
     public float stuntime = .5f;
     public float hurttime;
+    public int lives = 2;
+    public bool isdowned;
+    public bool isdead;
     bool setdeath = false;
 
     [Header("Refs")]
@@ -30,8 +33,6 @@ public class HealthScript : MonoBehaviour
     public InputHandler inputHandler;
 
     [Header("Misc")]
-    public int deaths;
-    public bool isdead;
     public GameObject[] score;
 
     // Start is called before the first frame update
@@ -50,6 +51,10 @@ public class HealthScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (lives == 0)
+        {
+            isdead = true;
+        }
 
         if (frontbar == null)
         {
@@ -67,14 +72,14 @@ public class HealthScript : MonoBehaviour
         {
             move.movespeed = 0f;
             Die();
-            isdead = true;
+            isdowned = true;
             hurt = false;
             animator.SetBool("Hurt", false);
             animator.SetTrigger("KD2");
 
             if (setdeath == false)
             {
-                deaths += 1;
+                lives -= 1;
                 setdeath = true;
                 FindObjectOfType<SoundManager>().Play("Dead1");
             }
@@ -85,7 +90,7 @@ public class HealthScript : MonoBehaviour
         }
         else
         {
-            isdead = false;
+            isdowned = false;
         }
 
         if (hurt)
@@ -109,7 +114,7 @@ public class HealthScript : MonoBehaviour
     }
     public void takedamage(float damage)
     {
-        if (isdead == false)
+        if (isdowned == false)
         {
             currenthealth -= damage;
             rb.AddForce(new Vector2(combat.knockbackx, combat.knockbacky), ForceMode2D.Impulse);
@@ -158,17 +163,23 @@ public class HealthScript : MonoBehaviour
 
     void Die()
     {
-        inputHandler.Roundchange();
-        StartCoroutine(RoundChange());
-
+        if (isdead == false)
+        {
+            StartCoroutine(RoundChange());
+        }
+        else if (isdead == true)
+        {
+            inputHandler.p1death();
+        }
     }
 
     IEnumerator RoundChange()
     {
         yield return new WaitForSeconds(3);
         Debug.Log("Round Change");
-        score[deaths].SetActive(true);
+        score[lives].SetActive(true);
         currenthealth = playerhealth;
+        setdeath = false;
     }
     ///for each enemy death add one to score
 }

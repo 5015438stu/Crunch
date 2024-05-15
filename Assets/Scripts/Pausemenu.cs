@@ -31,7 +31,10 @@ public class Pausemenu : MonoBehaviour
         Time.timeScale = 1f;
         gamepaused = false;
     }
-
+    public void restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     void pause()
     {
         pausemenuUI.SetActive(true);

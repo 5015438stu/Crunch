@@ -33,7 +33,10 @@ public class eventsystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetComponent<CharacterSelect>();
+        if (CS == null)
+        {
+            return;
+        }
 
         if (p1chara == 1)
         {

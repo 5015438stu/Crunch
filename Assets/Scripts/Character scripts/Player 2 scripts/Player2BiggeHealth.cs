@@ -15,6 +15,9 @@ public class Player2BiggeHealth : MonoBehaviour
     public bool hurt;
     public float stuntime = .5f;
     public float hurttime;
+    public int lives = 2;
+    public bool isdowned = false;
+    public bool isdead = false;
     bool setdeath = false;
 
     [Header("Refs")]
@@ -31,8 +34,6 @@ public class Player2BiggeHealth : MonoBehaviour
     public InputHandler inputHandler;
 
     [Header("Misc")]
-    public int deaths;
-    public bool isdead;
     public GameObject[] score;
 
     // Start is called before the first frame update
@@ -50,6 +51,10 @@ public class Player2BiggeHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (lives == 0)
+        {
+            isdead = true;
+        }
         if (frontbar == null)
         {
             return;
@@ -62,19 +67,23 @@ public class Player2BiggeHealth : MonoBehaviour
 
         UpdateHealthUI();
 
+        if (isdead)
+        {
+            inputHandler.p2death();
+        }
         if (currenthealth <= 0)
         {
-
+            movement2.canjump = false;
             movement2.movespeed = 0f;
             Die();
-            isdead = true;
+            isdowned = true;
             hurt = false;
             animator.SetBool("Hurt", false);
             animator.SetTrigger("KD2");
 
             if (setdeath == false)
             {
-                deaths += 1;
+                lives -= 1;
                 setdeath = true;
                 FindObjectOfType<SoundManager>().Play("Dead1");
             }
@@ -86,7 +95,8 @@ public class Player2BiggeHealth : MonoBehaviour
         }
         else
         {
-            isdead = false;
+            movement2.canjump = true;
+            isdowned = false;
         }
 
         if (hurt)
@@ -162,17 +172,28 @@ public class Player2BiggeHealth : MonoBehaviour
     }
     void Die()
     {
-        inputHandler.Roundchange();
-        StartCoroutine(RoundChange());
+
+        if (isdead == false)
+        {
+            StartCoroutine(RoundChange());
+        }
+        else if (isdead == true)
+        {
+            inputHandler.p2death();
+            Debug.Log("p2Death");
+        }
 
     }
+
 
     IEnumerator RoundChange()
     {
         yield return new WaitForSeconds(3);
-        Debug.Log("Round Change");
-        score[deaths].SetActive(true);
+        score[lives].SetActive(true);
         currenthealth = playerhealth;
+        setdeath = false;
+        Debug.Log("Round Change");
+        StopAllCoroutines();
     }
 
     

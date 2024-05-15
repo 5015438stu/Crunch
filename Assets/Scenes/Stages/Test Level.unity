@@ -1180,11 +1180,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &430981099 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 758829338486103957, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
-  m_PrefabInstance: {fileID: 997371223}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &452106524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1344,17 +1339,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 499078875}
   m_CullTransparentMesh: 1
---- !u!114 &534463339 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5144470733089848713, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
-  m_PrefabInstance: {fileID: 997371223}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &624551726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2199,18 +2183,6 @@ PrefabInstance:
       propertyPath: combat
       value: 
       objectReference: {fileID: 1798164720}
-    - target: {fileID: 3817219913100049725, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
-      propertyPath: score.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3817219913100049725, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
-      propertyPath: score.Array.data[0]
-      value: 
-      objectReference: {fileID: 1628711471}
-    - target: {fileID: 3817219913100049725, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
-      propertyPath: score.Array.data[1]
-      value: 
-      objectReference: {fileID: 430981099}
     - target: {fileID: 4172665603626968409, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
       propertyPath: combat
       value: 
@@ -2219,14 +2191,6 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 1798164714}
-    - target: {fileID: 4172665603626968409, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
-      propertyPath: backbar
-      value: 
-      objectReference: {fileID: 534463339}
-    - target: {fileID: 4172665603626968409, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
-      propertyPath: frontbar
-      value: 
-      objectReference: {fileID: 1038924370}
     - target: {fileID: 7821279242919190250, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
       propertyPath: m_Name
       value: P2 Biggee
@@ -2362,17 +2326,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67c3c678a1d9c074ea902e2c515ba9cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1038924370 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7089560757453358021, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
-  m_PrefabInstance: {fileID: 997371223}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1064467951 stripped
@@ -2702,11 +2655,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1410155384 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7878643949801199399, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
-  m_PrefabInstance: {fileID: 1528944543}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1427170921
 GameObject:
   m_ObjectHideFlags: 0
@@ -3012,14 +2960,6 @@ PrefabInstance:
       propertyPath: combat2
       value: 
       objectReference: {fileID: 997371225}
-    - target: {fileID: 3764617882174446945, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
-      propertyPath: score.Array.data[0]
-      value: 
-      objectReference: {fileID: 1410155384}
-    - target: {fileID: 3764617882174446945, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
-      propertyPath: score.Array.data[1]
-      value: 
-      objectReference: {fileID: 1879012558}
     - target: {fileID: 5801828926454572568, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
       propertyPath: combat2
       value: 
@@ -3028,10 +2968,6 @@ PrefabInstance:
       propertyPath: health2
       value: 
       objectReference: {fileID: 997371226}
-    - target: {fileID: 5801828926454572568, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
-      propertyPath: LightCrunch
-      value: 
-      objectReference: {fileID: -8655821792887002559, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
     - target: {fileID: 7821279242919190250, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
       propertyPath: m_Name
       value: Biggee
@@ -3041,11 +2977,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
---- !u!1 &1628711471 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8909528974162397494, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
-  m_PrefabInstance: {fileID: 997371223}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1705867523
 GameObject:
   m_ObjectHideFlags: 0
@@ -3448,11 +3379,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1878443777}
   m_CullTransparentMesh: 1
---- !u!1 &1879012558 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5097111917634802262, guid: 13d6d7ae00143674c88f676bd4c25a8d, type: 3}
-  m_PrefabInstance: {fileID: 1528944543}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1909898285
 GameObject:
   m_ObjectHideFlags: 0
@@ -3921,6 +3847,8 @@ MonoBehaviour:
   gotxt: {fileID: 0}
   roundcount: 0
   rountwincount: 0
+  p1deaths: 0
+  p2deaths: 0
   currenttime: 0
   startingtime: 300
   count: 0

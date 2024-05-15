@@ -800,9 +800,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b72cb6aa4482b24a9df7d3118d04a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trans: {fileID: 0}
   movespeed: 8
   hors: 0
+  xvelo: 0
   yvelo: 0
   jumptime: 0
   jumplength: 0.3
@@ -872,7 +872,7 @@ MonoBehaviour:
   LightKick: {fileID: -3662175730211792092, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   HeavyPunch: {fileID: 6381211458312739477, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   HeavyKick: {fileID: -9066179745752283474, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
-  LightCrunch: {fileID: 0}
+  LightCrunch: {fileID: -8655821792887002559, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   lastclickedtime: 0
   maxcombodelay: 1
   delaytimer: 0
@@ -884,6 +884,7 @@ MonoBehaviour:
   attacking: 0
   zp: 0
   comboend: 0
+  invs: 0
   isblocking: 0
   blockready: 0
   blockpriming: 0
@@ -924,13 +925,13 @@ MonoBehaviour:
   pfp: {fileID: 5101077354569689201}
   frontbar: {fileID: 7938579751206053723}
   backbar: {fileID: 6359713332256516097}
+  hurtbox: {fileID: 0}
   inputHandler: {fileID: 0}
   deaths: 0
   isdead: 0
-  deathsfx: 0
   score:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7878643949801199399}
+  - {fileID: 5097111917634802262}
 --- !u!114 &-6911828012864639915
 MonoBehaviour:
   m_ObjectHideFlags: 0

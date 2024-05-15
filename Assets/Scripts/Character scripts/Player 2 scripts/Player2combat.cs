@@ -76,6 +76,7 @@ public class Player2combat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (comboend)
         {
             rb.constraints = RigidbodyConstraints2D.None;
@@ -120,11 +121,9 @@ public class Player2combat : MonoBehaviour
             }
         }
 
-        if (attacking == false)
-        {
-            knockbackx = 0;
-            knockbacky = 0;
-        }
+
+        Blockcheck();
+        UpdateCrunchUI();
 
         if (flexing)
         {
@@ -142,6 +141,12 @@ public class Player2combat : MonoBehaviour
         else
         {
             return;
+        }
+
+        if (attacking == false)
+        {
+            knockbackx = 0;
+            knockbacky = 0;
         }
 
         if (movement2.flipped)
@@ -162,9 +167,6 @@ public class Player2combat : MonoBehaviour
         {
             blockready = true;
         }
-
-        Blockcheck();
-        UpdateCrunchUI();
 
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 

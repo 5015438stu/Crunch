@@ -20,6 +20,7 @@ public class Player2Movement : MonoBehaviour
     public int maxjumps = 1;
     public bool isjumping = false;
     public int jumpsremaining;
+    public bool canjump = true;
 
     [Header("Crouching")]
     public bool iscrouching = false;
@@ -142,36 +143,40 @@ public class Player2Movement : MonoBehaviour
     }
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (jumpsremaining > 0)
+        if (canjump)
         {
-            if (context.started)
+            if (jumpsremaining > 0)
             {
-                //full power full hold
-                Debug.Log("Jump Started");
-                rb.velocity = new Vector2(rb.velocity.x, jumpforce);
-                jumpsremaining--;
-                isjumping = true;
-                FindObjectOfType<SoundManager>().Play("JumpSFX");
-                animator.SetBool("IsJumping", true);
-                animator.SetBool("IsFalling", false);
-            }
+                if (context.started)
+                {
+                    //full power full hold
+                    Debug.Log("Jump Started");
+                    rb.velocity = new Vector2(rb.velocity.x, jumpforce);
+                    jumpsremaining--;
+                    isjumping = true;
+                    FindObjectOfType<SoundManager>().Play("JumpSFX");
+                    animator.SetBool("IsJumping", true);
+                    animator.SetBool("IsFalling", false);
+                }
 
-            if (context.performed)
-            {
-                Debug.Log("Jump Performed");
-            }
+                if (context.performed)
+                {
+                    Debug.Log("Jump Performed");
+                }
 
-            if (context.canceled)
-            {
-                //small jump light tap
-                Debug.Log("Jump Ended");
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-                animator.SetBool("IsFalling", true);
-                animator.SetBool("IsJumping", false);
-                jumpsremaining--;
-                isjumping = true;
+                if (context.canceled)
+                {
+                    //small jump light tap
+                    Debug.Log("Jump Ended");
+                    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+                    animator.SetBool("IsFalling", true);
+                    animator.SetBool("IsJumping", false);
+                    jumpsremaining--;
+                    isjumping = true;
+                }
             }
         }
+        
 
     }
     private void OnDrawGizmosSelected()
