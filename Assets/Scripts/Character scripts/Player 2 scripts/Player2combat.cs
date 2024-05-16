@@ -125,6 +125,8 @@ public class Player2combat : MonoBehaviour
         Blockcheck();
         UpdateCrunchUI();
 
+        currentcrunch = Mathf.Clamp(currentcrunch, 0, maxcrunch);
+
         if (flexing)
         {
             flextime += 1 * Time.deltaTime;
@@ -408,12 +410,10 @@ public class Player2combat : MonoBehaviour
                 }
                 else if (flexing == true && attacking && combat.attacking == true) //counter
                 {
-                    animator.SetBool("IsFlexing", false);
-                    attacking = true;
-                    animator.SetTrigger("FlexAttack");
-                    combat.comboend = true;
+                    Debug.Log("Inflicted Damage");
+                    updatebar(attackDamage);
                     health.takedamage(attackDamage);
-                    rb.AddForce(new Vector2(50f, 10f), ForceMode2D.Impulse);
+                    rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
                 }
                 if (combat.attacking && flexing)
                 {

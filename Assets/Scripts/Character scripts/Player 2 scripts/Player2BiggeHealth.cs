@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,7 +15,7 @@ public class Player2BiggeHealth : MonoBehaviour
     public float stuntime = .5f;
     public float hurttime;
     public int lives = 2;
-    public bool isdowned = false;
+    public bool isdowned;
     public bool isdead = false;
     bool setdeath = false;
 
@@ -43,18 +42,17 @@ public class Player2BiggeHealth : MonoBehaviour
         GetComponent<Rigidbody2D>();
         GetComponent<Player2Movement>();
         combat = GameObject.FindWithTag("P1").GetComponent<PlayerCombat>();
-        inputHandler = gameObject.AddComponent<InputHandler>();
-
+        inputHandler = InputHandler.Instance;
+        isdead = false;
         pfp.SetActive(true);
         currenthealth = playerhealth;
     }
     // Update is called once per frame
     void Update()
     {
-        if (lives == 0)
-        {
-            isdead = true;
-        }
+
+        Debug.Log(lives + "P2Remaining");
+
         if (frontbar == null)
         {
             return;
@@ -63,19 +61,19 @@ public class Player2BiggeHealth : MonoBehaviour
         {
             return;
         }
+
         currenthealth = Mathf.Clamp(currenthealth, 0, playerhealth);
+
+        lives = Mathf.Clamp(lives, 0, 2);
 
         UpdateHealthUI();
 
-        if (isdead)
+        if (currenthealth <= 0) //death check
         {
-            inputHandler.p2death();
-        }
-        if (currenthealth <= 0)
-        {
+            Debug.Log("Died");
             movement2.canjump = false;
             movement2.movespeed = 0f;
-            Die();
+            
             isdowned = true;
             hurt = false;
             animator.SetBool("Hurt", false);
@@ -84,8 +82,9 @@ public class Player2BiggeHealth : MonoBehaviour
             if (setdeath == false)
             {
                 lives -= 1;
-                setdeath = true;
+                Die();
                 FindObjectOfType<SoundManager>().Play("Dead1");
+                setdeath = true;
             }
             else
             {
@@ -99,7 +98,7 @@ public class Player2BiggeHealth : MonoBehaviour
             isdowned = false;
         }
 
-        if (hurt)
+        if (hurt) //how long u are stunned
         {
             if (combat.knockbacky > 40)
             {
@@ -122,7 +121,7 @@ public class Player2BiggeHealth : MonoBehaviour
 
     public void takedamage(float damage)
     {
-        if (isdead == false)
+        if (isdowned == false)
         {
             currenthealth -= damage;
             rb.AddForce(new Vector2(combat.knockbackx, combat.knockbacky), ForceMode2D.Impulse);
@@ -138,8 +137,6 @@ public class Player2BiggeHealth : MonoBehaviour
             animator.SetBool("Hurt", false);
             return;
         }
-
-        
     }
     
     public void restorehealth(int healamount)
@@ -172,19 +169,25 @@ public class Player2BiggeHealth : MonoBehaviour
     }
     void Die()
     {
-
+        Debug.Log(lives + "Remaining");
+        
         if (isdead == false)
         {
             StartCoroutine(RoundChange());
         }
-        else if (isdead == true)
+
+        if (lives == 0)
         {
-            inputHandler.p2death();
-            Debug.Log("p2Death");
+            isdead = true;
         }
 
+        if (isdead == true)
+        {
+            inputHandler.p1death();
+            Debug.Log("p1Death");
+            return;
+        }
     }
-
 
     IEnumerator RoundChange()
     {

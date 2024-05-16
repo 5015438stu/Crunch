@@ -34,7 +34,10 @@ public class InputHandler : MonoBehaviour
     [Header("Camera")]
     public bool isset = false;
 
-
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
         if (readytxt != null)
@@ -110,12 +113,14 @@ public class InputHandler : MonoBehaviour
         Debug.Log("roundover");
         roundwon = true;
         p2winner = true;
+        count = false;
     }
     public void p2death()
     {
         Debug.Log("roundover");
         roundwon = true;
         p1winner = true;
+        count = false;
     }
     public void SetCamera()
     {

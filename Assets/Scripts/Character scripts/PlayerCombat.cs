@@ -128,6 +128,8 @@ public class PlayerCombat : MonoBehaviour
         Blockcheck();
         UpdateCrunchUI();
 
+        currentcrunch = Mathf.Clamp(currentcrunch, 0, maxcrunch);
+        
         if (flexing)
         {
             flextime += 1 * Time.deltaTime;

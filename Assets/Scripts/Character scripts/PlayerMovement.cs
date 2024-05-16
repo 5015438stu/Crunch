@@ -68,8 +68,6 @@ public class PlayerMovement : MonoBehaviour
         yvelo = rb.velocity.y;
         xvelo = rb.velocity.x;
 
-        rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
-
         animator.SetFloat("Speed", rb.velocity.x);
 
         GroundCheck();
@@ -79,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         if (rb.velocity.y > 1.5)
         {
             isjumping = true;
+            jumpsremaining = 0;
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsFalling", false);
         }

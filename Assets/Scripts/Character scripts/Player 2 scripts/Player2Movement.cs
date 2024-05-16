@@ -48,7 +48,6 @@ public class Player2Movement : MonoBehaviour
         health2 = GetComponent<Player2BiggeHealth>();
         isjumping = false;
     }
-
     private void Update()
     {
         if (health2.hurt == true)
@@ -98,6 +97,7 @@ public class Player2Movement : MonoBehaviour
             sprite.flipX = false;
             flipped = false;
         }
+
         if (hors == 1)
         {
             movespeed = 5f;
@@ -106,6 +106,7 @@ public class Player2Movement : MonoBehaviour
         {
             movespeed = 5f;
         }
+
         if (iscrouching)
         {
             movespeed = 0f;

@@ -16,7 +16,7 @@ public class HealthScript : MonoBehaviour
     public float hurttime;
     public int lives = 2;
     public bool isdowned;
-    public bool isdead;
+    public bool isdead = false;
     bool setdeath = false;
 
     [Header("Refs")]
@@ -39,11 +39,10 @@ public class HealthScript : MonoBehaviour
     void Start()
     {
         GetComponent<GameObject>();
-        GetComponent<PlayerMovement>();
         GetComponent<Rigidbody2D>();
         GetComponent<PlayerMovement>();
         combat2 = GameObject.FindWithTag("P2").GetComponent<Player2combat>();
-        inputHandler = gameObject.AddComponent<InputHandler>();
+        inputHandler = InputHandler.Instance;
 
         pfp.SetActive(true);
         currenthealth = playerhealth;
@@ -51,10 +50,8 @@ public class HealthScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (lives == 0)
-        {
-            isdead = true;
-        }
+
+        Debug.Log(lives + "Remaining");
 
         if (frontbar == null)
         {
@@ -64,14 +61,19 @@ public class HealthScript : MonoBehaviour
         {
             return;
         }
+
         currenthealth = Mathf.Clamp(currenthealth, 0, playerhealth);
-        
+
+        lives = Mathf.Clamp(lives, 0, 2);
+
         UpdateHealthUI();
 
-        if (currenthealth <= 0)
+        if (currenthealth <= 0) //death check
         {
+            Debug.Log("Died");
+            move.canjump = false;
             move.movespeed = 0f;
-            Die();
+
             isdowned = true;
             hurt = false;
             animator.SetBool("Hurt", false);
@@ -80,11 +82,13 @@ public class HealthScript : MonoBehaviour
             if (setdeath == false)
             {
                 lives -= 1;
-                setdeath = true;
+                Die();
                 FindObjectOfType<SoundManager>().Play("Dead1");
+                setdeath = true;
             }
             else
             {
+                move.canjump = true;
                 return;
             }
         }
@@ -163,13 +167,22 @@ public class HealthScript : MonoBehaviour
 
     void Die()
     {
+
         if (isdead == false)
         {
             StartCoroutine(RoundChange());
         }
-        else if (isdead == true)
+
+        if (lives == 0)
+        {
+            isdead = true;
+        }
+
+        if (isdead == true)
         {
             inputHandler.p1death();
+            Debug.Log("p1Death");
+            return;
         }
     }
 
@@ -180,6 +193,7 @@ public class HealthScript : MonoBehaviour
         score[lives].SetActive(true);
         currenthealth = playerhealth;
         setdeath = false;
+        StopAllCoroutines();
     }
     ///for each enemy death add one to score
 }
