@@ -41,7 +41,7 @@ public class Player2BiggeHealth : MonoBehaviour
         GetComponent<GameObject>();
         GetComponent<Rigidbody2D>();
         GetComponent<Player2Movement>();
-        combat = GameObject.FindWithTag("P1").GetComponent<PlayerCombat>();
+        GetComponent<PlayerCombat>();
         inputHandler = InputHandler.Instance;
         isdead = false;
         pfp.SetActive(true);
@@ -50,7 +50,6 @@ public class Player2BiggeHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Debug.Log(lives + "P2Remaining");
 
         if (frontbar == null)

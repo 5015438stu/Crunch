@@ -67,11 +67,11 @@ public class InputHandler : MonoBehaviour
 
             if (p1winner)
             {
-                wintext.text = "PLAYER 1 WON";
+                wintext.text = "PLAYER 2 WON";
             }
             else if (p2winner)
             {
-                wintext.text = "PLAYER 2 WON";
+                wintext.text = "PLAYER 1 WON";
             }
         }
         if (gotxt == null)

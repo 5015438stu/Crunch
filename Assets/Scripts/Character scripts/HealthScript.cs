@@ -73,7 +73,7 @@ public class HealthScript : MonoBehaviour
             Debug.Log("Died");
             move.canjump = false;
             move.movespeed = 0f;
-
+            combat.canattack = false;
             isdowned = true;
             hurt = false;
             animator.SetBool("Hurt", false);
@@ -94,11 +94,14 @@ public class HealthScript : MonoBehaviour
         }
         else
         {
+            combat.canattack = true;
             isdowned = false;
         }
 
         if (hurt)
         {
+            combat.canattack = false;
+
             if (combat.knockbacky > 40)
             {
 
@@ -110,6 +113,7 @@ public class HealthScript : MonoBehaviour
 
             if (hurttime > stuntime)
             {
+                combat.canattack = true;
                 hurt = false;
                 hurttime = 0;
                 animator.SetBool("Hurt", false);

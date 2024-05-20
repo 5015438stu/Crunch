@@ -77,25 +77,8 @@ public class Player2combat : MonoBehaviour
     void Update()
     {
 
-        if (comboend)
-        {
-            rb.constraints = RigidbodyConstraints2D.None;
-
-            delaytimer += 1 * Time.deltaTime;
-            zpresses = 0;
-            zp = 0;
-
-            if (delaytimer >= delay)
-            {
-                comboend = false;
-                Debug.Log("attack Delay");
-                delaytimer = 0;
-            }
-        }
-        if (comboend == false)
-        {
-
-        }
+        Blockcheck();
+        UpdateCrunchUI();
 
         if (attacking)
         {
@@ -103,11 +86,7 @@ public class Player2combat : MonoBehaviour
             animator.SetBool("IsFlexing", false);
             flexing = false;
             flextime = 0;
-
-            if (movement2.isjumping == false)
-            {
-                rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-            }
+            movement2.canjump = true;
 
             lastclickedtime += 1 * Time.deltaTime;
 
@@ -120,10 +99,25 @@ public class Player2combat : MonoBehaviour
                 attacking = false;
             }
         }
+        else
+        {
+            movement2.canjump = true;
+        }
 
+        if (comboend)
+        {
+            delaytimer += 1 * Time.deltaTime;
+            zpresses = 0;
+            zp = 0;
 
-        Blockcheck();
-        UpdateCrunchUI();
+            if (delaytimer >= delay)
+            {
+                comboend = false;
+                Debug.Log("attack Delay");
+                delaytimer = 0;
+            }
+        }
+
 
         currentcrunch = Mathf.Clamp(currentcrunch, 0, maxcrunch);
 
@@ -405,6 +399,7 @@ public class Player2combat : MonoBehaviour
                 if (flexing == false && attacking && combat.attacking == true) //clashing
                 {
                     rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
+                    health.takedamage(0);
                     FindObjectOfType<SoundManager>().Play("BigThuddy2");
                     Debug.Log("clash2");
                 }
