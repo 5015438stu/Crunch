@@ -43,7 +43,7 @@ public class HealthScript : MonoBehaviour
         GetComponent<PlayerMovement>();
         combat2 = GameObject.FindWithTag("P2").GetComponent<Player2combat>();
         inputHandler = InputHandler.Instance;
-
+        isdead = false;
         pfp.SetActive(true);
         currenthealth = playerhealth;
     }
@@ -88,12 +88,12 @@ public class HealthScript : MonoBehaviour
             }
             else
             {
-                move.canjump = true;
                 return;
             }
         }
         else
         {
+            move.canjump = true;
             combat.canattack = true;
             isdowned = false;
         }
@@ -189,7 +189,20 @@ public class HealthScript : MonoBehaviour
             return;
         }
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            if (move.xvelo >= 6)
+            {
+                move.xvelo = 0;
+            }
+            else if (move.xvelo <= -6)
+            {
+                move.xvelo = 0;
+            }
+        }
+    }
     IEnumerator RoundChange()
     {
         yield return new WaitForSeconds(3);

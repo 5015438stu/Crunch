@@ -87,6 +87,7 @@ public class Player2BiggeHealth : MonoBehaviour
             }
             else
             {
+
                 return;
             }
 
@@ -94,11 +95,14 @@ public class Player2BiggeHealth : MonoBehaviour
         else
         {
             movement2.canjump = true;
+            combat2.canattack = true;
             isdowned = false;
         }
 
         if (hurt) //how long u are stunned
         {
+            combat2.canattack = false;
+
             if (combat.knockbacky > 40)
             {
 
@@ -187,7 +191,23 @@ public class Player2BiggeHealth : MonoBehaviour
             return;
         }
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Wall")
+        {
+            Debug.Log("wall");
+            if (movement2.rb.velocity.x >= 6)
+            {
+                Debug.Log("stick");
+                movement2.xvelo = 0;
+            }
+            else if (movement2.xvelo <= -6)
+            {
+                Debug.Log("stick");
+                movement2.xvelo = 0;
+            }
+        }
+    }
     IEnumerator RoundChange()
     {
         yield return new WaitForSeconds(3);

@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         isjumping = false;
         health = GetComponent<HealthScript>();
     }
-    private void Update()
+    void Update()
     {
         if (health.hurt == true)
         {
@@ -65,8 +65,9 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        yvelo = rb.velocity.y;
+
         xvelo = rb.velocity.x;
+        yvelo = rb.velocity.y;
 
         animator.SetFloat("Speed", rb.velocity.x);
 

@@ -12,6 +12,7 @@ TagManager:
   - p2bbar
   - p1fbar
   - p1bbar
+  - Wall
   layers:
   - Default
   - TransparentFX

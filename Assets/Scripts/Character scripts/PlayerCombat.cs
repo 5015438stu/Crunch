@@ -80,21 +80,6 @@ public class PlayerCombat : MonoBehaviour
         UpdateCrunchUI();
         Blockcheck();
 
-        if (comboend)
-        {
-            zpresses = 0;
-            zp = 0;
-
-            delaytimer += 1 * Time.deltaTime;
-
-            if (delaytimer >= delay)
-            {
-                comboend = false;
-                Debug.Log("attack Delay");
-                delaytimer = 0;
-            }
-        }
-
         if (attacking)
         {
             movement.movespeed = 6f;
@@ -117,10 +102,26 @@ public class PlayerCombat : MonoBehaviour
         }
         else
         {
-            knockbackx = 0;
-            knockbacky = 0;
+
             movement.canjump = true;
         }
+
+        if (comboend)
+        {
+            zpresses = 0;
+            zp = 0;
+
+            delaytimer += 1 * Time.deltaTime;
+
+            if (delaytimer >= delay)
+            {
+                comboend = false;
+                Debug.Log("attack Delay");
+                delaytimer = 0;
+            }
+        }
+
+        
 
         currentcrunch = Mathf.Clamp(currentcrunch, 0, maxcrunch);
 

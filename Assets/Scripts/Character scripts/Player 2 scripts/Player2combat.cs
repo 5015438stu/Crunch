@@ -29,6 +29,7 @@ public class Player2combat : MonoBehaviour
     public float maxcombodelay = 1f;
     public float delaytimer = 0f;
     public float delay = 1f;
+    public bool canattack = true;
 
     [Header("Damage")]
     public int attackDamage = 40; //Change later for each attack
@@ -76,9 +77,8 @@ public class Player2combat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Blockcheck();
         UpdateCrunchUI();
+        Blockcheck();
 
         if (attacking)
         {
@@ -101,6 +101,8 @@ public class Player2combat : MonoBehaviour
         }
         else
         {
+            knockbackx = 0;
+            knockbacky = 0;
             movement2.canjump = true;
         }
 
