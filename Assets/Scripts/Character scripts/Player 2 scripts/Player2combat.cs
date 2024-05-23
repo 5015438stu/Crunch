@@ -133,6 +133,7 @@ public class Player2combat : MonoBehaviour
             {
                 animator.SetBool("IsFlexing", false);
                 flexing = false;
+                invs = false;
                 flextime = 0;
             }
         }

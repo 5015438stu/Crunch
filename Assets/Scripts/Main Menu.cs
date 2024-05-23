@@ -27,6 +27,7 @@ public class MenuButtons : MonoBehaviour
     public void CLoseptionbutton()
     {
         options.SetActive(false);
+        Time.timeScale = 1;
     }
     public void buttonsfx()
     {
