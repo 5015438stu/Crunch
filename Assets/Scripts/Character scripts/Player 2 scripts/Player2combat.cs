@@ -12,6 +12,8 @@ public class Player2combat : MonoBehaviour
     public Player2BiggeHealth health2;
     public Rigidbody2D rb;
     public Player2combat combat2;
+    public JeanCombat jeancombat;
+    public AshCombat ashcombat;
     public PlayerCombat combat;
     public Player2Movement movement2;
     public Animator animator;
@@ -70,6 +72,8 @@ public class Player2combat : MonoBehaviour
         animator = GetComponent<Animator>();
         movement2 = GetComponent<Player2Movement>();
         combat = GameObject.FindWithTag("P1").GetComponent<PlayerCombat>();
+        ashcombat = GameObject.FindWithTag("P1").GetComponent<AshCombat>();
+        jeancombat = GameObject.FindWithTag("P1").GetComponent<JeanCombat>();
         health = GameObject.FindWithTag("P1").GetComponent<HealthScript>();
         currentcrunch = 0;
     }
@@ -226,6 +230,43 @@ public class Player2combat : MonoBehaviour
                 animator.SetBool("IsBlocking", false);
             }
 
+            if (blockready && blockpriming && ashcombat.attacking && movement2.iscrouching == false) /// Ashblocking
+            {
+                isblocking = true;
+                Debug.Log("GetBlockedBozo");
+                animator.SetBool("IsBlocking", true);
+            }
+            else if (blockready && blockpriming && ashcombat.attacking && movement2.iscrouching)
+            {
+                isblocking = true;
+                Debug.Log("GetCBlockedBozo");
+                animator.SetBool("IsCrouchBlocking", true);
+            }
+            else
+            {
+                isblocking = false;
+                animator.SetBool("IsCrouchBlocking", false);
+                animator.SetBool("IsBlocking", false);
+            }
+
+            if (blockready && blockpriming && jeancombat.attacking && movement2.iscrouching == false) /// Jeanblocking
+            {
+                isblocking = true;
+                Debug.Log("GetBlockedBozo");
+                animator.SetBool("IsBlocking", true);
+            }
+            else if (blockready && blockpriming && jeancombat.attacking && movement2.iscrouching)
+            {
+                isblocking = true;
+                Debug.Log("GetCBlockedBozo");
+                animator.SetBool("IsCrouchBlocking", true);
+            }
+            else
+            {
+                isblocking = false;
+                animator.SetBool("IsCrouchBlocking", false);
+                animator.SetBool("IsBlocking", false);
+            }
         }
         else
         {
@@ -427,7 +468,87 @@ public class Player2combat : MonoBehaviour
             {
                 Debug.Log("whiff2");
             }
-          
+
+            //Ash
+            if (ashcombat.isblocking == false && ashcombat.invs == false)
+            {
+                if (attacking && ashcombat.attacking == false) //normal hit
+                {
+                    Debug.Log("Inflicted Damage2");
+                    updatebar(attackDamage);
+                    health.takedamage(attackDamage);
+                    rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
+                }
+
+                if (flexing == false && attacking && ashcombat.attacking == true) //clashing
+                {
+                    rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
+                    health.takedamage(0);
+                    FindObjectOfType<SoundManager>().Play("BigThuddy2");
+                    Debug.Log("clash2");
+                }
+                else if (flexing == true && attacking && ashcombat.attacking == true) //counter
+                {
+                    Debug.Log("Inflicted Damage");
+                    updatebar(attackDamage);
+                    health.takedamage(attackDamage);
+                    rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
+                }
+                if (ashcombat.attacking && flexing)
+                {
+                    animator.SetBool("IsFlexing", false);
+                    animator.SetTrigger("FlexAttack");
+                    ashcombat.comboend = true;
+                    health.takedamage(attackDamage);
+                    rb.AddForce(new Vector2(50f, 10f), ForceMode2D.Impulse);
+                    attacking = true;
+                }
+            }
+            else if (ashcombat.invs == true)
+            {
+                Debug.Log("whiff2");
+            }
+            //Jean
+            if (jeancombat.isblocking == false && jeancombat.invs == false)
+            {
+                if (attacking && jeancombat.attacking == false) //normal hit
+                {
+                    Debug.Log("Inflicted Damage2");
+                    updatebar(attackDamage);
+                    health.takedamage(attackDamage);
+                    rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
+                }
+
+                if (flexing == false && attacking && jeancombat.attacking == true) //clashing
+                {
+                    rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
+                    health.takedamage(0);
+                    FindObjectOfType<SoundManager>().Play("BigThuddy2");
+                    Debug.Log("clash2");
+                }
+                else if (flexing == true && attacking && jeancombat.attacking == true) //counter
+                {
+                    Debug.Log("Inflicted Damage");
+                    updatebar(attackDamage);
+                    health.takedamage(attackDamage);
+                    rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
+                }
+                if (jeancombat.attacking && flexing)
+                {
+                    animator.SetBool("IsFlexing", false);
+                    animator.SetTrigger("FlexAttack");
+                    jeancombat.comboend = true;
+                    health.takedamage(attackDamage);
+                    rb.AddForce(new Vector2(50f, 10f), ForceMode2D.Impulse);
+                    attacking = true;
+                }
+            }
+            else if (jeancombat.invs == true)
+            {
+                Debug.Log("whiff2");
+            }
+            //Cinder
+
         }
     }
     private void OnDrawGizmosSelected()

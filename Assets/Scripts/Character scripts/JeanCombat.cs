@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class AshCombat : MonoBehaviour
+public class JeanCombat : MonoBehaviour
 {
     [Header("Refs")]
     public Player2combat combat2;
@@ -275,7 +275,7 @@ public class AshCombat : MonoBehaviour
                         {
                             attacking = true;
                             Debug.Log("Kack 1");
-                            animator.SetTrigger("LK1");
+                            animator.SetTrigger("IsLKicking");
                             knockbackx = -20f;
                             knockbacky = 10f;
                             comboend = false;
@@ -353,7 +353,7 @@ public class AshCombat : MonoBehaviour
                             attacking = true;
                             Debug.Log("Pawnch 1");
                             animator.SetTrigger("Lp1");
-                            knockbackx = -10f;
+                            knockbackx = -20f;
                             knockbacky = 30f;
                             comboend = false;
                         }
@@ -363,7 +363,7 @@ public class AshCombat : MonoBehaviour
                             attacking = true;
                             Debug.Log("Pawnch 2");
                             animator.SetTrigger("Lp2");
-                            knockbackx = -10f;
+                            knockbackx = 25f;
                             knockbacky = 20f;
                         }
 

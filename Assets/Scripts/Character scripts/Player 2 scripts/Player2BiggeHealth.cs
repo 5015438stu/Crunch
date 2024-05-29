@@ -42,7 +42,7 @@ public class Player2BiggeHealth : MonoBehaviour
         GetComponent<GameObject>();
         GetComponent<Rigidbody2D>();
         GetComponent<Player2Movement>();
-        GetComponent<PlayerCombat>();
+        ashcombat = GameObject.FindWithTag("P1").GetComponent<AshCombat>();
         GetComponent<AshCombat>();
         inputHandler = InputHandler.Instance;
         isdead = false;

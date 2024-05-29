@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class AshHealth : MonoBehaviour
+public class JeanHealth : MonoBehaviour
 {
     [Header("Health")]
     public float playerhealth = 1000;
@@ -21,9 +21,9 @@ public class AshHealth : MonoBehaviour
 
     [Header("Refs")]
     public Rigidbody2D rb;
-    public AshCombat combat;
+    public JeanCombat jeancombat;
     public Player2combat combat2;
-    public AshMovement move;
+    public JeanMovement jeanmove;
     public Animator animator;
     public ParticleSystem hit = default;
     public GameObject pfp;
@@ -40,7 +40,7 @@ public class AshHealth : MonoBehaviour
     {
         GetComponent<GameObject>();
         GetComponent<Rigidbody2D>();
-        GetComponent<AshMovement>();
+        GetComponent<PlayerMovement>();
         combat2 = GameObject.FindWithTag("P2").GetComponent<Player2combat>();
         inputHandler = InputHandler.Instance;
         isdead = false;
@@ -50,6 +50,7 @@ public class AshHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Debug.Log(lives + "Remaining");
 
         if (frontbar == null)
@@ -70,9 +71,9 @@ public class AshHealth : MonoBehaviour
         if (currenthealth <= 0) //death check
         {
             Debug.Log("Died");
-            move.canjump = false;
-            move.movespeed = 0f;
-            combat.canattack = false;
+            jeanmove.canjump = false;
+            jeanmove.movespeed = 0f;
+            jeancombat.canattack = false;
             isdowned = true;
             hurt = false;
             animator.SetBool("Hurt", false);
@@ -92,16 +93,16 @@ public class AshHealth : MonoBehaviour
         }
         else
         {
-            move.canjump = true;
-            combat.canattack = true;
+            jeanmove.canjump = true;
+            jeancombat.canattack = true;
             isdowned = false;
         }
 
         if (hurt)
         {
-            combat.canattack = false;
+            jeancombat.canattack = false;
 
-            if (combat.knockbacky > 40)
+            if (jeancombat.knockbacky > 40)
             {
 
                 animator.SetBool("Hurt", false);
@@ -112,7 +113,7 @@ public class AshHealth : MonoBehaviour
 
             if (hurttime > stuntime)
             {
-                combat.canattack = true;
+                jeancombat.canattack = true;
                 hurt = false;
                 hurttime = 0;
                 animator.SetBool("Hurt", false);
@@ -124,7 +125,7 @@ public class AshHealth : MonoBehaviour
         if (isdowned == false)
         {
             currenthealth -= damage;
-            rb.AddForce(new Vector2(combat.knockbackx, combat.knockbacky), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(jeancombat.knockbackx, jeancombat.knockbacky), ForceMode2D.Impulse);
             lerptimer = 0f;
             FindObjectOfType<SoundManager>().Play("Hurt1");
             animator.SetBool("Hurt", true);
@@ -192,13 +193,13 @@ public class AshHealth : MonoBehaviour
     {
         if (collision.gameObject.tag == "Wall")
         {
-            if (move.xvelo >= 6)
+            if (jeanmove.xvelo >= 6)
             {
-                move.xvelo = 0;
+                jeanmove.xvelo = 0;
             }
-            else if (move.xvelo <= -6)
+            else if (jeanmove.xvelo <= -6)
             {
-                move.xvelo = 0;
+                jeanmove.xvelo = 0;
             }
         }
     }
