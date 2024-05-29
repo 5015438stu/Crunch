@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.U2D;
 using UnityEngine.UI;
 
-public class AshMovement : MonoBehaviour
+public class CinderMovement : MonoBehaviour
 {
     [Header("Movement")]
     public float movespeed = 8f;
@@ -37,7 +37,7 @@ public class AshMovement : MonoBehaviour
     public InputActionReference move;
     public InputActionReference jump;
     public InputActionReference crouch;
-    public AshHealth ashhealth;
+    public CinderHealth cinderhealth;
 
     [Header("Fliping")]
     public float P2xpos;
@@ -46,13 +46,13 @@ public class AshMovement : MonoBehaviour
     public void Start()
     {
         isjumping = false;
-        ashhealth = GetComponent<AshHealth>();
+        cinderhealth = GetComponent<CinderHealth>();
     }
     void Update()
     {
-        if (ashhealth.hurt == true)
+        if (cinderhealth.hurt == true)
         {
-            Debug.Log("AStun1");
+            Debug.Log("Stun1");
             return;
         }
         else

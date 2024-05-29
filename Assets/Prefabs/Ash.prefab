@@ -595,9 +595,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1088983623376106272}
+  - {fileID: 6074620696316762427}
   - {fileID: 6136097713725080100}
   - {fileID: 1252911542885693122}
-  - {fileID: 6074620696316762427}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7430978733693207532
@@ -780,7 +780,7 @@ MonoBehaviour:
   move: {fileID: 2575826022847119941, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   jump: {fileID: 5333029506162208025, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   crouch: {fileID: 4693896964530844571, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
-  health: {fileID: 1173836683399124156}
+  ashhealth: {fileID: 0}
   P2xpos: 0
   flipped: 0
 --- !u!114 &5815124915603694886

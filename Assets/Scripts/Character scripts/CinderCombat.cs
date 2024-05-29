@@ -5,14 +5,13 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class JeanCombat : MonoBehaviour
+public class CinderCombat : MonoBehaviour
 {
     [Header("Refs")]
     public Player2combat combat2;
     public Player2BiggeHealth health2;
-
     public Rigidbody2D rb;
-    public JeanMovement movement;
+    public CinderMovement movement;
     public Animator animator;
     public BoxCollider2D hitbox;
     public LayerMask enemylayers;
@@ -69,7 +68,7 @@ public class JeanCombat : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         hitbox = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
-        movement = GetComponent<JeanMovement>();
+        movement = GetComponent<CinderMovement>();
         combat2 = GameObject.FindWithTag("P2").GetComponent<Player2combat>();
         health2 = GameObject.FindWithTag("P2").GetComponent<Player2BiggeHealth>();
         currentcrunch = 0;
@@ -352,7 +351,7 @@ public class JeanCombat : MonoBehaviour
                         {
                             attacking = true;
                             Debug.Log("Pawnch 1");
-                            animator.SetTrigger("Lp1");
+                            animator.SetTrigger("LP1");
                             knockbackx = -20f;
                             knockbacky = 30f;
                             comboend = false;
@@ -362,7 +361,7 @@ public class JeanCombat : MonoBehaviour
                         {
                             attacking = true;
                             Debug.Log("Pawnch 2");
-                            animator.SetTrigger("Lp2");
+                            animator.SetTrigger("LP2");
                             knockbackx = 25f;
                             knockbacky = 20f;
                         }
@@ -371,7 +370,7 @@ public class JeanCombat : MonoBehaviour
                         {
                             attacking = true;
                             Debug.Log("Pawnch 3");
-                            animator.SetTrigger("Lp3");
+                            animator.SetTrigger("LP3");
                             comboend = true;
                             knockbackx = 40f;
                             knockbacky = 50f;

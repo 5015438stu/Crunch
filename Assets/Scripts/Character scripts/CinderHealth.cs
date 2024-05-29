@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class AshHealth : MonoBehaviour
+public class CinderHealth : MonoBehaviour
 {
     [Header("Health")]
     public float playerhealth = 1000;
@@ -21,9 +21,9 @@ public class AshHealth : MonoBehaviour
 
     [Header("Refs")]
     public Rigidbody2D rb;
-    public AshCombat combat;
+    public CinderCombat combat;
     public Player2combat combat2;
-    public AshMovement move;
+    public CinderMovement move;
     public Animator animator;
     public ParticleSystem hit = default;
     public GameObject pfp;
@@ -40,7 +40,7 @@ public class AshHealth : MonoBehaviour
     {
         GetComponent<GameObject>();
         GetComponent<Rigidbody2D>();
-        GetComponent<AshMovement>();
+        GetComponent<CinderMovement>();
         combat2 = GameObject.FindWithTag("P2").GetComponent<Player2combat>();
         inputHandler = InputHandler.Instance;
         isdead = false;
