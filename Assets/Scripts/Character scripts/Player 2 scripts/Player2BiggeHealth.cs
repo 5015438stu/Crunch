@@ -22,6 +22,7 @@ public class Player2BiggeHealth : MonoBehaviour
     [Header("Refs")]
     public Rigidbody2D rb;
     public PlayerCombat combat;
+    public AshCombat ashcombat;
     public Player2combat combat2;
     public Player2Movement movement2;
     public Animator animator;
@@ -42,6 +43,7 @@ public class Player2BiggeHealth : MonoBehaviour
         GetComponent<Rigidbody2D>();
         GetComponent<Player2Movement>();
         GetComponent<PlayerCombat>();
+        GetComponent<AshCombat>();
         inputHandler = InputHandler.Instance;
         isdead = false;
         pfp.SetActive(true);
@@ -109,6 +111,12 @@ public class Player2BiggeHealth : MonoBehaviour
                 animator.SetBool("Hurt", false);
                 animator.SetTrigger("KD1");
             }
+            if (ashcombat.knockbacky > 40)
+            {
+
+                animator.SetBool("Hurt", false);
+                animator.SetTrigger("KD1");
+            }
 
             hurttime += 1 * Time.deltaTime;
 
@@ -128,6 +136,7 @@ public class Player2BiggeHealth : MonoBehaviour
         {
             currenthealth -= damage;
             rb.AddForce(new Vector2(combat.knockbackx, combat.knockbacky), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(ashcombat.knockbackx, ashcombat.knockbacky), ForceMode2D.Impulse);
             lerptimer = 0f;
             animator.SetBool("Hurt", true);
             hurt = true;
