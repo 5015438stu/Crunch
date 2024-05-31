@@ -809,6 +809,8 @@ MonoBehaviour:
   jumpforce: 15
   maxjumps: 1
   isjumping: 0
+  jumpsremaining: 0
+  canjump: 1
   iscrouching: 0
   groundcheck: {fileID: 3339774516502856736}
   ground:
@@ -877,6 +879,7 @@ MonoBehaviour:
   maxcombodelay: 1
   delaytimer: 0
   delay: 0.6
+  canattack: 1
   knockbackx: 0
   knockbacky: 0
   attackDamage: 40
@@ -916,6 +919,9 @@ MonoBehaviour:
   hurt: 0
   stuntime: 0.5
   hurttime: 0
+  lives: 2
+  isdowned: 0
+  isdead: 0
   rb: {fileID: 3264055220040695127}
   combat: {fileID: 5801828926454572568}
   combat2: {fileID: 0}
@@ -927,8 +933,6 @@ MonoBehaviour:
   backbar: {fileID: 6359713332256516097}
   hurtbox: {fileID: 0}
   inputHandler: {fileID: 0}
-  deaths: 0
-  isdead: 0
   score:
   - {fileID: 7878643949801199399}
   - {fileID: 5097111917634802262}

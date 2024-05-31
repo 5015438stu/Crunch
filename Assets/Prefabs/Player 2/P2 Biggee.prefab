@@ -5651,6 +5651,8 @@ MonoBehaviour:
   health2: {fileID: 0}
   rb: {fileID: 3264055220040695127}
   combat2: {fileID: 4172665603626968409}
+  jeancombat: {fileID: 0}
+  ashcombat: {fileID: 0}
   combat: {fileID: 0}
   movement2: {fileID: 4268847411503749350}
   animator: {fileID: 4335579968154530982}
@@ -5668,6 +5670,7 @@ MonoBehaviour:
   maxcombodelay: 1
   delaytimer: 0
   delay: 0.6
+  canattack: 1
   attackDamage: 40
   attackwait: 0
   attacking: 0
@@ -5710,6 +5713,7 @@ MonoBehaviour:
   maxjumps: 1
   isjumping: 0
   jumpsremaining: 0
+  canjump: 1
   iscrouching: 0
   groundcheck: {fileID: 2399742081762620908}
   ground:
@@ -5843,7 +5847,19 @@ MonoBehaviour:
     m_ActionId: 58ce5198-78a7-4955-bc08-1f3e65ee170c
     m_ActionName: UI/New action
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4172665603626968409}
+        m_TargetAssemblyTypeName: Player2combat, Assembly-CSharp
+        m_MethodName: OnLightCrunch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 8d59c06b-b14f-493a-91d1-40d10953347f
     m_ActionName: Gameplay/LightCrunch[/Keyboard/c,/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
@@ -5870,8 +5886,12 @@ MonoBehaviour:
   hurt: 0
   stuntime: 1
   hurttime: 0
+  lives: 2
+  isdowned: 0
+  isdead: 0
   rb: {fileID: 3264055220040695127}
   combat: {fileID: 0}
+  ashcombat: {fileID: 0}
   combat2: {fileID: 4172665603626968409}
   movement2: {fileID: 4268847411503749350}
   animator: {fileID: 4335579968154530982}
@@ -5881,8 +5901,6 @@ MonoBehaviour:
   backbar: {fileID: 2061034251310609406}
   hurtbox: {fileID: 1650250172488188137}
   inputHandler: {fileID: 0}
-  deaths: 0
-  isdead: 1
   score:
   - {fileID: 8909528974162397494}
   - {fileID: 758829338486103957}

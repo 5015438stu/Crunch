@@ -123,13 +123,14 @@ GameObject:
   - component: {fileID: 7923781156442863418}
   - component: {fileID: 2663392943213382425}
   - component: {fileID: 8230602374830421003}
+  - component: {fileID: 7521199149291492368}
   m_Layer: 0
   m_Name: Jean
-  m_TagString: Untagged
+  m_TagString: P1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2281048483227990199
 Transform:
   m_ObjectHideFlags: 0
@@ -247,18 +248,18 @@ MonoBehaviour:
   jumpsremaining: 0
   canjump: 1
   iscrouching: 0
-  groundcheck: {fileID: 0}
+  groundcheck: {fileID: 5024267497879898358}
   ground:
     serializedVersion: 2
     m_Bits: 0
   groundchecksize: {x: 0.5, y: 0.05}
   rb: {fileID: 0}
   animator: {fileID: 7391854913730814169}
-  sprite: {fileID: 0}
+  sprite: {fileID: 3099436714179188169}
   move: {fileID: 0}
   jump: {fileID: 0}
   crouch: {fileID: 0}
-  jeanhealth: {fileID: 0}
+  jeanhealth: {fileID: 2663392943213382425}
   P2xpos: 0
   flipped: 0
 --- !u!61 &1527067292400181674
@@ -361,9 +362,9 @@ MonoBehaviour:
   jeanmove: {fileID: 3351576527076400642}
   animator: {fileID: 7391854913730814169}
   hit: {fileID: 0}
-  pfp: {fileID: 0}
-  frontbar: {fileID: 0}
-  backbar: {fileID: 0}
+  pfp: {fileID: 6627956445292123194}
+  frontbar: {fileID: 2950361868250240380}
+  backbar: {fileID: 1341524116778078866}
   hurtbox: {fileID: 1527067292400181674}
   inputHandler: {fileID: 0}
   score: []
@@ -382,14 +383,14 @@ MonoBehaviour:
   combat2: {fileID: 0}
   health2: {fileID: 0}
   rb: {fileID: 7923781156442863418}
-  movement: {fileID: 0}
+  movement: {fileID: 3351576527076400642}
   animator: {fileID: 7391854913730814169}
   hitbox: {fileID: 2034153462337687723}
   enemylayers:
     serializedVersion: 2
-    m_Bits: 0
-  frontbar: {fileID: 0}
-  backbar: {fileID: 0}
+    m_Bits: 128
+  frontbar: {fileID: 3013599286809148609}
+  backbar: {fileID: 2547931858347642251}
   LightPunch: {fileID: 0}
   LightKick: {fileID: 0}
   HeavyPunch: {fileID: 0}
@@ -411,7 +412,7 @@ MonoBehaviour:
   isblocking: 0
   blockready: 0
   blockpriming: 0
-  blockcheck: {fileID: 0}
+  blockcheck: {fileID: 2429548921431206567}
   blockarea: {x: 0.5, y: 0.05}
   maxcrunch: 1000
   currentcrunch: 0
@@ -420,6 +421,72 @@ MonoBehaviour:
   flexing: 0
   flexlength: 1.5
   flextime: 0
+--- !u!114 &7521199149291492368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197629616664244880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7c74b456-205b-49a1-bcd6-d32d5443a1c8
+    m_ActionName: Gameplay/Jump[/Keyboard/space,/Keyboard/w,/Keyboard/upArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1a5f218f-e99f-43b6-9401-2e8ef882daf4
+    m_ActionName: Gameplay/Move[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a13cfcd1-9ba6-40d0-a400-461a19a4a7a5
+    m_ActionName: Gameplay/Crouch[/Keyboard/s]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4b882404-b6b9-432e-ae41-0585c6126491
+    m_ActionName: Gameplay/LightPunch[/Keyboard/z]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4b1be47e-da57-4ba2-89d7-58fcb98f256c
+    m_ActionName: Gameplay/LightKick[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ff1773a2-6960-4309-b062-f2fce803303c
+    m_ActionName: Gameplay/HeavyPunch[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 16c562a7-368b-4a08-b91f-3d8b49c92d06
+    m_ActionName: Gameplay/HeavyKick[/Keyboard/anyKey]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8d59c06b-b14f-493a-91d1-40d10953347f
+    m_ActionName: Gameplay/LightCrunch[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 58ce5198-78a7-4955-bc08-1f3e65ee170c
+    m_ActionName: UI/Pause[/Keyboard/escape]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1028597985005671195
 GameObject:
   m_ObjectHideFlags: 0

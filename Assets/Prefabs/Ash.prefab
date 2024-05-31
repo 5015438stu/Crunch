@@ -322,7 +322,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 15dce31d8bbf3474ba2cfc8ec42f9139, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6dae248684b71d44c9d35ecf3d870406, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -804,8 +804,8 @@ MonoBehaviour:
   enemylayers:
     serializedVersion: 2
     m_Bits: 128
-  frontbar: {fileID: 4178373063097110607}
-  backbar: {fileID: 5902659982449585349}
+  frontbar: {fileID: 7163415756923166522}
+  backbar: {fileID: 7644131844501973431}
   LightPunch: {fileID: -9137968497609597549, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   LightKick: {fileID: -3662175730211792092, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
   HeavyPunch: {fileID: -9137968497609597549, guid: 2f893cbff6a897d41a6762da91645c87, type: 3}
@@ -859,17 +859,19 @@ MonoBehaviour:
   isdowned: 0
   isdead: 0
   rb: {fileID: 6757624846237663853}
-  combat: {fileID: 0}
+  combat: {fileID: 5815124915603694886}
   combat2: {fileID: 0}
-  move: {fileID: 0}
+  move: {fileID: 4298573780540514502}
   animator: {fileID: 3056542803902898358}
   hit: {fileID: 0}
-  pfp: {fileID: 0}
-  frontbar: {fileID: 0}
-  backbar: {fileID: 0}
-  hurtbox: {fileID: 0}
+  pfp: {fileID: 2436414764572975808}
+  frontbar: {fileID: 4178373063097110607}
+  backbar: {fileID: 5902659982449585349}
+  hurtbox: {fileID: 1062692661088302783}
   inputHandler: {fileID: 0}
-  score: []
+  score:
+  - {fileID: 3383226139199974158}
+  - {fileID: 3007510988391556316}
 --- !u!114 &5118539714457307153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -896,23 +898,83 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4298573780540514502}
+        m_TargetAssemblyTypeName: AshMovement, Assembly-CSharp
+        m_MethodName: OnJump
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7c74b456-205b-49a1-bcd6-d32d5443a1c8
     m_ActionName: Gameplay/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth,/Keyboard/w,/Keyboard/upArrow,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/dpad/up]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4298573780540514502}
+        m_TargetAssemblyTypeName: AshMovement, Assembly-CSharp
+        m_MethodName: OnMove
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 1a5f218f-e99f-43b6-9401-2e8ef882daf4
     m_ActionName: Gameplay/Move[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow,/XInputControllerWindows/leftStick,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4298573780540514502}
+        m_TargetAssemblyTypeName: AshMovement, Assembly-CSharp
+        m_MethodName: OnCrouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a13cfcd1-9ba6-40d0-a400-461a19a4a7a5
     m_ActionName: Gameplay/Crouch[/Keyboard/s,/XInputControllerWindows/dpad/down,/XInputControllerWindows/leftStick/down]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5815124915603694886}
+        m_TargetAssemblyTypeName: AshCombat, Assembly-CSharp
+        m_MethodName: OnLightPunch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 4b882404-b6b9-432e-ae41-0585c6126491
     m_ActionName: Gameplay/LightPunch[/Keyboard/z,/XInputControllerWindows/buttonWest]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5815124915603694886}
+        m_TargetAssemblyTypeName: AshCombat, Assembly-CSharp
+        m_MethodName: OnLightKick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 4b1be47e-da57-4ba2-89d7-58fcb98f256c
     m_ActionName: Gameplay/LightKick[/Keyboard/x,/XInputControllerWindows/buttonNorth]
   - m_PersistentCalls:
@@ -924,7 +986,19 @@ MonoBehaviour:
     m_ActionId: 16c562a7-368b-4a08-b91f-3d8b49c92d06
     m_ActionName: Gameplay/HeavyKick[/Keyboard/anyKey]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 8d59c06b-b14f-493a-91d1-40d10953347f
     m_ActionName: Gameplay/LightCrunch[/Keyboard/c,/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
