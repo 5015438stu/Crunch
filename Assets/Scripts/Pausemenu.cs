@@ -9,6 +9,11 @@ public class Pausemenu : MonoBehaviour
     public int menuswtich = 0;
 
     public GameObject pausemenuUI;
+    public GameObject charmenuUI;
+    public GameObject Biggee;
+    public GameObject Cinder;
+    public GameObject Ash;
+    public GameObject Jean;
 
     // Update is called once per frame
     void Update()
@@ -39,7 +44,15 @@ public class Pausemenu : MonoBehaviour
     {
         pausemenuUI.SetActive(true);
         Time.timeScale = 0f;
-        gamepaused = true; 
+        gamepaused = true;
+    }
+    public void CharacterSelect()
+    {
+        charmenuUI.SetActive(true);
+    }
+    public void Characterexit()
+    {
+        charmenuUI.SetActive(false);
     }
     public void Options()
     {
@@ -49,5 +62,40 @@ public class Pausemenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
+    }
+    public void Jeanspawn()
+    {
+        Jean.SetActive(true);
+        Biggee.SetActive(false);
+        Ash.SetActive(false);
+        Cinder.SetActive(false);
+
+    }
+
+    public void Ashspawn()
+    {
+        Jean.SetActive(false);
+        Biggee.SetActive(false);
+        Ash.SetActive(true);
+        Cinder.SetActive(false);
+
+    }
+
+    public void Cinderspawn()
+    {
+        Jean.SetActive(false);
+        Biggee.SetActive(false);
+        Ash.SetActive(false);
+        Cinder.SetActive(true);
+
+    }
+
+    public void Biggeespawn()
+    {
+        Jean.SetActive(false);
+        Biggee.SetActive(true);
+        Ash.SetActive(false);
+        Cinder.SetActive(false);
+
     }
 }

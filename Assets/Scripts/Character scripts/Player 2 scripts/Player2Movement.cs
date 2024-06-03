@@ -129,7 +129,13 @@ public class Player2Movement : MonoBehaviour
     }
     public void OnMove(InputAction.CallbackContext context)
     {
+        FindObjectOfType<SoundManager>().Play("Walk");
         hors = context.ReadValue<Vector2>().x;
+
+        if (context.canceled)
+        {
+            FindObjectOfType<SoundManager>().Pause("Walk");
+        }
     }
     public void GroundCheck()
     {

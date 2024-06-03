@@ -28,27 +28,5 @@ public class practicemenu : MonoBehaviour
         options.SetActive(true);
     }
 
-    public void Jeanspawn()
-    {
-     
-
-    }
-
-    public void Ashspawn()
-    {
-
-
-    }
- 
-    public void Cinderspawn()
-    {
-
-
-    }
-
-    public void Biggeespawn()
-    {
-
-
-    }
+    
 }

@@ -135,14 +135,6 @@ public class Player2BiggeHealth : MonoBehaviour
         {
             currenthealth -= damage;
             rb.AddForce(new Vector2(combat.knockbackx, combat.knockbacky), ForceMode2D.Impulse);
-            if (ashcombat != null)
-            {
-                rb.AddForce(new Vector2(ashcombat.knockbackx, ashcombat.knockbacky), ForceMode2D.Impulse);
-            }
-            else
-            {
-                return;
-            }
             lerptimer = 0f;
             animator.SetBool("Hurt", true);
             hurt = true;
