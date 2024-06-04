@@ -1853,7 +1853,7 @@ Transform:
   m_GameObject: {fileID: 428545604}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72924066, y: -1.2614, z: -13.199474}
+  m_LocalPosition: {x: -0.7292408, y: -1.2614, z: -13.199474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4030,6 +4030,10 @@ PrefabInstance:
       propertyPath: jeancombat
       value: 
       objectReference: {fileID: 818787689}
+    - target: {fileID: 4268847411503749350, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
+      propertyPath: health2
+      value: 
+      objectReference: {fileID: 997371226}
     - target: {fileID: 7821279242919190250, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
       propertyPath: m_Name
       value: P2 Biggee
@@ -7536,7 +7540,7 @@ Transform:
   m_GameObject: {fileID: 2079933656}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.72924066, y: -1.2614, z: -13.199474}
+  m_LocalPosition: {x: -0.7292408, y: -1.2614, z: -13.199474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

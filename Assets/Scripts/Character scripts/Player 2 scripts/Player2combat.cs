@@ -455,49 +455,50 @@ public class Player2combat : MonoBehaviour
         {
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "P1")
         {
-            if (combat.isblocking == false && combat.invs == false)
-            {
-                if (attacking && combat.attacking == false) //normal hit
-                {
-                    Debug.Log("Inflicted Damage2");
-                    updatebar(attackDamage);
-                    ashhealth.takedamage(attackDamage);
-                    rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
-                }
+            /* if (combat.isblocking == false && combat.invs == false)
+             {
+                 if (attacking && combat.attacking == false) //normal hit
+                 {
+                     Debug.Log("Inflicted Damage2");
+                     updatebar(attackDamage);
+                     health.takedamage(attackDamage);
+                     rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
+                 }
 
-                if (flexing == false && attacking && combat.attacking == true) //clashing
-                {
-                    rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
-                    health.takedamage(0);
-                    FindObjectOfType<SoundManager>().Play("BigThuddy2");
-                    Debug.Log("clash2");
-                    comboend = true;
-                }
-                else if (flexing == true && attacking && combat.attacking == true) //counter
-                {
-                    Debug.Log("Inflicted Damage");
-                    updatebar(attackDamage);
-                    health.takedamage(attackDamage);
-                    rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
-                }
-                if (combat.attacking && flexing)
-                {
-                    animator.SetBool("IsFlexing", false);
-                    animator.SetTrigger("FlexAttack");
-                    combat.comboend = true;
-                    health.takedamage(attackDamage);
-                    rb.AddForce(new Vector2(50f, 10f), ForceMode2D.Impulse);
-                    attacking = true;
-                }
-            }
-            else if (combat.invs == true)
-            {
-                Debug.Log("whiff2");
-            }
+                 if (flexing == false && attacking && combat.attacking == true) //clashing
+                 {
+                     rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
+                     health.takedamage(0);
+                     FindObjectOfType<SoundManager>().Play("BigThuddy2");
+                     Debug.Log("clash2");
+                     comboend = true;
+                 }
+                 else if (flexing == true && attacking && combat.attacking == true) //counter
+                 {
+                     Debug.Log("Inflicted Damage");
+                     updatebar(attackDamage);
+                     health.takedamage(attackDamage);
+                     rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
+                 }
+                 if (combat.attacking && flexing)
+                 {
+                     animator.SetBool("IsFlexing", false);
+                     animator.SetTrigger("FlexAttack");
+                     combat.comboend = true;
+                     health.takedamage(attackDamage);
+                     rb.AddForce(new Vector2(50f, 10f), ForceMode2D.Impulse);
+                     attacking = true;
+                 }
+             }
+             else if (combat.invs == true)
+             {
+                 Debug.Log("whiff2");
+             }*/
 
             //Ash
             if (ashcombat.isblocking == false)
@@ -524,7 +525,6 @@ public class Player2combat : MonoBehaviour
                     ashhealth.takedamage(attackDamage);
                     rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
                 }
-            }Debug.Log("whiff2");
             }
             //Jean
             if (jeancombat.isblocking == false && jeancombat.invs == false)
@@ -575,3 +575,4 @@ public class Player2combat : MonoBehaviour
         Gizmos.DrawWireCube(blockcheck.position, blockarea);
     }
 }
+     
