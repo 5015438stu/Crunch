@@ -13,6 +13,7 @@ public class Player2combat : MonoBehaviour
     public Rigidbody2D rb;
     public Player2combat combat2;
     public JeanCombat jeancombat;
+    public AshHealth ashhealth;
     public AshCombat ashcombat;
     public PlayerCombat combat;
     public Player2Movement movement2;
@@ -73,6 +74,7 @@ public class Player2combat : MonoBehaviour
         movement2 = GetComponent<Player2Movement>();
         combat = GameObject.FindWithTag("P1").GetComponent<PlayerCombat>();
         ashcombat = GameObject.FindWithTag("P1").GetComponent<AshCombat>();
+        ashhealth = GameObject.FindWithTag("P1").GetComponent<AshHealth>();
         jeancombat = GameObject.FindWithTag("P1").GetComponent<JeanCombat>();
         health = GameObject.FindWithTag("P1").GetComponent<HealthScript>();
         currentcrunch = 0;
@@ -81,6 +83,15 @@ public class Player2combat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ashcombat = null)
+        {
+            return;
+        }
+        if (jeancombat = null)
+        {
+            return;
+        }
+
         UpdateCrunchUI();
         Blockcheck();
 
@@ -101,6 +112,7 @@ public class Player2combat : MonoBehaviour
                 zpresses = 0;
                 zp = 0;
                 attacking = false;
+                invs = false;
             }
         }
         else
@@ -275,155 +287,172 @@ public class Player2combat : MonoBehaviour
     }
     public void OnLightCrunch(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (currentcrunch > 100)
         {
-            flexing = true;
-            invs = true;
+            if (context.performed)
+            {
+                if (canattack)
+                {
+                    FindObjectOfType<SoundManager>().Play("BigThuddy3");
+                    currentcrunch -= 100;
+                    flexing = true;
+                    invs = true;
+                }
+                
+            }
+        }
+        else
+        {
+            return;
         }
     }
 
     public void OnLightKick(InputAction.CallbackContext context)
     {
-        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
 
         if (context.performed)
         {
             if (comboend == false)
             {
-                zpresses++;
-                zp++;
-
-                if (movement2.isjumping == true)
+                if (canattack == true)
                 {
-                    FindObjectOfType<SoundManager>().Play("Whoosh1");
-                    attacking = true;
-                    Debug.Log("AK 1");
-                    animator.SetTrigger("AK1");
-                    knockbackx = 40f;
-                    knockbacky = 50f;
-                    comboend = true;
-                    zpresses = 0;
-                    zp = 0;
-                }
-                if (movement2.isjumping == false)
-                {
-                    if (zpresses == 1)
-                    {
-                        attacking = true;
-                        Debug.Log("Kack 1");
-                        animator.SetTrigger("IsLKicking");
-                        knockbackx = -20f;
-                        knockbacky = 10f;
-                        comboend = false;
-                    }
+                    zpresses++;
+                    zp++;
 
-                    if (zpresses == 2)
+                    if (movement2.isjumping == true)
                     {
+                        FindObjectOfType<SoundManager>().Play("Whoosh1");
                         attacking = true;
-                        Debug.Log("Kack 2");
-                        animator.SetTrigger("LK2");
-                        knockbackx = -10f;
-                        knockbacky = 20f;
-                    }
-
-                    if (zpresses == 3)
-                    {
-                        attacking = true;
-                        Debug.Log("Kack 3");
-                        animator.SetTrigger("LK3");
-                        comboend = true;
-                        knockbackx = 30f;
+                        Debug.Log("AK 1");
+                        animator.SetTrigger("AK1");
+                        knockbackx = 40f;
                         knockbacky = 50f;
+                        comboend = true;
+                        zpresses = 0;
+                        zp = 0;
                     }
-                    if (zpresses == 4)
+                    if (movement2.isjumping == false)
                     {
-                        attacking = false;
+                        if (zpresses == 1)
+                        {
+                            attacking = true;
+                            Debug.Log("Kack 1");
+                            animator.SetTrigger("IsLKicking");
+                            knockbackx = -20f;
+                            knockbacky = 10f;
+                            comboend = false;
+                        }
+
+                        if (zpresses == 2)
+                        {
+                            attacking = true;
+                            Debug.Log("Kack 2");
+                            animator.SetTrigger("LK2");
+                            knockbackx = -10f;
+                            knockbacky = 20f;
+                        }
+
+                        if (zpresses == 3)
+                        {
+                            attacking = true;
+                            Debug.Log("Kack 3");
+                            animator.SetTrigger("LK3");
+                            comboend = true;
+                            knockbackx = 30f;
+                            knockbacky = 50f;
+                        }
+                        if (zpresses == 4)
+                        {
+                            attacking = false;
+                        }
+                    }
+                    else
+                    {
+                        return;
                     }
                 }
-                else
-                {
-                    return;
-                }
+                
             }
 
             if (context.canceled)
             {
                 attacking = false;
-                rb.constraints = RigidbodyConstraints2D.FreezePositionY;
             }
         }
     }
     public void OnLightPunch(InputAction.CallbackContext context)
     {
-        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         
 
         if (context.performed)
         {
             if (comboend == false)
             {
-                if (movement2.isjumping == true)
+                if (canattack == true) 
                 {
-                    FindObjectOfType<SoundManager>().Play("Whoosh1");
-                    attacking = true;
-                    Debug.Log("AK 1");
-                    animator.SetTrigger("AK1");
-                    knockbackx = 40f;
-                    knockbacky = 50f;
-                    comboend = true;
-                    zpresses = 0;
-                    zp = 0;
-                }
-                if (movement2.isjumping == false)
-                {
-                    zpresses++;
-                    zp++;
-
-                    if (zpresses == 1)
+                    if (movement2.isjumping == true)
                     {
+                        FindObjectOfType<SoundManager>().Play("Whoosh1");
                         attacking = true;
-                        Debug.Log("Pawnch 1");
-                        animator.SetTrigger("LP1");
-                        knockbackx = -20f;
-                        knockbacky = 30f;
-                        comboend = false;
-                    }
-
-                    if (zpresses == 2)
-                    {
-                        attacking = true;
-                        Debug.Log("Pawnch 2");
-                        animator.SetTrigger("LP2");
-                        knockbackx = 25f;
-                        knockbacky = 20f;
-                    }
-
-                    if (zpresses == 3)
-                    {
-                        Debug.Log("Pawnch 3");
-                        animator.SetTrigger("LP3");
-                        comboend = true;
+                        Debug.Log("AK 1");
+                        animator.SetTrigger("AK1");
                         knockbackx = 40f;
                         knockbacky = 50f;
-                        lastclickedtime = .9f;
+                        comboend = true;
+                        zpresses = 0;
+                        zp = 0;
                     }
-                    if (zpresses == 4)
+                    if (movement2.isjumping == false)
                     {
-                        attacking = false;
+                        zpresses++;
+                        zp++;
+
+                        if (zpresses == 1)
+                        {
+                            attacking = true;
+                            Debug.Log("Pawnch 1");
+                            animator.SetTrigger("LP1");
+                            knockbackx = -20f;
+                            knockbacky = 30f;
+                            comboend = false;
+                        }
+
+                        if (zpresses == 2)
+                        {
+                            attacking = true;
+                            Debug.Log("Pawnch 2");
+                            animator.SetTrigger("LP2");
+                            knockbackx = 25f;
+                            knockbacky = 20f;
+                        }
+
+                        if (zpresses == 3)
+                        {
+                            Debug.Log("Pawnch 3");
+                            animator.SetTrigger("LP3");
+                            comboend = true;
+                            knockbackx = 40f;
+                            knockbacky = 50f;
+                            lastclickedtime = .9f;
+                        }
+                        if (zpresses == 4)
+                        {
+                            attacking = false;
+                        }
+
                     }
-                    
+                    else
+                    {
+                        return;
+                    }
                 }
-                else
-                {
-                    return;
-                }
+                
             }
 
         }
 
         if (context.canceled)
         {
-            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -436,7 +465,7 @@ public class Player2combat : MonoBehaviour
                 {
                     Debug.Log("Inflicted Damage2");
                     updatebar(attackDamage);
-                    health.takedamage(attackDamage);
+                    ashhealth.takedamage(attackDamage);
                     rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
                 }
 
@@ -446,6 +475,7 @@ public class Player2combat : MonoBehaviour
                     health.takedamage(0);
                     FindObjectOfType<SoundManager>().Play("BigThuddy2");
                     Debug.Log("clash2");
+                    comboend = true;
                 }
                 else if (flexing == true && attacking && combat.attacking == true) //counter
                 {
@@ -470,43 +500,31 @@ public class Player2combat : MonoBehaviour
             }
 
             //Ash
-            if (ashcombat.isblocking == false && ashcombat.invs == false)
+            if (ashcombat.isblocking == false)
             {
                 if (attacking && ashcombat.attacking == false) //normal hit
                 {
                     Debug.Log("Inflicted Damage2");
-                    updatebar(attackDamage);
-                    health.takedamage(attackDamage);
+                    ashcombat.updatebar(attackDamage);
+                    ashhealth.takedamage(attackDamage);
                     rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
                 }
 
                 if (flexing == false && attacking && ashcombat.attacking == true) //clashing
                 {
                     rb.AddForce(new Vector2(knockbackx, 0), ForceMode2D.Impulse);
-                    health.takedamage(0);
+                    ashhealth.takedamage(0);
                     FindObjectOfType<SoundManager>().Play("BigThuddy2");
                     Debug.Log("clash2");
                 }
                 else if (flexing == true && attacking && ashcombat.attacking == true) //counter
                 {
                     Debug.Log("Inflicted Damage");
-                    updatebar(attackDamage);
-                    health.takedamage(attackDamage);
+                    ashcombat.updatebar(attackDamage);
+                    ashhealth.takedamage(attackDamage);
                     rb.AddForce(new Vector2(knockbackx, knockbacky), ForceMode2D.Impulse);
                 }
-                if (ashcombat.attacking && flexing)
-                {
-                    animator.SetBool("IsFlexing", false);
-                    animator.SetTrigger("FlexAttack");
-                    ashcombat.comboend = true;
-                    health.takedamage(attackDamage);
-                    rb.AddForce(new Vector2(50f, 10f), ForceMode2D.Impulse);
-                    attacking = true;
-                }
-            }
-            else if (ashcombat.invs == true)
-            {
-                Debug.Log("whiff2");
+            }Debug.Log("whiff2");
             }
             //Jean
             if (jeancombat.isblocking == false && jeancombat.invs == false)

@@ -102,7 +102,8 @@ public class PlayerCombat : MonoBehaviour
         }
         else
         {
-
+            knockbackx = 0;
+            knockbacky = 0;
             movement.canjump = true;
         }
 
@@ -110,7 +111,6 @@ public class PlayerCombat : MonoBehaviour
         {
             zpresses = 0;
             zp = 0;
-
             delaytimer += 1 * Time.deltaTime;
 
             if (delaytimer >= delay)
@@ -231,10 +231,13 @@ public class PlayerCombat : MonoBehaviour
         {
             if (context.performed)
             {
-                FindObjectOfType<SoundManager>().Play("BigThuddy3");
-                currentcrunch -= 100;
-                flexing = true;
-                invs = true;
+                if (canattack)
+                {
+                    FindObjectOfType<SoundManager>().Play("BigThuddy3");
+                    currentcrunch -= 100;
+                    flexing = true;
+                    invs = true;
+                }
             }
         }
         else
@@ -417,6 +420,7 @@ public class PlayerCombat : MonoBehaviour
                     health2.takedamage(0);
                     FindObjectOfType<SoundManager>().Play("BigThuddy2");
                     Debug.Log("clash");
+                    comboend = true;
                 }
                 else if (flexing == true && attacking && combat2.attacking == true) //anti flex clash
                 {

@@ -2998,6 +2998,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 859703bf8fd7b9945aaa166dedf60a63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &818787689 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8230602374830421003, guid: 3f1a2a422dc26bb40adb5ef98c5b83f5, type: 3}
+  m_PrefabInstance: {fileID: 452106524}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452106525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a557264e19c9f47bc3ee97f0efc97a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &834190205
 GameObject:
   m_ObjectHideFlags: 0
@@ -4003,6 +4014,22 @@ PrefabInstance:
       propertyPath: health
       value: 
       objectReference: {fileID: 1798164714}
+    - target: {fileID: 4172665603626968409, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
+      propertyPath: health2
+      value: 
+      objectReference: {fileID: 997371226}
+    - target: {fileID: 4172665603626968409, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
+      propertyPath: ashcombat
+      value: 
+      objectReference: {fileID: 1735710707}
+    - target: {fileID: 4172665603626968409, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
+      propertyPath: ashhealth
+      value: 
+      objectReference: {fileID: 2091793165}
+    - target: {fileID: 4172665603626968409, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
+      propertyPath: jeancombat
+      value: 
+      objectReference: {fileID: 818787689}
     - target: {fileID: 7821279242919190250, guid: 18223ffd34b447f40bc783f8029fc95e, type: 3}
       propertyPath: m_Name
       value: P2 Biggee
@@ -7610,6 +7637,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7750927815395475179, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
   m_PrefabInstance: {fileID: 2091793145}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2091793165 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1173836683399124156, guid: ef11641c84a6d3f4ebfb7702b77d4cf5, type: 3}
+  m_PrefabInstance: {fileID: 2091793145}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091793146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 344eebdbd8f99b74eb7c43963a977e86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2106238622
 GameObject:
   m_ObjectHideFlags: 0

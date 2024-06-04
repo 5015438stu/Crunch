@@ -73,7 +73,8 @@ public class Player2BiggeHealth : MonoBehaviour
             Debug.Log("Died");
             movement2.canjump = false;
             movement2.movespeed = 0f;
-            
+            combat2.canattack = false;
+
             isdowned = true;
             hurt = false;
             animator.SetBool("Hurt", false);
@@ -110,12 +111,13 @@ public class Player2BiggeHealth : MonoBehaviour
                 animator.SetBool("Hurt", false);
                 animator.SetTrigger("KD1");
             }
+            /*
             if (ashcombat.knockbacky > 40)
             {
 
                 animator.SetBool("Hurt", false);
                 animator.SetTrigger("KD1");
-            }
+            }*/
 
             hurttime += 1 * Time.deltaTime;
 
