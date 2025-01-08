@@ -205,7 +205,7 @@ public class Player2BiggeHealth : MonoBehaviour
         if (collision.gameObject.tag == "Wall")
         {
             Debug.Log("wall");
-            if (movement2.rb.velocity.x >= 6)
+            if (movement2.rb.linearVelocity.x >= 6)
             {
                 Debug.Log("stick");
                 movement2.xvelo = 0;

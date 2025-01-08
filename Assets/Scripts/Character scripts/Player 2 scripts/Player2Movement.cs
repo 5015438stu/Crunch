@@ -57,7 +57,7 @@ public class Player2Movement : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector2(hors * movespeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(hors * movespeed, rb.linearVelocity.y);
         }
 
         if (transform.rotation != Quaternion.Euler(0, 0, 0))
@@ -65,23 +65,23 @@ public class Player2Movement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
-        yvelo = rb.velocity.y;
-        xvelo = rb.velocity.x;
+        yvelo = rb.linearVelocity.y;
+        xvelo = rb.linearVelocity.x;
 
-        animator.SetFloat("Speed", rb.velocity.x);
+        animator.SetFloat("Speed", rb.linearVelocity.x);
 
         GroundCheck();
 
         P1xpos = GameObject.FindWithTag("P1").transform.position.x;
 
-        if (rb.velocity.y > 1.5)
+        if (rb.linearVelocity.y > 1.5)
         {
             isjumping = true;
             jumpsremaining = 0;
             animator.SetBool("IsJumping", true);
             animator.SetBool("IsFalling", false);
         }
-        if (rb.velocity.y < -1)
+        if (rb.linearVelocity.y < -1)
         {
             animator.SetBool("IsJumping", false);
             animator.SetBool("IsFalling", true);
@@ -158,7 +158,7 @@ public class Player2Movement : MonoBehaviour
                 {
                     //full power full hold
                     Debug.Log("Jump Started");
-                    rb.velocity = new Vector2(rb.velocity.x, jumpforce);
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpforce);
                     jumpsremaining--;
                     isjumping = true;
                     FindObjectOfType<SoundManager>().Play("JumpSFX");
@@ -175,7 +175,7 @@ public class Player2Movement : MonoBehaviour
                 {
                     //small jump light tap
                     Debug.Log("Jump Ended");
-                    rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
                     animator.SetBool("IsFalling", true);
                     animator.SetBool("IsJumping", false);
                     jumpsremaining--;

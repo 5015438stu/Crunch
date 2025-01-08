@@ -34,7 +34,7 @@ public class DummyScript : MonoBehaviour
         health.SetHealth(currenthealth); //replace
         if (rb != null)
         {
-            speed = rb.velocity.magnitude;
+            speed = rb.linearVelocity.magnitude;
         }
 
         if (hit)

@@ -31,7 +31,7 @@ public class damagescript : MonoBehaviour
         healtbar.SetHealth(currenthealth);
         if (rb != null)
         {
-            speed = rb.velocity.magnitude;
+            speed = rb.linearVelocity.magnitude;
         }
 
         if (hit)
